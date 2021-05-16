@@ -5,6 +5,10 @@
  */
 package Views;
 
+import Views.InternalFrames.JifClientes;
+import Views.InternalFrames.JifCompras;
+import Views.InternalFrames.JifProveedores;
+import Views.InternalFrames.JifVentas;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -16,14 +20,14 @@ import javax.swing.JFrame;
  */
 public class MenuPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form App
-     */
+    private JifCompras compras;
+    private JifVentas ventas;
+    private JifClientes clientes;
+    private JifProveedores proveedores;
+
     public MenuPrincipal() {
         initComponents();
     }
-
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,78 +37,154 @@ public class MenuPrincipal extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel2 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        btnCompras = new javax.swing.JButton();
+        btnVentas = new javax.swing.JButton();
+        btnClientes = new javax.swing.JButton();
+        btnProveedores = new javax.swing.JButton();
+        btnSistemaVenta = new javax.swing.JButton();
         ImageIcon icon = new ImageIcon(getClass().getResource("/images/Wallpaper4.png"));
         Image image = icon.getImage();
-        jDesktopPane1 = new javax.swing.JDesktopPane(){
+        dktContent = new javax.swing.JDesktopPane(){
 
             public void paintComponent(Graphics g){
                 g.drawImage(image,0,0,getWidth(),getHeight(),this);
             }
 
         };
-        jMenuBar1 = new javax.swing.JMenuBar();
-        mnuCompras = new javax.swing.JMenu();
-        mnuVentas = new javax.swing.JMenu();
-        mnuClientes = new javax.swing.JMenu();
-        mnuProveedores = new javax.swing.JMenu();
-        mnuReporte = new javax.swing.JMenu();
-        mnuSistemaVenta = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         jPanel2.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanel1.setMinimumSize(new java.awt.Dimension(50, 50));
+        jPanel1.setPreferredSize(new java.awt.Dimension(771, 50));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        btnCompras.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Compra.png"))); // NOI18N
+        btnCompras.setText("Compras");
+        btnCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComprasActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        jPanel1.add(btnCompras, gridBagConstraints);
+
+        btnVentas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ventas1.png"))); // NOI18N
+        btnVentas.setText("Ventas");
+        btnVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVentasActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        jPanel1.add(btnVentas, gridBagConstraints);
+
+        btnClientes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Clientes.png"))); // NOI18N
+        btnClientes.setText("Clientes");
+        btnClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientesActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        jPanel1.add(btnClientes, gridBagConstraints);
+
+        btnProveedores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Proveedores.png"))); // NOI18N
+        btnProveedores.setText("Proveedores");
+        btnProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProveedoresActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        jPanel1.add(btnProveedores, gridBagConstraints);
+
+        btnSistemaVenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnSistemaVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ProgramaVentas.png"))); // NOI18N
+        btnSistemaVenta.setText("Sistema de Venta");
+        btnSistemaVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSistemaVentaActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.weightx = 0.1;
+        jPanel1.add(btnSistemaVenta, gridBagConstraints);
+
+        jPanel2.add(jPanel1, java.awt.BorderLayout.PAGE_START);
+
+        javax.swing.GroupLayout dktContentLayout = new javax.swing.GroupLayout(dktContent);
+        dktContent.setLayout(dktContentLayout);
+        dktContentLayout.setHorizontalGroup(
+            dktContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 771, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 356, Short.MAX_VALUE)
+        dktContentLayout.setVerticalGroup(
+            dktContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 340, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jDesktopPane1, java.awt.BorderLayout.CENTER);
+        jPanel2.add(dktContent, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
-        mnuCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Compra.png"))); // NOI18N
-        mnuCompras.setText("Compras");
-        mnuCompras.setMargin(new java.awt.Insets(0, 20, 0, 20));
-        jMenuBar1.add(mnuCompras);
-
-        mnuVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ventas1.png"))); // NOI18N
-        mnuVentas.setText("Ventas");
-        mnuVentas.setMargin(new java.awt.Insets(0, 20, 0, 20));
-        jMenuBar1.add(mnuVentas);
-
-        mnuClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Clientes.png"))); // NOI18N
-        mnuClientes.setText("Clientes");
-        mnuClientes.setMargin(new java.awt.Insets(0, 20, 0, 20));
-        jMenuBar1.add(mnuClientes);
-
-        mnuProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Proveedores.png"))); // NOI18N
-        mnuProveedores.setText("Proveedores");
-        mnuProveedores.setMargin(new java.awt.Insets(0, 20, 0, 20));
-        jMenuBar1.add(mnuProveedores);
-
-        mnuReporte.setText("Reporte");
-        mnuReporte.setMargin(new java.awt.Insets(0, 20, 0, 20));
-        jMenuBar1.add(mnuReporte);
-
-        mnuSistemaVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ProgramaVentas.png"))); // NOI18N
-        mnuSistemaVenta.setText("Sistema de Venta");
-        mnuSistemaVenta.setMargin(new java.awt.Insets(0, 20, 0, 20));
-        jMenuBar1.add(mnuSistemaVenta);
-
-        setJMenuBar(jMenuBar1);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprasActionPerformed
+
+        compras = new JifCompras();
+        dktContent.add(compras);
+        compras.setVisible(true);
+
+
+    }//GEN-LAST:event_btnComprasActionPerformed
+
+    private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
+
+        ventas = new JifVentas();
+        dktContent.add(ventas);
+
+        ventas.setVisible(true);
+
+    }//GEN-LAST:event_btnVentasActionPerformed
+
+    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+
+        clientes = new JifClientes();
+        dktContent.add(clientes);
+
+        clientes.setVisible(true);
+
+    }//GEN-LAST:event_btnClientesActionPerformed
+
+    private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed
+
+        proveedores = new JifProveedores();
+        dktContent.add(proveedores);
+
+        proveedores.setVisible(true);
+
+    }//GEN-LAST:event_btnProveedoresActionPerformed
+
+    private void btnSistemaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSistemaVentaActionPerformed
+
+    }//GEN-LAST:event_btnSistemaVentaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,22 +222,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MenuPrincipal().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() ->
+        {
+            new MenuPrincipal().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JButton btnClientes;
+    private javax.swing.JButton btnCompras;
+    private javax.swing.JButton btnProveedores;
+    private javax.swing.JButton btnSistemaVenta;
+    private javax.swing.JButton btnVentas;
+    private javax.swing.JDesktopPane dktContent;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JMenu mnuClientes;
-    private javax.swing.JMenu mnuCompras;
-    private javax.swing.JMenu mnuProveedores;
-    private javax.swing.JMenu mnuReporte;
-    private javax.swing.JMenu mnuSistemaVenta;
-    private javax.swing.JMenu mnuVentas;
     // End of variables declaration//GEN-END:variables
 }
