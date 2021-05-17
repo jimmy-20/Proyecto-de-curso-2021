@@ -5,15 +5,19 @@
  */
 package Views.InternalFrames;
 
+import Panels.Compra.PnlData;
+import Panels.Compra.PnlTable;
+import java.awt.BorderLayout;
+
 /**
  *
  * @author FAMILIASOZAORTIZ
  */
 public class JifCompras extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form JifCompras
-     */
+    private PnlData pnlData;
+    private PnlTable pnlTable;
+   
+    
     public JifCompras() {
         initComponents();
     }
@@ -27,6 +31,10 @@ public class JifCompras extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        pnlContentTable = new javax.swing.JPanel();
+        pnlContentData = new javax.swing.JPanel();
+
         setBorder(null);
         setClosable(true);
         setIconifiable(true);
@@ -35,21 +43,32 @@ public class JifCompras extends javax.swing.JInternalFrame {
         setTitle("Compras");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Compra.png"))); // NOI18N
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 457, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 281, Short.MAX_VALUE)
-        );
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        pnlContentTable.setPreferredSize(new java.awt.Dimension(630, 200));
+        pnlContentTable.setLayout(new java.awt.BorderLayout());
+
+        pnlTable = new PnlTable();
+        pnlContentTable.add(pnlTable,BorderLayout.CENTER);
+
+        jPanel1.add(pnlContentTable, java.awt.BorderLayout.PAGE_END);
+
+        pnlContentData.setLayout(new java.awt.BorderLayout());
+
+        pnlData = new PnlData();
+        pnlContentData.add(pnlData,BorderLayout.CENTER);
+
+        jPanel1.add(pnlContentData, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel pnlContentData;
+    private javax.swing.JPanel pnlContentTable;
     // End of variables declaration//GEN-END:variables
 }
