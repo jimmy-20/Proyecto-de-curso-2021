@@ -11,8 +11,13 @@ import Views.InternalFrames.JifProveedores;
 import Views.InternalFrames.JifVentas;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.List;
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 
 /**
  *
@@ -147,7 +152,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprasActionPerformed
-
+        
+        List<JInternalFrame> frames =  Arrays.asList(dktContent.getAllFrames()) ;
+        Optional<JInternalFrame> optional = frames.stream().filter(j -> j instanceof JifCompras).findAny();
+        if(optional.isPresent()){
+            return;
+        }
         compras = new JifCompras();
         dktContent.add(compras);
         compras.setVisible(true);
