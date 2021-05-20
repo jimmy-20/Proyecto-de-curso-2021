@@ -5,16 +5,16 @@
  */
 package Views;
 
-import Views.InternalFrames.JifClientes;
 import Views.InternalFrames.JifCompras;
-import Views.InternalFrames.JifProveedores;
+import Views.InternalFrames.JifDetalleCompras;
+import Views.InternalFrames.JifDetalleVentas;
+import Views.InternalFrames.JifSistemaVentas;
 import Views.InternalFrames.JifVentas;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.List;
 import java.util.Arrays;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -26,9 +26,12 @@ import javax.swing.JInternalFrame;
 public class MenuPrincipal extends javax.swing.JFrame {
 
     private JifCompras compras;
+    private JifDetalleCompras detalleCompras;
+
     private JifVentas ventas;
-    private JifClientes clientes;
-    private JifProveedores proveedores;
+    private JifDetalleVentas detalleVentas;
+    
+    private JifSistemaVentas sistemaVentas;
 
     public MenuPrincipal() {
         initComponents();
@@ -48,9 +51,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnCompras = new javax.swing.JButton();
         btnVentas = new javax.swing.JButton();
-        btnClientes = new javax.swing.JButton();
-        btnProveedores = new javax.swing.JButton();
+        btnDetalleCompras = new javax.swing.JButton();
         btnSistemaVenta = new javax.swing.JButton();
+        btnDetalleVentas = new javax.swing.JButton();
         ImageIcon icon = new ImageIcon(getClass().getResource("/images/Wallpaper4.png"));
         Image image = icon.getImage();
         dktContent = new javax.swing.JDesktopPane(){
@@ -80,6 +83,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 2, 0, 2);
         jPanel1.add(btnCompras, gridBagConstraints);
 
         btnVentas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -91,32 +95,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 2, 0, 2);
         jPanel1.add(btnVentas, gridBagConstraints);
 
-        btnClientes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Clientes.png"))); // NOI18N
-        btnClientes.setText("Clientes");
-        btnClientes.addActionListener(new java.awt.event.ActionListener() {
+        btnDetalleCompras.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnDetalleCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Proveedores.png"))); // NOI18N
+        btnDetalleCompras.setText("Detalle de Compras");
+        btnDetalleCompras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClientesActionPerformed(evt);
+                btnDetalleComprasActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel1.add(btnClientes, gridBagConstraints);
-
-        btnProveedores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Proveedores.png"))); // NOI18N
-        btnProveedores.setText("Proveedores");
-        btnProveedores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProveedoresActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel1.add(btnProveedores, gridBagConstraints);
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 2, 0, 2);
+        jPanel1.add(btnDetalleCompras, gridBagConstraints);
 
         btnSistemaVenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnSistemaVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ProgramaVentas.png"))); // NOI18N
@@ -127,9 +123,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 2, 0, 2);
         jPanel1.add(btnSistemaVenta, gridBagConstraints);
+
+        btnDetalleVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ventas.png"))); // NOI18N
+        btnDetalleVentas.setText("Detalle de Ventas");
+        btnDetalleVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetalleVentasActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 2, 0, 2);
+        jPanel1.add(btnDetalleVentas, gridBagConstraints);
 
         jPanel2.add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
@@ -137,7 +150,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         dktContent.setLayout(dktContentLayout);
         dktContentLayout.setHorizontalGroup(
             dktContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 771, Short.MAX_VALUE)
+            .addGap(0, 842, Short.MAX_VALUE)
         );
         dktContentLayout.setVerticalGroup(
             dktContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,18 +168,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
         List<JInternalFrame> frames =  Arrays.asList(dktContent.getAllFrames()) ;
         Optional<JInternalFrame> optional = frames.stream().filter(j -> j instanceof JifCompras).findAny();
-        if(optional.isPresent()){
+        if (optional.isPresent())
+        {
             return;
         }
+        
         compras = new JifCompras();
         dktContent.add(compras);
         compras.setVisible(true);
-
-
     }//GEN-LAST:event_btnComprasActionPerformed
 
-    private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
 
+    
+   
+    private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
+        List<JInternalFrame> frames =  Arrays.asList(dktContent.getAllFrames()) ;
+        Optional<JInternalFrame> optional = frames.stream().filter(j -> j instanceof JifVentas).findAny();
+        if (optional.isPresent())
+        {
+            return;
+        }
+        
         ventas = new JifVentas();
         dktContent.add(ventas);
 
@@ -174,27 +196,48 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnVentasActionPerformed
 
-    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+    private void btnDetalleComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalleComprasActionPerformed
 
-        clientes = new JifClientes();
-        dktContent.add(clientes);
+        List<JInternalFrame> frames =  Arrays.asList(dktContent.getAllFrames()) ;
+        Optional<JInternalFrame> optional = frames.stream().filter(j -> j instanceof JifDetalleCompras).findAny();
+        if (optional.isPresent())
+        {
+            return;
+        }
+        
+        detalleCompras = new JifDetalleCompras();
+        dktContent.add(detalleCompras);
 
-        clientes.setVisible(true);
+        detalleCompras.setVisible(true);
 
-    }//GEN-LAST:event_btnClientesActionPerformed
-
-    private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed
-
-        proveedores = new JifProveedores();
-        dktContent.add(proveedores);
-
-        proveedores.setVisible(true);
-
-    }//GEN-LAST:event_btnProveedoresActionPerformed
+    }//GEN-LAST:event_btnDetalleComprasActionPerformed
 
     private void btnSistemaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSistemaVentaActionPerformed
 
+        List<JInternalFrame> frames =  Arrays.asList(dktContent.getAllFrames()) ;
+        Optional<JInternalFrame> optional = frames.stream().filter(j -> j instanceof JifSistemaVentas).findAny();
+        if (optional.isPresent())
+        {
+            return;
+        }
+        
+        sistemaVentas = new JifSistemaVentas();
+        dktContent.add(sistemaVentas);
+        sistemaVentas.setVisible(true);
     }//GEN-LAST:event_btnSistemaVentaActionPerformed
+
+    private void btnDetalleVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalleVentasActionPerformed
+        List<JInternalFrame> frames =  Arrays.asList(dktContent.getAllFrames()) ;
+        Optional<JInternalFrame> optional = frames.stream().filter(j -> j instanceof JifDetalleVentas).findAny();
+        if (optional.isPresent())
+        {
+            return;
+        }
+        
+        detalleVentas = new JifDetalleVentas();
+        dktContent.add(detalleVentas);
+        detalleVentas.setVisible(true);
+    }//GEN-LAST:event_btnDetalleVentasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,9 +282,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnCompras;
-    private javax.swing.JButton btnProveedores;
+    private javax.swing.JButton btnDetalleCompras;
+    private javax.swing.JButton btnDetalleVentas;
     private javax.swing.JButton btnSistemaVenta;
     private javax.swing.JButton btnVentas;
     private javax.swing.JDesktopPane dktContent;

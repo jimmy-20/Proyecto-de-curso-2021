@@ -9,12 +9,12 @@ package Views.InternalFrames;
  *
  * @author FAMILIASOZAORTIZ
  */
-public class JifClientes extends javax.swing.JInternalFrame {
+public class JifSistemaVentas extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form JifClientes
+     * Creates new form JifSistemaVentas
      */
-    public JifClientes() {
+    public JifSistemaVentas() {
         initComponents();
     }
 
@@ -30,8 +30,7 @@ public class JifClientes extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Clientes");
-        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Clientes.png"))); // NOI18N
+        setResizable(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
