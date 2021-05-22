@@ -5,8 +5,8 @@
  */
 package Views.InternalFrames;
 
-import Panels.Compra.PnlData;
-import Panels.Compra.PnlTable;
+import Backend.Controllers.PnlCompraController;
+import Panels.Compra.PnlCompra;
 import java.awt.BorderLayout;
 
 /**
@@ -14,8 +14,8 @@ import java.awt.BorderLayout;
  * @author FAMILIASOZAORTIZ
  */
 public class JifCompras extends javax.swing.JInternalFrame {
-    private PnlData pnlData;
-    private PnlTable pnlTable;
+    private PnlCompra pnlCompra;
+    private PnlCompraController pnlCompraController;
    
     
     public JifCompras() {
@@ -32,7 +32,6 @@ public class JifCompras extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        pnlContentTable = new javax.swing.JPanel();
         pnlContentData = new javax.swing.JPanel();
 
         setBorder(null);
@@ -45,18 +44,12 @@ public class JifCompras extends javax.swing.JInternalFrame {
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        pnlContentTable.setPreferredSize(new java.awt.Dimension(630, 200));
-        pnlContentTable.setLayout(new java.awt.BorderLayout());
-
-        pnlTable = new PnlTable();
-        pnlContentTable.add(pnlTable,BorderLayout.CENTER);
-
-        jPanel1.add(pnlContentTable, java.awt.BorderLayout.PAGE_END);
-
+        pnlContentData.setMinimumSize(new java.awt.Dimension(593, 602));
         pnlContentData.setLayout(new java.awt.BorderLayout());
 
-        pnlData = new PnlData();
-        pnlContentData.add(pnlData,BorderLayout.CENTER);
+        pnlCompra = new PnlCompra();
+        pnlCompraController = new PnlCompraController(pnlCompra);
+        pnlContentData.add(pnlCompra,BorderLayout.CENTER);
 
         jPanel1.add(pnlContentData, java.awt.BorderLayout.CENTER);
 
@@ -69,6 +62,5 @@ public class JifCompras extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel pnlContentData;
-    private javax.swing.JPanel pnlContentTable;
     // End of variables declaration//GEN-END:variables
 }
