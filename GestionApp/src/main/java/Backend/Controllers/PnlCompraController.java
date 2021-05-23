@@ -8,6 +8,7 @@ package Backend.Controllers;
 import Model.TableModel;
 import Panels.Compra.PnlCompra;
 import Pojo.SubCompra;
+import java.awt.event.ActionEvent;
 import java.util.List;
 
 /**
@@ -29,6 +30,29 @@ public class PnlCompraController {
     private void initComponents() {
         tablemodel = new TableModel<>(list,header);
         pnlCompra.getTblResumenCompras().setModel(tablemodel);
+        
+        pnlCompra.getBtnAgregar().addActionListener(((e) -> {
+           btnAgregarActionPerformed(e); 
+        }));
+        
+        pnlCompra.getBtnLimpiar().addActionListener(((e) -> {
+            btnLimpiarActionPerformed(e);
+        }));
+    }
+
+    private void btnAgregarActionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void btnLimpiarActionPerformed(ActionEvent e) {
+        pnlCompra.getTxtFactura().setText("");
+        pnlCompra.getTxtFecha().setText("");
+        pnlCompra.getTxtProveedor().setText("");
+        pnlCompra.getTxtDescripcion().setText("");
+        pnlCompra.getTxtCostoU().setText("");
+        pnlCompra.getTxtSubTotal().setText("");
+        pnlCompra.getTxtIva().setText("");
+        pnlCompra.getTxtTotal().setText("");
     }
     
     

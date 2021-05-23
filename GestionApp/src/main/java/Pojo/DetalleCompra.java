@@ -10,18 +10,19 @@ package Pojo;
  * @author Javier Ramirez
  */
 public class DetalleCompra { 
-    private String nfactura;
-    private String fecha;
-    private String tipoCompra;
-    private String tipomoneda;
-    private String proveedor;
-    private String descripcion;
-    private int cantidad;
-    private float costo;
-    private float subTotal;
-    private float iva;
-    private float total;
+    private String nfactura;  // 10*2 = 20
+    private String fecha; // 10*2
+    private String tipoCompra; // Credito Contado 7*2 = 14
+    private String tipomoneda; // 7 *2 = 14
+    private String proveedor; // 20*2 = 40;
+    private String descripcion; // 30*2 = 60
+    private int cantidad; // 4
+    private float costo; //4
+    private float subTotal; //4
+    private float iva; //4
+    private float total; //4
 
+    //Total = 188
     public DetalleCompra() {
     }
 

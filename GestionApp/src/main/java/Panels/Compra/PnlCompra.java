@@ -5,7 +5,11 @@
  */
 package Panels.Compra;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JSpinner;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -21,6 +25,60 @@ public class PnlCompra extends javax.swing.JPanel {
     public JTable getTblResumenCompras() {
         return tblResumenCompras;
     }
+
+    public JButton getBtnAgregar() {
+        return btnAgregar;
+    }
+
+    public JButton getBtnLimpiar() {
+        return btnLimpiar;
+    }
+
+    public JComboBox<String> getCmbMoneda() {
+        return cmbMoneda;
+    }
+
+    public JComboBox<String> getCmbTipoCompra() {
+        return cmbTipoCompra;
+    }
+
+    public JSpinner getSpnCantidad() {
+        return spnCantidad;
+    }
+
+    public JTextField getTxtCostoU() {
+        return txtCostoU;
+    }
+
+    public JTextField getTxtDescripcion() {
+        return txtDescripcion;
+    }
+
+    public JTextField getTxtFactura() {
+        return txtFactura;
+    }
+
+    public JTextField getTxtFecha() {
+        return txtFecha;
+    }
+
+    public JTextField getTxtIva() {
+        return txtIva;
+    }
+
+    public JTextField getTxtProveedor() {
+        return txtProveedor;
+    }
+
+    public JTextField getTxtSubTotal() {
+        return txtSubTotal;
+    }
+
+    public JTextField getTxtTotal() {
+        return txtTotal;
+    }
+    
+    
 
     
     
@@ -43,20 +101,22 @@ public class PnlCompra extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jTextField3 = new javax.swing.JTextField();
+        txtFactura = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
+        cmbTipoCompra = new javax.swing.JComboBox<>();
+        cmbMoneda = new javax.swing.JComboBox<>();
+        txtProveedor = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jSpinner1 = new javax.swing.JSpinner();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        txtDescripcion = new javax.swing.JTextField();
+        spnCantidad = new javax.swing.JSpinner();
+        txtCostoU = new javax.swing.JTextField();
+        txtSubTotal = new javax.swing.JTextField();
+        txtIva = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JTextField();
+        btnAgregar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -158,39 +218,37 @@ public class PnlCompra extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 14, 0, 14);
-        jPanel4.add(jTextField1, gridBagConstraints);
+        jPanel4.add(txtFactura, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 14, 0, 14);
-        jPanel4.add(jTextField2, gridBagConstraints);
+        jPanel4.add(txtFecha, gridBagConstraints);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 14, 0, 14);
-        jPanel4.add(jComboBox1, gridBagConstraints);
+        jPanel4.add(cmbTipoCompra, gridBagConstraints);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 14, 0, 14);
-        jPanel4.add(jComboBox2, gridBagConstraints);
+        jPanel4.add(cmbMoneda, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 14, 0, 14);
-        jPanel4.add(jTextField3, gridBagConstraints);
+        jPanel4.add(txtProveedor, gridBagConstraints);
 
         jLabel10.setText("Descripción: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -221,42 +279,62 @@ public class PnlCompra extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 14, 0, 14);
-        jPanel4.add(jTextField4, gridBagConstraints);
+        jPanel4.add(txtDescripcion, gridBagConstraints);
+
+        spnCantidad.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 12;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 14, 0, 14);
-        jPanel4.add(jSpinner1, gridBagConstraints);
+        jPanel4.add(spnCantidad, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 14;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 14, 0, 14);
-        jPanel4.add(jTextField5, gridBagConstraints);
+        jPanel4.add(txtCostoU, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 16;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 14, 0, 14);
-        jPanel4.add(jTextField6, gridBagConstraints);
+        jPanel4.add(txtSubTotal, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 17;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 14, 0, 14);
-        jPanel4.add(jTextField7, gridBagConstraints);
+        jPanel4.add(txtIva, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 18;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 14, 0, 14);
-        jPanel4.add(jTextField8, gridBagConstraints);
+        jPanel4.add(txtTotal, gridBagConstraints);
+
+        btnAgregar.setText("Agregar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 19;
+        jPanel4.add(btnAgregar, gridBagConstraints);
+
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 19;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        jPanel4.add(btnLimpiar, gridBagConstraints);
 
         jPanel3.add(jPanel4, java.awt.BorderLayout.LINE_START);
 
@@ -270,10 +348,16 @@ public class PnlCompra extends javax.swing.JPanel {
         add(jPanel3, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JComboBox<String> cmbMoneda;
+    private javax.swing.JComboBox<String> cmbTipoCompra;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -292,15 +376,15 @@ public class PnlCompra extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JSpinner spnCantidad;
     private javax.swing.JTable tblResumenCompras;
+    private javax.swing.JTextField txtCostoU;
+    private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextField txtFactura;
+    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtIva;
+    private javax.swing.JTextField txtProveedor;
+    private javax.swing.JTextField txtSubTotal;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

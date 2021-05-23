@@ -10,14 +10,20 @@ import Backend.Idao.IdaoActions;
 import Pojo.Compra;
 import com.google.gson.Gson;
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author FAMILIASOZAORTIZ
  */
 public class Compras extends FileConnection implements IdaoActions<Compra>{
-    
+    private final int SIZE_DETALLE = 200;
+    private final int SIZE_FACTURA = 130;
     private Gson gson;
 
     public Compras(File fileHeader, File fileData) {
@@ -27,7 +33,31 @@ public class Compras extends FileConnection implements IdaoActions<Compra>{
 
     @Override
     public void add(Compra t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            if (t == null){
+                return;
+            }
+            
+            int n = getRandomConection().getRafH().readInt(); //Nª de registros;
+            int k = getRandomConection().getRafH().readInt(); //id
+            
+            long posD = k*SIZE_FACTURA;
+            
+            
+            getRandomConection().getRafD().seek(posD);
+            
+            getRandomConection().getRafD().writeUTF(gson.toJson(t));
+            
+            getRandomConection().getRafH().seek(0);
+            getRandomConection().getRafH().writeInt(++n);
+            getRandomConection().getRafH().writeInt(++k);
+            
+            close();
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Compras.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -42,6 +72,27 @@ public class Compras extends FileConnection implements IdaoActions<Compra>{
 
     @Override
     public Collection<Compra> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Compra> compras = new ArrayList<>();
+        Compra compra = null;
+        
+        try {
+            int n = getRandomConection().getRafH().readInt();
+            
+            if (n<0){
+                return null;
+            }
+            
+            for (int i=0 ; i<n ; i++){
+                long posD = i*SIZE_FACTURA;
+                
+                getRandomConection().getRafD().seek(posD);
+                compra = gson.fromJson(getRandomConection().getRafD().readUTF(), Compra.class);
+                
+                compras.add(compra);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(Compras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return compras;
     }
 }
