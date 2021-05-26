@@ -5,11 +5,17 @@
  */
 package Views.InternalFrames;
 
+import Backend.Controllers.PnlVentasController;
+import Panels.Ventas.PnlVentas;
+import java.awt.BorderLayout;
+
 /**
  *
  * @author FAMILIASOZAORTIZ
  */
 public class JifVentas extends javax.swing.JInternalFrame {
+    private PnlVentas pnlVentas;
+    private PnlVentasController ventasController;
 
     /**
      * Creates new form JifVentas
@@ -27,27 +33,28 @@ public class JifVentas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+
+        setBorder(null);
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setTitle("Ventas");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ventas1.png"))); // NOI18N
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
-        );
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        pnlVentas= new PnlVentas();
+        ventasController= new PnlVentasController(pnlVentas);
+        jPanel1.add(pnlVentas,BorderLayout.CENTER);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
