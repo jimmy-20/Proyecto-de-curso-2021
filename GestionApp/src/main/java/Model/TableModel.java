@@ -5,6 +5,7 @@
  */
 package Model;
 
+import Pojo.Ventas;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -20,6 +21,10 @@ public class TableModel<T> extends AbstractTableModel{
     public TableModel(List<T> list, String[] header) {
         this.list = list;
         this.header = header;
+    }
+
+    public TableModel(String[] headerVentas, List<Ventas> listventas) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override
