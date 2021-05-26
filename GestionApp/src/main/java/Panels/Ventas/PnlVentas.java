@@ -5,17 +5,16 @@
  */
 package Panels.Ventas;
 
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 /**
  *
  * @author FAM. FONSECA SANDINO
  */
-public class PnlVentas extends javax.swing.JFrame {
+public class PnlVentas extends javax.swing.JPanel {
 
     /**
-     * Creates new form Ventas
+     * Creates new form PnlVentas
      */
     public PnlVentas() {
         initComponents();
@@ -25,6 +24,9 @@ public class PnlVentas extends javax.swing.JFrame {
         return tblViewVentas;
     }
 
+    public void setTblViewVentas(JTable tblViewVentas) {
+        this.tblViewVentas = tblViewVentas;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,13 +37,13 @@ public class PnlVentas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblViewVentas = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLayout(new java.awt.BorderLayout());
 
-        jPanel3.setLayout(new java.awt.GridBagLayout());
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
         tblViewVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -53,19 +55,14 @@ public class PnlVentas extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblViewVentas);
 
-        jPanel3.add(jScrollPane1, new java.awt.GridBagConstraints());
+        jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
-
-        pack();
+        add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblViewVentas;
     // End of variables declaration//GEN-END:variables

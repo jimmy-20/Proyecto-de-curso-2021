@@ -35,7 +35,6 @@ public class JifVentas extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         pnlContent = new javax.swing.JPanel();
 
-        setBorder(null);
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
