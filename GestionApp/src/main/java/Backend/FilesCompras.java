@@ -8,6 +8,7 @@ package Backend;
 import Backend.Connection.FileConnection;
 import Backend.Idao.IdaoActions;
 import Pojo.Compra;
+import Pojo.DetalleCompra;
 import com.google.gson.Gson;
 import java.io.File;
 import java.io.IOException;
@@ -21,18 +22,18 @@ import java.util.logging.Logger;
  *
  * @author FAMILIASOZAORTIZ
  */
-public class Compras extends FileConnection implements IdaoActions<Compra>{
+public class FilesCompras extends FileConnection implements IdaoActions<Compra,DetalleCompra>{
     private final int SIZE_DETALLE = 200;
     private final int SIZE_FACTURA = 130;
     private Gson gson;
 
-    public Compras(File fileHeader, File fileData) {
+    public FilesCompras(File fileHeader, File fileData) {
         super(fileHeader, fileData);
         gson = new Gson();
     }
 
     @Override
-    public void add(Compra t) {
+    public void add(Compra t,DetalleCompra dt) {
         try {
             if (t == null){
                 return;
@@ -56,13 +57,8 @@ public class Compras extends FileConnection implements IdaoActions<Compra>{
             
             
         } catch (IOException ex) {
-            Logger.getLogger(Compras.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FilesCompras.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    @Override
-    public boolean delete(Compra t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -71,7 +67,12 @@ public class Compras extends FileConnection implements IdaoActions<Compra>{
     }
 
     @Override
-    public Collection<Compra> findAll() {
+    public Collection<Compra> findAllFactura() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Collection<DetalleCompra> findAllDetalle() {
         List<Compra> compras = new ArrayList<>();
         Compra compra = null;
         
@@ -91,8 +92,8 @@ public class Compras extends FileConnection implements IdaoActions<Compra>{
                 compras.add(compra);
             }
         } catch (IOException ex) {
-            Logger.getLogger(Compras.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FilesCompras.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return compras;
+        return (Collection) compras;
     }
 }

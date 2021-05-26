@@ -5,17 +5,18 @@
  */
 package Backend.Controllers;
 
+import Backend.FilesCompras;
 import Model.TableModel;
 import Panels.Compra.PnlCompra;
+import Pojo.DetalleCompra;
 import Pojo.SubCompra;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.beans.PropertyChangeEvent;
+import java.util.Enumeration;
 import java.util.List;
+import javax.swing.JRadioButton;
 import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -31,6 +32,7 @@ public class PnlCompraController {
     private SubCompra subCompra;
     private TableModel<SubCompra> tablemodel;
     private List<SubCompra> list;
+    private FilesCompras fCompras;
 
     public PnlCompraController(PnlCompra pnlCompra) {
         this.pnlCompra = pnlCompra;
@@ -56,8 +58,16 @@ public class PnlCompraController {
                 pnlCompra.getTxtTotal().setText("");
                 return;
             }
+            
+            if (pnlCompra.getTxtCostoU().getText().equalsIgnoreCase("")){
+                pnlCompra.getTxtSubTotal().setText("0");
+                pnlCompra.getTxtIva().setText("0");
+                pnlCompra.getTxtTotal().setText("0");
+            }
             setCosto();
         });
+        
+        
 
         pnlCompra.getTxtCostoU().addKeyListener(new KeyAdapter() {
             @Override
@@ -134,7 +144,43 @@ public class PnlCompraController {
     private void btnAgregarActionPerformed(ActionEvent e) {
         String factura = pnlCompra.getTxtFactura().getText();
         String fecha = pnlCompra.getTxtFecha().getText();
-
+        String tipoCompra = null;
+        String moneda = null;
+        
+        Enumeration btnGroupTipoCompra = pnlCompra.getBtnGroupTipoCompra().getElements();
+        
+        while (btnGroupTipoCompra.hasMoreElements())
+        {
+            JRadioButton rdb = (JRadioButton) btnGroupTipoCompra.nextElement();
+            
+            if (rdb.isSelected()){
+                tipoCompra = rdb.getText();
+            }
+        }
+        
+        Enumeration btnGroupMoneda = pnlCompra.getBtnGroupMoneda().getElements();
+        
+        while (btnGroupMoneda.hasMoreElements()){
+            
+            JRadioButton rdb = (JRadioButton) btnGroupMoneda.nextElement();
+            
+            if (rdb.isSelected()){
+                moneda = rdb.getText();
+            }
+        }
+        
+        String proveedor = pnlCompra.getTxtProveedor().getText();
+        String descripcion = pnlCompra.getTxtDescripcion().getText();
+        int cantidad = (int) pnlCompra.getSpnCantidad().getValue();
+        float costoU = Float.parseFloat(pnlCompra.getTxtCostoU().getText());
+        float subTotal = Float.parseFloat(pnlCompra.getTxtSubTotal().getText());
+        float iva = Float.parseFloat(pnlCompra.getTxtIva().getText());
+        float total = Float.parseFloat(pnlCompra.getTxtTotal().getText());
+        
+        DetalleCompra detalle = new DetalleCompra(factura, fecha, tipoCompra, moneda, proveedor, descripcion, cantidad, costoU, subTotal, iva, total);
+        
+        System.out.println("Objeto creado exitosamente");
+        printConsole(detalle);
     }
 
     private void btnLimpiarActionPerformed(ActionEvent e) {
@@ -146,6 +192,23 @@ public class PnlCompraController {
         pnlCompra.getTxtSubTotal().setText("");
         pnlCompra.getTxtIva().setText("");
         pnlCompra.getTxtTotal().setText("");
+    }
+    
+    private void printConsole(DetalleCompra detalle){
+        header();
+        print(detalle);
+    }
+    
+    public static void header(){
+        System.out.format("%5s %10s %15s %15s %20s %20s %4s %15s %7s %7s %7s\n -----------------------------------------------------------------------------------------------------------------------------------------------------\n",
+                "Factura","Fecha","Tipo Compra","Tipo Moneda","Proveedor","Descripcion",
+                "Cantidad","Costo Unitario","Sub Total","Iva","Total");
+    }
+    
+    public static void print(DetalleCompra dc){
+        System.out.format("%7s %10s %15s %15s %20s %20s %8d %15.2f %9.2f %7.2f %7.2f",dc.getNfactura(),
+                dc.getFecha(),dc.getTipoCompra(),dc.getTipomoneda(),dc.getProveedor(),dc.getDescripcion(),
+                dc.getCantidad(),dc.getCosto(),dc.getSubTotal(),dc.getIva(),dc.getTotal());
     }
 
 }

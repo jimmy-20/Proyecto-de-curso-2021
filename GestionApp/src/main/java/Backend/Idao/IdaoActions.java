@@ -12,9 +12,9 @@ import java.util.Collection;
  * @author FAMILIASOZAORTIZ
  * @param <T>
  */
-public interface IdaoActions<T> {
-    void add(T t);
-    boolean delete(T t);
+public interface IdaoActions<T,G> {
+    void add(T t,G g);
     boolean edit(T t);
-    Collection <T> findAll();
+    Collection <T> findAllFactura();
+    Collection <G> findAllDetalle();
 }
