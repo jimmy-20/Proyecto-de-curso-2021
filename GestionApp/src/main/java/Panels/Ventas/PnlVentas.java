@@ -36,15 +36,16 @@ public class PnlVentas extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         tblViewVentas = new javax.swing.JTable();
 
-        setLayout(new java.awt.BorderLayout());
+        setMinimumSize(new java.awt.Dimension(500, 500));
+        setPreferredSize(new java.awt.Dimension(600, 600));
+        setLayout(new java.awt.GridBagLayout());
 
-        jPanel1.setLayout(new java.awt.BorderLayout());
-
+        tblViewVentas.setBackground(new java.awt.Color(204, 204, 204));
         tblViewVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -53,17 +54,20 @@ public class PnlVentas extends javax.swing.JPanel {
 
             }
         ));
-        jScrollPane1.setViewportView(tblViewVentas);
+        jScrollPane2.setViewportView(tblViewVentas);
 
-        jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
-
-        add(jPanel1, java.awt.BorderLayout.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1;
+        gridBagConstraints.weightx = 0.2;
+        gridBagConstraints.weighty = 0.2;
+        gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
+        add(jScrollPane2, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblViewVentas;
     // End of variables declaration//GEN-END:variables
 }

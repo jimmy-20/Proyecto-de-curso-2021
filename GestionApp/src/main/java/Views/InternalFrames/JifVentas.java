@@ -32,36 +32,29 @@ public class JifVentas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         pnlContent = new javax.swing.JPanel();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        setResizable(true);
         setTitle("Ventas");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ventas1.png"))); // NOI18N
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(0, 0));
-        jPanel1.setLayout(new java.awt.BorderLayout());
-
-        pnlContent.setMinimumSize(new java.awt.Dimension(593, 602));
-        pnlContent.setPreferredSize(new java.awt.Dimension(0, 0));
+        pnlContent.setPreferredSize(new java.awt.Dimension(700, 700));
         pnlContent.setLayout(new java.awt.BorderLayout());
 
         ventas= new PnlVentas();
         Controller= new PnlVentasController(ventas);
         pnlContent.add(ventas,BorderLayout.CENTER);
 
-        jPanel1.add(pnlContent, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(pnlContent, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel pnlContent;
     // End of variables declaration//GEN-END:variables
 }
