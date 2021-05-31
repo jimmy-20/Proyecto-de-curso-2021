@@ -7,7 +7,7 @@ package Backend.Controllers;
 
 import Backend.FilesCompras;
 import Model.TableModel;
-import Panels.Compra.PnlCompra;
+import Panels.Compra.PnlCompraDesign;
 import Pojo.DetalleCompra;
 import Pojo.SubCompra;
 import java.awt.event.ActionEvent;
@@ -24,7 +24,7 @@ import javax.swing.event.ChangeEvent;
  */
 public class PnlCompraController {
 
-    private PnlCompra pnlCompra;
+    private PnlCompraDesign pnlCompra;
     private String[] header =
     {
         "N°o Factura", "Fecha Compra", "Tipo de Compra", "Moneda", "Proveedor", "Sub-Total", "Iva", "Total"
@@ -34,7 +34,7 @@ public class PnlCompraController {
     private List<SubCompra> list;
     private FilesCompras fCompras;
 
-    public PnlCompraController(PnlCompra pnlCompra) {
+    public PnlCompraController(PnlCompraDesign pnlCompra) {
         this.pnlCompra = pnlCompra;
         initComponents();
     }
