@@ -27,31 +27,36 @@ public class FilesCompras extends FileConnection implements IdaoActions<Compra,D
     private final int SIZE_FACTURA = 130;
     private Gson gson;
 
-    public FilesCompras(File fileHeader, File fileData) {
-        super(fileHeader, fileData);
+    public FilesCompras() {
+        super(new File("headerCompra.dat"),new File("Detalle de compra.dat"),new File("Detalle de factura.dat"));
         gson = new Gson();
     }
 
     @Override
-    public void add(Compra t,DetalleCompra dt) {
+    public void add(Compra t,DetalleCompra dt) { // Detalle de factura, Detalle de compra
         try {
             if (t == null){
                 return;
             }
+            getRandomConection().getRafH().seek(0);
             
             int n = getRandomConection().getRafH().readInt(); //Nª de registros;
             int k = getRandomConection().getRafH().readInt(); //id
             
-            long posD = k*SIZE_FACTURA;
+            long posD = k*SIZE_DETALLE;
+            long posF = k*SIZE_FACTURA;
             
+            //Se colocan los punteros en sus respectivos archivos
+            getRandomConection().getRafDetalle().seek(posD);
+            getRandomConection().getRafFactura().seek(posF);
             
-            getRandomConection().getRafD().seek(posD);
-            
-            getRandomConection().getRafD().writeUTF(gson.toJson(t));
+            getRandomConection().getRafDetalle().writeUTF(gson.toJson(dt)); //Se crea el archivo del detalle de compra
+            getRandomConection().getRafFactura().writeUTF(gson.toJson(t)); //Se crea e archivo del detalle de factura
+
             
             getRandomConection().getRafH().seek(0);
             getRandomConection().getRafH().writeInt(++n);
-            getRandomConection().getRafH().writeInt(++k);
+            getRandomConection().getRafH().writeInt(++k);  
             
             close();
             
@@ -86,8 +91,8 @@ public class FilesCompras extends FileConnection implements IdaoActions<Compra,D
             for (int i=0 ; i<n ; i++){
                 long posD = i*SIZE_FACTURA;
                 
-                getRandomConection().getRafD().seek(posD);
-                compra = gson.fromJson(getRandomConection().getRafD().readUTF(), Compra.class);
+                getRandomConection().getRafDetalle().seek(posD);
+                compra = gson.fromJson(getRandomConection().getRafDetalle().readUTF(), Compra.class);
                 
                 compras.add(compra);
             }

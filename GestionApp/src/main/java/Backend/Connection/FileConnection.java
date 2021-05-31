@@ -14,18 +14,19 @@ import java.io.IOException;
  */
 public abstract class FileConnection {
     private File fileHeader;
-    private File fileData;
+    private File fileDetalle;
+    private File fileFactura;
     private RandomConnection raf;
 
-    public FileConnection(File fileHeader, File fileData) {
+    public FileConnection(File fileHeader, File fileDetalle, File fileFactura) {
         this.fileHeader = fileHeader;
-        this.fileData = fileData;
-        
+        this.fileDetalle = fileDetalle;
+        this.fileFactura = fileFactura;
     }
     
     protected RandomConnection getRandomConection() throws IOException{
         if (raf == null){
-            raf = new RandomConnection(fileHeader, fileData);
+            raf = new RandomConnection(fileHeader, fileDetalle, fileFactura);
         }
         
         return raf;

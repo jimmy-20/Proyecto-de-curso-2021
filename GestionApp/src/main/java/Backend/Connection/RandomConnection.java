@@ -16,11 +16,12 @@ import java.io.RandomAccessFile;
  */
 public class RandomConnection {
     private RandomAccessFile rafH;
-    private RandomAccessFile rafD;    
-    
-    public RandomConnection(File header, File data) throws FileNotFoundException, IOException{
+    private RandomAccessFile rafDDetalle;    
+    private RandomAccessFile rafDFactura;
+    public RandomConnection(File header, File detalle,File factura) throws FileNotFoundException, IOException{
         this.rafH = new RandomAccessFile(header, "rw");
-        this.rafD = new RandomAccessFile(data, "rw");
+        this.rafDDetalle = new RandomAccessFile(detalle, "rw");
+        this.rafDFactura = new RandomAccessFile(factura, "rw");
         
         if (rafH.length() == 0){
             rafH.seek(0);
@@ -34,17 +35,25 @@ public class RandomConnection {
         return rafH;
     }
 
-    public RandomAccessFile getRafD() {
-        return rafD;
+    public RandomAccessFile getRafDetalle() {
+        return rafDDetalle;
     }
     
+    public RandomAccessFile getRafFactura()
+    {
+        return rafDFactura;
+    }
     public void close() throws IOException{
         if(rafH != null){
             rafH.close();
         }
         
-        if(rafD != null){
-            rafD.close();
+        if(rafDDetalle != null){
+            rafDDetalle.close();
+        }
+        
+        if (rafDFactura != null){
+            rafDFactura.close();
         }
     }
 }

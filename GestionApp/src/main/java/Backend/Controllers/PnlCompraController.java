@@ -8,6 +8,7 @@ package Backend.Controllers;
 import Backend.FilesCompras;
 import Model.TableModel;
 import Panels.Compra.PnlCompraDesign;
+import Pojo.Compra;
 import Pojo.DetalleCompra;
 import Pojo.SubCompra;
 import java.awt.event.ActionEvent;
@@ -36,6 +37,7 @@ public class PnlCompraController {
 
     public PnlCompraController(PnlCompraDesign pnlCompra) {
         this.pnlCompra = pnlCompra;
+        fCompras = new FilesCompras();
         initComponents();
     }
 
@@ -177,10 +179,12 @@ public class PnlCompraController {
         float iva = Float.parseFloat(pnlCompra.getTxtIva().getText());
         float total = Float.parseFloat(pnlCompra.getTxtTotal().getText());
         
-        DetalleCompra detalle = new DetalleCompra(factura, fecha, tipoCompra, moneda, proveedor, descripcion, cantidad, costoU, subTotal, iva, total);
+        DetalleCompra detalleCompra = new DetalleCompra(factura, fecha, tipoCompra, moneda, proveedor, descripcion, cantidad, costoU, subTotal, iva, total);
+        Compra detalleFactura = new Compra(factura, fecha, tipoCompra, moneda, proveedor, subTotal, iva, total);
+        fCompras.add(detalleFactura, detalleCompra);
         
         System.out.println("Objeto creado exitosamente");
-        printConsole(detalle);
+        printConsole(detalleCompra);
     }
 
     private void btnLimpiarActionPerformed(ActionEvent e) {

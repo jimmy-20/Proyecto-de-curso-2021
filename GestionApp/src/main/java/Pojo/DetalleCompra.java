@@ -22,7 +22,7 @@ public class DetalleCompra {
     private float iva; //4
     private float total; //4
 
-    //Total = 188
+    //Total = 188  200
     public DetalleCompra() {
     }
 
