@@ -16,6 +16,10 @@ public class MainCompiler {
         DetalleCompra dc = new DetalleCompra("1234", "27/07/2002", "CONTADO", "CORDOBAS", "Pellas", "Moto 2 cabina", 5, 50, 250, 75, 325);
         header();
         print(dc);
+        
+        String name = dc.getClass().getSimpleName();
+        System.out.println("");
+        System.out.println(name);
     }
     
     public static void header(){

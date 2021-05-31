@@ -6,6 +6,8 @@
 package Model;
 
 import Pojo.Ventas;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -14,7 +16,7 @@ import javax.swing.table.AbstractTableModel;
  * @author FAMILIASOZAORTIZ
  * @param <T>
  */
-public class TableModel<T> extends AbstractTableModel{
+public class TableModel<T> extends AbstractTableModel implements PropertyChangeListener{
     private List<T> list;
     private String[] header;
 
@@ -43,12 +45,33 @@ public class TableModel<T> extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int i, int i1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return toArray()[i1];
     }
 
     @Override
     public String getColumnName(int i) {
         return header[i];
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent pce) {
+        
+    }
+    
+    public void add(T t){
+        list.add(t);
+        fireTableDataChanged();
+    }
+    
+    public Object[] toArray(){
+        String nameClass =  list.getClass().getSimpleName();
+        Object obj[] = null;
+        
+        if(nameClass.equalsIgnoreCase("DetalleFactura")){
+            
+        }
+        
+        return obj;
     }
     
     

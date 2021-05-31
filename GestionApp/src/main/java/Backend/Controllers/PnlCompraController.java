@@ -8,12 +8,13 @@ package Backend.Controllers;
 import Backend.FilesCompras;
 import Model.TableModel;
 import Panels.Compra.PnlCompraDesign;
-import Pojo.Compra;
+import Pojo.DetalleFactura;
 import Pojo.DetalleCompra;
-import Pojo.SubCompra;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.Enumeration;
 import java.util.List;
 import javax.swing.JRadioButton;
@@ -30,15 +31,22 @@ public class PnlCompraController {
     {
         "N°o Factura", "Fecha Compra", "Tipo de Compra", "Moneda", "Proveedor", "Sub-Total", "Iva", "Total"
     };
-    private SubCompra subCompra;
-    private TableModel<SubCompra> tablemodel;
-    private List<SubCompra> list;
+    private TableModel<DetalleFactura> tablemodel;
+    private List<DetalleFactura> list;
     private FilesCompras fCompras;
+    
+    private PropertyChangeSupport propertyChangeSupport;
 
     public PnlCompraController(PnlCompraDesign pnlCompra) {
         this.pnlCompra = pnlCompra;
         fCompras = new FilesCompras();
+        propertyChangeSupport = new PropertyChangeSupport(this);
+        list = (List<DetalleFactura>) fCompras.findAllFactura();
         initComponents();
+    }
+    
+    public void addPropertyChangeListener(PropertyChangeListener pcl){
+        propertyChangeSupport.addPropertyChangeListener(pcl);
     }
 
     private void initComponents() {
@@ -180,11 +188,13 @@ public class PnlCompraController {
         float total = Float.parseFloat(pnlCompra.getTxtTotal().getText());
         
         DetalleCompra detalleCompra = new DetalleCompra(factura, fecha, tipoCompra, moneda, proveedor, descripcion, cantidad, costoU, subTotal, iva, total);
-        Compra detalleFactura = new Compra(factura, fecha, tipoCompra, moneda, proveedor, subTotal, iva, total);
+        DetalleFactura detalleFactura = new DetalleFactura(factura, fecha, tipoCompra, moneda, proveedor, subTotal, iva, total);
         fCompras.add(detalleFactura, detalleCompra);
         
         System.out.println("Objeto creado exitosamente");
         printConsole(detalleCompra);
+        tablemodel.add(detalleFactura);
+        propertyChangeSupport.firePropertyChange("detalleFactura", null, detalleFactura);
     }
 
     private void btnLimpiarActionPerformed(ActionEvent e) {

@@ -7,7 +7,7 @@ package Backend;
 
 import Backend.Connection.FileConnection;
 import Backend.Idao.IdaoActions;
-import Pojo.Compra;
+import Pojo.DetalleFactura;
 import Pojo.DetalleCompra;
 import com.google.gson.Gson;
 import java.io.File;
@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  *
  * @author FAMILIASOZAORTIZ
  */
-public class FilesCompras extends FileConnection implements IdaoActions<Compra,DetalleCompra>{
+public class FilesCompras extends FileConnection implements IdaoActions<DetalleFactura,DetalleCompra>{
     private final int SIZE_DETALLE = 200;
     private final int SIZE_FACTURA = 130;
     private Gson gson;
@@ -33,7 +33,7 @@ public class FilesCompras extends FileConnection implements IdaoActions<Compra,D
     }
 
     @Override
-    public void add(Compra t,DetalleCompra dt) { // Detalle de factura, Detalle de compra
+    public void add(DetalleFactura t,DetalleCompra dt) { // Detalle de factura, Detalle de compra
         try {
             if (t == null){
                 return;
@@ -67,19 +67,19 @@ public class FilesCompras extends FileConnection implements IdaoActions<Compra,D
     }
 
     @Override
-    public boolean edit(Compra t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Collection<Compra> findAllFactura() {
+    public boolean edit(DetalleFactura t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Collection<DetalleCompra> findAllDetalle() {
-        List<Compra> compras = new ArrayList<>();
-        Compra compra = null;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Collection<DetalleFactura> findAllFactura() {
+        Collection<DetalleFactura> facturaList = new ArrayList<>();
+        DetalleFactura compra = null;
         
         try {
             int n = getRandomConection().getRafH().readInt();
@@ -92,13 +92,13 @@ public class FilesCompras extends FileConnection implements IdaoActions<Compra,D
                 long posD = i*SIZE_FACTURA;
                 
                 getRandomConection().getRafDetalle().seek(posD);
-                compra = gson.fromJson(getRandomConection().getRafDetalle().readUTF(), Compra.class);
+                compra = gson.fromJson(getRandomConection().getRafDetalle().readUTF(), DetalleFactura.class);
                 
-                compras.add(compra);
+                facturaList.add(compra);
             }
         } catch (IOException ex) {
             Logger.getLogger(FilesCompras.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return (Collection) compras;
+        return  facturaList;
     }
 }
