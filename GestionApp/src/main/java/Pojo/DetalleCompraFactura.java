@@ -9,7 +9,7 @@ package Pojo;
  *
  * @author FAMILIASOZAORTIZ
  */
-public class DetalleFactura {
+public class DetalleCompraFactura {
     private String factura; //20 + 14
     private String fecha; //20 + 10
     private String tipoCompra;// 14 + 20
@@ -20,7 +20,7 @@ public class DetalleFactura {
     private float total; //4 + 10 
     //TOTAL = 120  + 106 = 226 bytes
 
-    public DetalleFactura(String factura, String fecha, String tipoCompra, String moneda, String proveedor, float subTotal, float iva, float total) {
+    public DetalleCompraFactura(String factura, String fecha, String tipoCompra, String moneda, String proveedor, float subTotal, float iva, float total) {
         this.factura = factura;
         this.fecha = fecha;
         this.tipoCompra = tipoCompra;

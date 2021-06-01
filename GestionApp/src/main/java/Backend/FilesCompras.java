@@ -7,7 +7,7 @@ package Backend;
 
 import Backend.Connection.FileConnection;
 import Backend.Idao.IdaoActions;
-import Pojo.DetalleFactura;
+import Pojo.DetalleCompraFactura;
 import Pojo.DetalleCompra;
 import com.google.gson.Gson;
 import java.io.File;
@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  *
  * @author FAMILIASOZAORTIZ
  */
-public class FilesCompras extends FileConnection implements IdaoActions<DetalleFactura,DetalleCompra>{
+public class FilesCompras extends FileConnection implements IdaoActions<DetalleCompraFactura,DetalleCompra>{
     private final int SIZE_DETALLE = 357;
     private final int SIZE_FACTURA = 226;
     private Gson gson;
@@ -33,7 +33,7 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleF
     }
 
     @Override
-    public void add(DetalleFactura t,DetalleCompra dt) { // Detalle de factura, Detalle de compra
+    public void add(DetalleCompraFactura t,DetalleCompra dt) { // Detalle de factura, Detalle de compra
         try {
             if (t == null){
                 return;
@@ -67,7 +67,7 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleF
     }
 
     @Override
-    public boolean edit(DetalleFactura t) {
+    public boolean edit(DetalleCompraFactura t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -77,9 +77,9 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleF
     }
 
     @Override
-    public Collection<DetalleFactura> findAllFactura() {
-        Collection<DetalleFactura> facturaList = new ArrayList<>();
-        DetalleFactura compra = null;
+    public Collection<DetalleCompraFactura> findAllFactura() {
+        Collection<DetalleCompraFactura> facturaList = new ArrayList<>();
+        DetalleCompraFactura compra = null;
         
         try {
             getRandomConection().getRafH().seek(0);
@@ -93,7 +93,7 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleF
                 long posD = i*SIZE_FACTURA;
                 
                 getRandomConection().getRafFactura().seek(posD);
-                compra = gson.fromJson(getRandomConection().getRafFactura().readUTF(), DetalleFactura.class);
+                compra = gson.fromJson(getRandomConection().getRafFactura().readUTF(), DetalleCompraFactura.class);
                 
                 facturaList.add(compra);
             }

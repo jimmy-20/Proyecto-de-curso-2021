@@ -5,7 +5,7 @@
  */
 package Model;
 
-import Pojo.DetalleFactura;
+import Pojo.DetalleCompraFactura;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
@@ -68,7 +68,7 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
         Object obj;
         
         if(nameClass.equalsIgnoreCase("DetalleFactura")){
-            List<DetalleFactura> factura = (List<DetalleFactura>) list;
+            List<DetalleCompraFactura> factura = (List<DetalleCompraFactura>) list;
             obj = factura.get(row).toArray()[column];
             return obj;
         }else{

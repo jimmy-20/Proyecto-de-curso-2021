@@ -18,7 +18,6 @@ public class Ventas {
     private float total;
     private String item;
     
-    
     public Ventas() {
     }
 

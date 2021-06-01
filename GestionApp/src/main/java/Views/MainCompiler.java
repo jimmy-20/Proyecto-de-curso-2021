@@ -7,18 +7,20 @@ package Views;
 
 import Backend.FilesCompras;
 import Pojo.DetalleCompra;
-import Pojo.DetalleFactura;
+import Pojo.DetalleCompraFactura;
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
  *
  * @author FAMILIASOZAORTIZ
+ * 
+ * Clase Compiler con fines de Prueba y error usando el compilador
  */
 public class MainCompiler {
     public static void main(String[] args) {
         FilesCompras fc = new FilesCompras();
-        List<DetalleFactura> facturas = fc.findAllFactura().stream().collect(Collectors.toList());
+        List<DetalleCompraFactura> facturas = fc.findAllFactura().stream().collect(Collectors.toList());
         
         headerDetalleFactura();
         facturas.stream().forEach(x -> print(x));
@@ -43,7 +45,7 @@ public class MainCompiler {
                 dc.getCantidad(),dc.getCosto(),dc.getSubTotal(),dc.getIva(),dc.getTotal());
     }
     
-    public static void print(DetalleFactura df){
+    public static void print(DetalleCompraFactura df){
         System.out.format("%7s %10s %15s %15s %20s %9.2f %9.2f %9.2f\n",df.getFactura(),df.getFecha(),
                 df.getTipoCompra(),df.getMoneda(),df.getProveedor(),df.getSubTotal(),df.getIva(),df.getTotal());
     }

@@ -8,7 +8,7 @@ package Backend.Controllers;
 import Backend.FilesCompras;
 import Model.TableModel;
 import Panels.Compra.PnlCompraDesign;
-import Pojo.DetalleFactura;
+import Pojo.DetalleCompraFactura;
 import Pojo.DetalleCompra;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
@@ -33,10 +33,10 @@ public class PnlCompraController {
     {
         "N°o Factura", "Fecha Compra", "Tipo de Compra", "Moneda", "Proveedor", "Sub-Total", "Iva", "Total"
     };
-    private TableModel<DetalleFactura> tablemodel;
-    private List<DetalleFactura> list;
+    private TableModel<DetalleCompraFactura> tablemodel;
+    private List<DetalleCompraFactura> list;
     private FilesCompras fCompras;
-    private DetalleFactura factura;
+    private DetalleCompraFactura factura;
     
     private PropertyChangeSupport propertyChangeSupport;
 
@@ -79,8 +79,6 @@ public class PnlCompraController {
             }
             setCosto();
         });
-        
-        
 
         pnlCompra.getTxtCostoU().addKeyListener(new KeyAdapter() {
             @Override
@@ -191,12 +189,12 @@ public class PnlCompraController {
         float total = Float.parseFloat(pnlCompra.getTxtTotal().getText());
         
         DetalleCompra detalleCompra = new DetalleCompra(factura, fecha, tipoCompra, moneda, proveedor, descripcion, cantidad, costoU, subTotal, iva, total);
-        DetalleFactura detalleFactura = new DetalleFactura(factura, fecha, tipoCompra, moneda, proveedor, subTotal, iva, total);
+        DetalleCompraFactura detalleFactura = new DetalleCompraFactura(factura, fecha, tipoCompra, moneda, proveedor, subTotal, iva, total);
         
         System.out.println("Objeto creado exitosamente");
-        printConsole(detalleCompra);
-        fCompras.add(detalleFactura, detalleCompra);
-        propertyChangeSupport.firePropertyChange("factura", this.factura, detalleFactura);
+        printConsole(detalleCompra); //Con fines de prueba, al finalizar el proyecto lo quitare
+        fCompras.add(detalleFactura, detalleCompra); // Se crea los archivos para facturas y detalle de compra
+        propertyChangeSupport.firePropertyChange("factura", this.factura, detalleFactura); //Se crea un evento de actualizacion
         
         JOptionPane.showMessageDialog(null, "Factura de compra añadida correctamente");
     }
@@ -228,5 +226,4 @@ public class PnlCompraController {
                 dc.getFecha(),dc.getTipoCompra(),dc.getTipomoneda(),dc.getProveedor(),dc.getDescripcion(),
                 dc.getCantidad(),dc.getCosto(),dc.getSubTotal(),dc.getIva(),dc.getTotal());
     }
-
 }
