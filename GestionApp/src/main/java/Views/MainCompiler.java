@@ -5,7 +5,11 @@
  */
 package Views;
 
+import Backend.FilesCompras;
 import Pojo.DetalleCompra;
+import Pojo.DetalleFactura;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -13,24 +17,34 @@ import Pojo.DetalleCompra;
  */
 public class MainCompiler {
     public static void main(String[] args) {
-        DetalleCompra dc = new DetalleCompra("1234", "27/07/2002", "CONTADO", "CORDOBAS", "Pellas", "Moto 2 cabina", 5, 50, 250, 75, 325);
-        header();
-        print(dc);
+        FilesCompras fc = new FilesCompras();
+        List<DetalleFactura> facturas = fc.findAllFactura().stream().collect(Collectors.toList());
         
-        String name = dc.getClass().getSimpleName();
-        System.out.println("");
-        System.out.println(name);
+        headerDetalleFactura();
+        facturas.stream().forEach(x -> print(x));
+        
+        
     }
     
-    public static void header(){
+    public static void headerDetalleCompra(){
         System.out.format("%5s %10s %15s %15s %20s %20s %4s %15s %7s %7s %7s\n -----------------------------------------------------------------------------------------------------------------------------------------------------\n",
                 "Factura","Fecha","Tipo Compra","Tipo Moneda","Proveedor","Descripcion",
                 "Cantidad","Costo Unitario","Sub Total","Iva","Total");
+    }
+    
+    public static void headerDetalleFactura(){
+        System.out.format("%5s %10s %15s %15s %20s %7s %7s %7s\n -----------------------------------------------------------------------------------------------------------------------------------------------------\n",
+                "Factura","Fecha","Tipo Compra","Tipo Moneda","Proveedor","Sub Total","Iva","Total");
     }
     
     public static void print(DetalleCompra dc){
         System.out.format("%7s %10s %15s %15s %20s %20s %8d %15.2f %9.2f %7.2f %7.2f",dc.getNfactura(),
                 dc.getFecha(),dc.getTipoCompra(),dc.getTipomoneda(),dc.getProveedor(),dc.getDescripcion(),
                 dc.getCantidad(),dc.getCosto(),dc.getSubTotal(),dc.getIva(),dc.getTotal());
+    }
+    
+    public static void print(DetalleFactura df){
+        System.out.format("%7s %10s %15s %15s %20s %9.2f %9.2f %9.2f\n",df.getFactura(),df.getFecha(),
+                df.getTipoCompra(),df.getMoneda(),df.getProveedor(),df.getSubTotal(),df.getIva(),df.getTotal());
     }
 }

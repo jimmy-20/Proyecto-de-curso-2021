@@ -23,8 +23,8 @@ import java.util.logging.Logger;
  * @author FAMILIASOZAORTIZ
  */
 public class FilesCompras extends FileConnection implements IdaoActions<DetalleFactura,DetalleCompra>{
-    private final int SIZE_DETALLE = 200;
-    private final int SIZE_FACTURA = 130;
+    private final int SIZE_DETALLE = 357;
+    private final int SIZE_FACTURA = 226;
     private Gson gson;
 
     public FilesCompras() {
@@ -82,17 +82,18 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleF
         DetalleFactura compra = null;
         
         try {
+            getRandomConection().getRafH().seek(0);
             int n = getRandomConection().getRafH().readInt();
             
-            if (n<0){
-                return null;
+            if ( (n<=0) ){
+                return facturaList;
             }
             
             for (int i=0 ; i<n ; i++){
                 long posD = i*SIZE_FACTURA;
                 
-                getRandomConection().getRafDetalle().seek(posD);
-                compra = gson.fromJson(getRandomConection().getRafDetalle().readUTF(), DetalleFactura.class);
+                getRandomConection().getRafFactura().seek(posD);
+                compra = gson.fromJson(getRandomConection().getRafFactura().readUTF(), DetalleFactura.class);
                 
                 facturaList.add(compra);
             }

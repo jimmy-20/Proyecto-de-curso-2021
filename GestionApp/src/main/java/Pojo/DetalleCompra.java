@@ -10,24 +10,24 @@ package Pojo;
  * @author Javier Ramirez
  */
 public class DetalleCompra { 
-    private String nfactura;  // 10*2 = 20
-    private String fecha; // 10*2
-    private String tipoCompra; // Credito Contado 7*2 = 14
-    private String tipomoneda; // 7 *2 = 14
-    private String proveedor; // 20*2 = 40;
-    private String descripcion; // 30*2 = 60
-    private int cantidad; // 4
-    private float costo; //4
-    private float subTotal; //4
-    private float iva; //4
-    private float total; //4
+    private String factura;  // 10*2 = 20 + 14 
+    private String fecha; // 10*2 = 20 + 5
+    private String tipoCompra; // Credito Contado 7*2 = 14 + 20
+    private String tipomoneda; // 7 *2 = 14 + 20
+    private String proveedor; // 20*2 = 40 + 18
+    private String descripcion; // 30*2 = 60 + 22
+    private int cantidad; // 4 + 16
+    private float costo; //4 + 10
+    private float subTotal; //4 + 16
+    private float iva; //4 + 6
+    private float total; //4 + 10
 
-    //Total = 188  200
+    //Total = 188 + 157 = 345Bytes// Pero se usa: 200 + 157 = 357Bytes
     public DetalleCompra() {
     }
 
     public DetalleCompra(String nfactura, String fecha, String tipoCompra, String tipomoneda, String proveedor, String descripcion, int cantidad, float costo, float subTotal, float iva, float total) {
-        this.nfactura = nfactura;
+        this.factura = nfactura;
         this.fecha = fecha;
         this.tipoCompra = tipoCompra;
         this.tipomoneda = tipomoneda;
@@ -41,11 +41,11 @@ public class DetalleCompra {
     }
 
     public String getNfactura() {
-        return nfactura;
+        return factura;
     }
 
     public void setNfactura(String nfactura) {
-        this.nfactura = nfactura;
+        this.factura = nfactura;
     }
 
     public String getFecha() {

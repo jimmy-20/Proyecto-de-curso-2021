@@ -10,15 +10,15 @@ package Pojo;
  * @author FAMILIASOZAORTIZ
  */
 public class DetalleFactura {
-    private String factura; //20
-    private String fecha; //20
-    private String tipoCompra;// 14
-    private String moneda; // 14
-    private String proveedor; // 40
-    private float subTotal; //4
-    private float iva; //4
-    private float total; //4
-    //TOTAL = 120  bytes
+    private String factura; //20 + 14
+    private String fecha; //20 + 10
+    private String tipoCompra;// 14 + 20
+    private String moneda; // 14 + 12
+    private String proveedor; // 40 + 18 
+    private float subTotal; //4 + 16
+    private float iva; //4 + 6
+    private float total; //4 + 10 
+    //TOTAL = 120  + 106 = 226 bytes
 
     public DetalleFactura(String factura, String fecha, String tipoCompra, String moneda, String proveedor, float subTotal, float iva, float total) {
         this.factura = factura;

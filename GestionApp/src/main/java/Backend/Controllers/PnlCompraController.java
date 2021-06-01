@@ -17,6 +17,8 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.stream.Collectors;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.event.ChangeEvent;
 
@@ -34,6 +36,7 @@ public class PnlCompraController {
     private TableModel<DetalleFactura> tablemodel;
     private List<DetalleFactura> list;
     private FilesCompras fCompras;
+    private DetalleFactura factura;
     
     private PropertyChangeSupport propertyChangeSupport;
 
@@ -41,12 +44,12 @@ public class PnlCompraController {
         this.pnlCompra = pnlCompra;
         fCompras = new FilesCompras();
         propertyChangeSupport = new PropertyChangeSupport(this);
-        list = (List<DetalleFactura>) fCompras.findAllFactura();
+        list = fCompras.findAllFactura().stream().collect(Collectors.toList());
         initComponents();
     }
     
     public void addPropertyChangeListener(PropertyChangeListener pcl){
-        propertyChangeSupport.addPropertyChangeListener(pcl);
+        propertyChangeSupport.addPropertyChangeListener(tablemodel);
     }
 
     private void initComponents() {
@@ -189,12 +192,13 @@ public class PnlCompraController {
         
         DetalleCompra detalleCompra = new DetalleCompra(factura, fecha, tipoCompra, moneda, proveedor, descripcion, cantidad, costoU, subTotal, iva, total);
         DetalleFactura detalleFactura = new DetalleFactura(factura, fecha, tipoCompra, moneda, proveedor, subTotal, iva, total);
-        fCompras.add(detalleFactura, detalleCompra);
         
         System.out.println("Objeto creado exitosamente");
         printConsole(detalleCompra);
-        tablemodel.add(detalleFactura);
-        propertyChangeSupport.firePropertyChange("detalleFactura", null, detalleFactura);
+        fCompras.add(detalleFactura, detalleCompra);
+        propertyChangeSupport.firePropertyChange("factura", this.factura, detalleFactura);
+        
+        JOptionPane.showMessageDialog(null, "Factura de compra añadida correctamente");
     }
 
     private void btnLimpiarActionPerformed(ActionEvent e) {

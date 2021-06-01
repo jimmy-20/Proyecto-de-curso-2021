@@ -23,6 +23,8 @@ public class JifCompras extends javax.swing.JInternalFrame {
     public JifCompras() {
         initComponents();
     }
+    
+    
 
     
     @SuppressWarnings("unchecked")

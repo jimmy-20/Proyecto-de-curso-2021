@@ -18,6 +18,7 @@ public class RandomConnection {
     private RandomAccessFile rafH;
     private RandomAccessFile rafDDetalle;    
     private RandomAccessFile rafDFactura;
+    
     public RandomConnection(File header, File detalle,File factura) throws FileNotFoundException, IOException{
         this.rafH = new RandomAccessFile(header, "rw");
         this.rafDDetalle = new RandomAccessFile(detalle, "rw");

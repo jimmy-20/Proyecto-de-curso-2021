@@ -5,7 +5,7 @@
  */
 package Model;
 
-import Pojo.Ventas;
+import Pojo.DetalleFactura;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
@@ -24,10 +24,6 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
         this.list = list;
         this.header = header;
     }
-
-    public TableModel(String[] headerVentas, List<Ventas> listventas) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     @Override
     public int getRowCount() {
@@ -45,8 +41,10 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
 
     @Override
     public Object getValueAt(int i, int i1) {
-        return toArray()[i1];
+        return toArray(i,i1);
     }
+    
+    
 
     @Override
     public String getColumnName(int i) {
@@ -55,23 +53,30 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
 
     @Override
     public void propertyChange(PropertyChangeEvent pce) {
-        
+        add((T) pce.getNewValue());
+        fireTableDataChanged();
+
     }
     
     public void add(T t){
-        list.add(t);
-        fireTableDataChanged();
+        this.list.add(t);
     }
     
-    public Object[] toArray(){
-        String nameClass =  list.getClass().getSimpleName();
-        Object obj[] = null;
+    public Object toArray(int row, int column){
+        String nameClass =  list.get(0).getClass().getSimpleName();
+        
+        Object obj;
         
         if(nameClass.equalsIgnoreCase("DetalleFactura")){
-            
+            List<DetalleFactura> factura = (List<DetalleFactura>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj;
+        }else{
+            System.out.println("error");
         }
+        System.out.println(nameClass);
         
-        return obj;
+        return null;
     }
     
     
