@@ -7,14 +7,18 @@ package Backend.Controllers;
 
 import Backend.FilesCompras;
 import Model.TableModel;
-import Panels.Compra.PnlCompra;
+import Panels.Compra.PnlCompraDesign;
+import Pojo.DetalleCompraFactura;
 import Pojo.DetalleCompra;
-import Pojo.SubCompra;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.stream.Collectors;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.event.ChangeEvent;
 
@@ -24,19 +28,28 @@ import javax.swing.event.ChangeEvent;
  */
 public class PnlCompraController {
 
-    private PnlCompra pnlCompra;
+    private PnlCompraDesign pnlCompra;
     private String[] header =
     {
         "N°o Factura", "Fecha Compra", "Tipo de Compra", "Moneda", "Proveedor", "Sub-Total", "Iva", "Total"
     };
-    private SubCompra subCompra;
-    private TableModel<SubCompra> tablemodel;
-    private List<SubCompra> list;
+    private TableModel<DetalleCompraFactura> tablemodel;
+    private List<DetalleCompraFactura> list;
     private FilesCompras fCompras;
+    private DetalleCompraFactura factura;
+    
+    private PropertyChangeSupport propertyChangeSupport;
 
-    public PnlCompraController(PnlCompra pnlCompra) {
+    public PnlCompraController(PnlCompraDesign pnlCompra) {
         this.pnlCompra = pnlCompra;
+        fCompras = new FilesCompras();
+        propertyChangeSupport = new PropertyChangeSupport(this);
+        list = fCompras.findAllFactura().stream().collect(Collectors.toList());
         initComponents();
+    }
+    
+    public void addPropertyChangeListener(PropertyChangeListener pcl){
+        propertyChangeSupport.addPropertyChangeListener(tablemodel);
     }
 
     private void initComponents() {
@@ -66,8 +79,6 @@ public class PnlCompraController {
             }
             setCosto();
         });
-        
-        
 
         pnlCompra.getTxtCostoU().addKeyListener(new KeyAdapter() {
             @Override
@@ -177,10 +188,15 @@ public class PnlCompraController {
         float iva = Float.parseFloat(pnlCompra.getTxtIva().getText());
         float total = Float.parseFloat(pnlCompra.getTxtTotal().getText());
         
-        DetalleCompra detalle = new DetalleCompra(factura, fecha, tipoCompra, moneda, proveedor, descripcion, cantidad, costoU, subTotal, iva, total);
+        DetalleCompra detalleCompra = new DetalleCompra(factura, fecha, tipoCompra, moneda, proveedor, descripcion, cantidad, costoU, subTotal, iva, total);
+        DetalleCompraFactura detalleFactura = new DetalleCompraFactura(factura, fecha, tipoCompra, moneda, proveedor, subTotal, iva, total);
         
         System.out.println("Objeto creado exitosamente");
-        printConsole(detalle);
+        printConsole(detalleCompra); //Con fines de prueba, al finalizar el proyecto lo quitare
+        fCompras.add(detalleFactura, detalleCompra); // Se crea los archivos para facturas y detalle de compra
+        propertyChangeSupport.firePropertyChange("factura", this.factura, detalleFactura); //Se crea un evento de actualizacion
+        
+        JOptionPane.showMessageDialog(null, "Factura de compra añadida correctamente");
     }
 
     private void btnLimpiarActionPerformed(ActionEvent e) {
@@ -210,5 +226,4 @@ public class PnlCompraController {
                 dc.getFecha(),dc.getTipoCompra(),dc.getTipomoneda(),dc.getProveedor(),dc.getDescripcion(),
                 dc.getCantidad(),dc.getCosto(),dc.getSubTotal(),dc.getIva(),dc.getTotal());
     }
-
 }

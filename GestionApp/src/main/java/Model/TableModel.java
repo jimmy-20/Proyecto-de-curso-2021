@@ -5,7 +5,9 @@
  */
 package Model;
 
-import Pojo.Ventas;
+import Pojo.DetalleCompraFactura;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -14,17 +16,13 @@ import javax.swing.table.AbstractTableModel;
  * @author FAMILIASOZAORTIZ
  * @param <T>
  */
-public class TableModel<T> extends AbstractTableModel{
+public class TableModel<T> extends AbstractTableModel implements PropertyChangeListener{
     private List<T> list;
     private String[] header;
 
     public TableModel(List<T> list, String[] header) {
         this.list = list;
         this.header = header;
-    }
-
-    public TableModel(String[] headerVentas, List<Ventas> listventas) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override
@@ -43,12 +41,42 @@ public class TableModel<T> extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int i, int i1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return toArray(i,i1);
     }
+    
+    
 
     @Override
     public String getColumnName(int i) {
         return header[i];
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent pce) {
+        add((T) pce.getNewValue());
+        fireTableDataChanged();
+
+    }
+    
+    public void add(T t){
+        this.list.add(t);
+    }
+    
+    public Object toArray(int row, int column){
+        String nameClass =  list.get(0).getClass().getSimpleName();
+        
+        Object obj;
+        
+        if(nameClass.equalsIgnoreCase("DetalleFactura")){
+            List<DetalleCompraFactura> factura = (List<DetalleCompraFactura>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj;
+        }else{
+            System.out.println("error");
+        }
+        System.out.println(nameClass);
+        
+        return null;
     }
     
     

@@ -7,6 +7,7 @@ package Views.InternalFrames;
 
 import Backend.Controllers.PnlCompraController;
 import Panels.Compra.PnlCompra;
+import Panels.Compra.PnlCompraDesign;
 import java.awt.BorderLayout;
 
 /**
@@ -15,12 +16,15 @@ import java.awt.BorderLayout;
  */
 public class JifCompras extends javax.swing.JInternalFrame {
     private PnlCompra pnlCompra;
+    private PnlCompraDesign pnlCompraDesign;
     private PnlCompraController pnlCompraController;
    
     
     public JifCompras() {
         initComponents();
     }
+    
+    
 
     
     @SuppressWarnings("unchecked")
@@ -43,9 +47,9 @@ public class JifCompras extends javax.swing.JInternalFrame {
         pnlContentData.setMinimumSize(new java.awt.Dimension(593, 602));
         pnlContentData.setLayout(new java.awt.BorderLayout());
 
-        pnlCompra = new PnlCompra();
-        pnlCompraController = new PnlCompraController(pnlCompra);
-        pnlContentData.add(pnlCompra,BorderLayout.CENTER);
+        pnlCompraDesign = new PnlCompraDesign();
+        pnlCompraController = new PnlCompraController(pnlCompraDesign);
+        pnlContentData.add(pnlCompraDesign,BorderLayout.CENTER);
 
         jPanel1.add(pnlContentData, java.awt.BorderLayout.CENTER);
 

@@ -49,7 +49,7 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel()"/>
-            <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="pnlCompra = new PnlCompra();&#xa;pnlCompraController = new PnlCompraController(pnlCompra);&#xa;pnlContentData.add(pnlCompra,BorderLayout.CENTER);"/>
+            <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="pnlCompraDesign = new PnlCompraDesign();&#xa;pnlCompraController = new PnlCompraController(pnlCompraDesign);&#xa;pnlContentData.add(pnlCompraDesign,BorderLayout.CENTER);"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">

@@ -7,36 +7,35 @@ package Pojo;
 
 /**
  *
- * @author Javier Ramirez
+ * @author Ramiro Suarez
  */
 public class Proveedor {
-    
-    private String proveedor;
-    private float subtotal;
+    private String nombre;
+    private float subTotal;
     private float iva;
     private float total;
 
-    public Proveedor(String proveedor, float subtotal, float iva, float total) {
-        this.proveedor = proveedor;
-        this.subtotal = subtotal;
+    public Proveedor(String nombre, float subTotal, float iva, float total) {
+        this.nombre = nombre;
+        this.subTotal = subTotal;
         this.iva = iva;
         this.total = total;
     }
 
-    public String getProveedor() {
-        return proveedor;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setProveedor(String proveedor) {
-        this.proveedor = proveedor;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public float getSubtotal() {
-        return subtotal;
+    public float getSubTotal() {
+        return subTotal;
     }
 
-    public void setSubtotal(float subtotal) {
-        this.subtotal = subtotal;
+    public void setSubTotal(float subTotal) {
+        this.subTotal = subTotal;
     }
 
     public float getIva() {
@@ -54,8 +53,6 @@ public class Proveedor {
     public void setTotal(float total) {
         this.total = total;
     }
-
-    
     
     
 }
