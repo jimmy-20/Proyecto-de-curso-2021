@@ -67,7 +67,7 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
         
         Object obj;
         
-        if(nameClass.equalsIgnoreCase("DetalleFactura")){
+        if(nameClass.equalsIgnoreCase("DetalleCompraFactura")){
             List<DetalleCompraFactura> factura = (List<DetalleCompraFactura>) list;
             obj = factura.get(row).toArray()[column];
             return obj;
