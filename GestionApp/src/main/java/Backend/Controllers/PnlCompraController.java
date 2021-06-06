@@ -11,6 +11,8 @@ import Panels.Compra.PnlCompraDesign;
 import Pojo.DetalleCompraFactura;
 import Pojo.DetalleCompra;
 import java.awt.event.ActionEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeListener;
@@ -29,7 +31,7 @@ import javax.swing.event.ChangeEvent;
 public class PnlCompraController {
 
     private PnlCompraDesign pnlCompra;
-    private String[] header =
+    private final String[] header =
     {
         "N°o Factura", "Fecha Compra", "Tipo de Compra", "Moneda", "Proveedor", "Sub-Total", "Iva", "Total"
     };
@@ -45,16 +47,18 @@ public class PnlCompraController {
         fCompras = new FilesCompras();
         propertyChangeSupport = new PropertyChangeSupport(this);
         list = fCompras.findAllFactura().stream().collect(Collectors.toList());
+        
         initComponents();
     }
     
     public void addPropertyChangeListener(PropertyChangeListener pcl){
-        propertyChangeSupport.addPropertyChangeListener(tablemodel);
+        propertyChangeSupport.addPropertyChangeListener(pcl);
     }
 
     private void initComponents() {
         tablemodel = new TableModel<>(list, header);
         pnlCompra.getTblResumenCompras().setModel(tablemodel);
+        addPropertyChangeListener(tablemodel);
 
         pnlCompra.getBtnGroupTipoCompra().add(pnlCompra.getRdbContado());
         pnlCompra.getBtnGroupTipoCompra().add(pnlCompra.getRdbCredito());
@@ -62,7 +66,7 @@ public class PnlCompraController {
         pnlCompra.getBtnGroupMoneda().add(pnlCompra.getRdbCordoba());
         pnlCompra.getBtnGroupMoneda().add(pnlCompra.getRdbDolar());
 
-        pnlCompra.getSpnCantidad().addChangeListener((ChangeEvent ce) ->
+        pnlCompra.getSpnCantidad().addChangeListener((ChangeEvent ce) -> //Si se cambia el valor de cantidad, calcular en tiempo real, sus costos
         {
             if ((int) pnlCompra.getSpnCantidad().getValue() < 0)
             {
@@ -80,7 +84,7 @@ public class PnlCompraController {
             setCosto();
         });
 
-        pnlCompra.getTxtCostoU().addKeyListener(new KeyAdapter() {
+        pnlCompra.getTxtCostoU().addKeyListener(new KeyAdapter() { //Si el costo es 0, hacer las demas celdas en 0
             @Override
             public void keyReleased(KeyEvent e) {
                 if (pnlCompra.getTxtCostoU().getText().isEmpty())
@@ -93,6 +97,16 @@ public class PnlCompraController {
 
                 setCosto();
             }
+
+            @Override
+            public void keyTyped(KeyEvent ke) {
+                char c = ke.getKeyChar();
+                
+                if (!Character.isDigit(c)){
+                    ke.consume();
+                }
+            }
+            
         });
 
         pnlCompra.getCkbExcento().addChangeListener((ChangeEvent ce) ->
@@ -113,6 +127,25 @@ public class PnlCompraController {
 
             pnlCompra.getTxtIva().setText("0");
             pnlCompra.getTxtTotal().setText(String.valueOf(total - iva));
+        });
+        
+        pnlCompra.getTxtCostoU().addFocusListener ( new FocusAdapter() { //Eventos de Focus en el campo de texto del costo unitario
+            @Override
+            public void focusGained(FocusEvent fe) {
+                if (!pnlCompra.getTxtCostoU().getText().equalsIgnoreCase("0")){
+                    return;
+                }
+                pnlCompra.getTxtCostoU().setText("");
+            }
+
+            @Override
+            public void focusLost(FocusEvent fe) {
+                if (pnlCompra.getTxtCostoU().getText().equalsIgnoreCase("") || pnlCompra.getTxtCostoU().getText().equalsIgnoreCase("0")){
+                    pnlCompra.getTxtCostoU().setText("0");
+                }
+            }
+            
+            
         });
 
         pnlCompra.getBtnAgregar().addActionListener(((e) ->
@@ -204,7 +237,7 @@ public class PnlCompraController {
         pnlCompra.getTxtFecha().setText("");
         pnlCompra.getTxtProveedor().setText("");
         pnlCompra.getTxtDescripcion().setText("");
-        pnlCompra.getTxtCostoU().setText("");
+        pnlCompra.getTxtCostoU().setText("0");
         pnlCompra.getTxtSubTotal().setText("");
         pnlCompra.getTxtIva().setText("");
         pnlCompra.getTxtTotal().setText("");

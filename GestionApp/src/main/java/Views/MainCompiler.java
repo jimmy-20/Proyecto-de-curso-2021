@@ -21,9 +21,15 @@ public class MainCompiler {
     public static void main(String[] args) {
         FilesCompras fc = new FilesCompras();
         List<DetalleCompraFactura> facturas = fc.findAllFactura().stream().collect(Collectors.toList());
+        List<DetalleCompra> compras = fc.findAllDetalle().stream().collect(Collectors.toList());
         
         headerDetalleFactura();
         facturas.stream().forEach(x -> print(x));
+        
+        headerDetalleCompra();
+        compras.stream().forEach(y -> print(y));
+        
+        
         
         
     }
