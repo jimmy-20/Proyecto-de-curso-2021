@@ -43,8 +43,6 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
     public Object getValueAt(int i, int i1) {
         return toArray(i,i1);
     }
-    
-    
 
     @Override
     public String getColumnName(int i) {
@@ -55,13 +53,22 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
     public void propertyChange(PropertyChangeEvent pce) {
         add((T) pce.getNewValue());
         fireTableDataChanged();
-
     }
     
+    /**
+    *Añade un elemento a la tabla
+    *@param t Objeto que se desea agregar
+    **/
     public void add(T t){
         this.list.add(t);
     }
     
+    /**
+     * Devuelve el objeto con la fila y columna seleccionada
+     * @param row fila seleccionada
+     * @param column columna seleccionada
+     * @return Devuelve objeto 
+     **/
     public Object toArray(int row, int column){
         String nameClass =  list.get(0).getClass().getSimpleName();
         
