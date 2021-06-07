@@ -3,31 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package Pojo;
 
 /**
- *
- * @author Ramiro Suarez
+ * 
+ * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class Proveedor {
-    private String nombre;
+public class Cliente {
+    private String nombreCliente;
     private float subTotal;
     private float iva;
     private float total;
 
-    public Proveedor(String nombre, float subTotal, float iva, float total) {
-        this.nombre = nombre;
+    public Cliente(String nombreCliente, float subTotal, float iva, float total) {
+        this.nombreCliente = nombreCliente;
         this.subTotal = subTotal;
         this.iva = iva;
         this.total = total;
     }
-
-    public String getNombre() {
-        return nombre;
+    
+    
+    
+    
+    public String getNombreCliente() {
+        return nombreCliente;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
     }
 
     public float getSubTotal() {
@@ -53,6 +57,13 @@ public class Proveedor {
     public void setTotal(float total) {
         this.total = total;
     }
-    
-        
- }
+    public Object[] toArray(){
+        Object[] obj = new Object[4];
+        obj[0]= nombreCliente;
+        obj[1]= subTotal;
+        obj[2]= iva;
+        obj[3]=total;
+                
+        return obj;
+    }
+}
