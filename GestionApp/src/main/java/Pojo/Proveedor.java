@@ -54,5 +54,5 @@ public class Proveedor {
         this.total = total;
     }
     
-        
- }
+    
+}
