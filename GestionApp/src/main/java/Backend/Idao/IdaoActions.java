@@ -8,9 +8,10 @@ package Backend.Idao;
 import java.util.Collection;
 
 /**
- *
+ *Interface que declara los métodos a usar en las conexciones de los registros
  * @author FAMILIASOZAORTIZ
- * @param <T>
+ * @param <T> Detalle de factura
+ * @param <G> Detalle de Compra o Venta
  */
 public interface IdaoActions<T,G> {
     void add(T t,G g);

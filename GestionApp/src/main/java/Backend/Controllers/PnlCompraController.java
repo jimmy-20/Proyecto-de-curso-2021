@@ -143,9 +143,7 @@ public class PnlCompraController {
                 if (pnlCompra.getTxtCostoU().getText().equalsIgnoreCase("") || pnlCompra.getTxtCostoU().getText().equalsIgnoreCase("0")){
                     pnlCompra.getTxtCostoU().setText("0");
                 }
-            }
-            
-            
+            } 
         });
 
         pnlCompra.getBtnAgregar().addActionListener(((e) ->

@@ -26,12 +26,22 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleC
     private final int SIZE_DETALLE = 357;
     private final int SIZE_FACTURA = 226;
     private Gson gson;
-
+    
+    /**
+     *Constructor que instancia y crea los flujos hacia los archivos de compra
+     **/
     public FilesCompras() {
         super(new File("headerCompra.dat"),new File("Detalle de compra.dat"),new File("Detalle de factura.dat"));
         gson = new Gson();
     }
 
+    /**
+     * Este método funciona al momento guardad el detalle de compra y factura al registarse una compra
+     * archivos
+     * @param t Detalle de factura a agregar
+     * @param dt Detalle de compra a agregar
+     * @exception IOException Si ocurre un fallo en los flujos de bytes
+     **/
     @Override
     public void add(DetalleCompraFactura t,DetalleCompra dt) { // Detalle de factura, Detalle de compra
         try {
@@ -76,10 +86,15 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleC
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * Regresa una Colección de tipo DetalleCompraFactura, funcional para imprimir en una tabla
+     * @return Devuelve una colección sobre todas las compras en detalle de factura
+    **/
     @Override
     public Collection<DetalleCompraFactura> findAllFactura() {
         Collection<DetalleCompraFactura> facturaList = new ArrayList<>();
         DetalleCompraFactura compra = null;
+        
         
         try {
             getRandomConection().getRafH().seek(0);
