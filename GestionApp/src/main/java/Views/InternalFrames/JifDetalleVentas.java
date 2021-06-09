@@ -5,17 +5,24 @@
  */
 package Views.InternalFrames;
 
+import Backend.Controllers.PnlDetalleVentasController;
+import Panels.Ventas.PnlDetalleVentas;
+import java.awt.BorderLayout;
+
+
+
 /**
  *
  * @author FAMILIASOZAORTIZ
  */
 public class JifDetalleVentas extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form JifDetalleVentas
-     */
+
+     private PnlDetalleVentas pnlDetalleVentas;
+     private PnlDetalleVentasController detalleVentasController;
     public JifDetalleVentas() {
         initComponents();
+       
     }
 
     /**
@@ -27,26 +34,26 @@ public class JifDetalleVentas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlContent = new javax.swing.JPanel();
+
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
-        );
+        pnlContent.setLayout(new java.awt.BorderLayout());
+
+        pnlDetalleVentas=new PnlDetalleVentas();
+        detalleVentasController= new PnlDetalleVentasController(pnlDetalleVentas);
+        pnlContent.add(pnlDetalleVentas,BorderLayout.CENTER);
+
+        getContentPane().add(pnlContent, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel pnlContent;
     // End of variables declaration//GEN-END:variables
 }
