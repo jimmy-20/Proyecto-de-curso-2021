@@ -5,12 +5,18 @@
  */
 package Views.InternalFrames;
 
+import Backend.Controllers.PnlSistemaVentasController;
+import Panels.Ventas.PnlSistemaVentas;
+import java.awt.BorderLayout;
+
 /**
  *
  * @author FAMILIASOZAORTIZ
  */
 public class JifSistemaVentas extends javax.swing.JInternalFrame {
 
+    private PnlSistemaVentas sistemaVentas;
+    private PnlSistemaVentasController controller;
     /**
      * Creates new form JifSistemaVentas
      */
@@ -27,26 +33,37 @@ public class JifSistemaVentas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Sistema de ventas");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ProgramaVentas.png"))); // NOI18N
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 544, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 367, Short.MAX_VALUE)
         );
+
+        sistemaVentas= new PnlSistemaVentas();
+        //controller = new PnlSistemaVentasController(sistemaVentas);
+        jPanel1.add(sistemaVentas,BorderLayout.CENTER);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

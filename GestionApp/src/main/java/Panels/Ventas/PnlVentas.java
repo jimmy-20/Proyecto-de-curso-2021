@@ -28,6 +28,16 @@ public class PnlVentas extends javax.swing.JPanel {
         this.tblViewVentas = tblViewVentas;
     }
 
+    public JTable getTblReporteVenta() {
+        return tblReporteVenta;
+    }
+
+    public void setTblReporteVenta(JTable tblReporteVenta) {
+        this.tblReporteVenta = tblReporteVenta;
+    }
+    
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,16 +46,42 @@ public class PnlVentas extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
+        tblReporteVenta = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
         tblViewVentas = new javax.swing.JTable();
 
+        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setMinimumSize(new java.awt.Dimension(500, 500));
-        setPreferredSize(new java.awt.Dimension(600, 600));
-        setLayout(new java.awt.GridBagLayout());
+        setPreferredSize(new java.awt.Dimension(450, 500));
+        setLayout(new java.awt.BorderLayout());
 
-        tblViewVentas.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reporte de Factura", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        jPanel1.setMaximumSize(new java.awt.Dimension(300, 300));
+        jPanel1.setPreferredSize(new java.awt.Dimension(150, 150));
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        tblReporteVenta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(tblReporteVenta);
+
+        jPanel1.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+
+        add(jPanel1, java.awt.BorderLayout.PAGE_END);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Inventario de Ventas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        jPanel2.setMaximumSize(new java.awt.Dimension(300, 300));
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
         tblViewVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -54,20 +90,20 @@ public class PnlVentas extends javax.swing.JPanel {
 
             }
         ));
-        jScrollPane2.setViewportView(tblViewVentas);
+        jScrollPane1.setViewportView(tblViewVentas);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 1;
-        gridBagConstraints.weightx = 0.2;
-        gridBagConstraints.weighty = 0.2;
-        gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
-        add(jScrollPane2, gridBagConstraints);
+        jPanel2.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblReporteVenta;
     private javax.swing.JTable tblViewVentas;
     // End of variables declaration//GEN-END:variables
 }
