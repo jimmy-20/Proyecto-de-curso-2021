@@ -5,6 +5,10 @@
  */
 package Views.InternalFrames;
 
+import Backend.Controllers.PnlDetalleVentasController;
+import Panels.Ventas.PnlDetalleVentas;
+import java.awt.BorderLayout;
+
 
 
 /**
@@ -14,11 +18,11 @@ package Views.InternalFrames;
 public class JifDetalleVentas extends javax.swing.JInternalFrame {
 
 
-     /**
-     * Creates new form JifDetalleVentas
-     */
+     private PnlDetalleVentas pnlDetalleVentas;
+     private PnlDetalleVentasController detalleVentasController;
     public JifDetalleVentas() {
         initComponents();
+       
     }
 
     /**
@@ -37,16 +41,11 @@ public class JifDetalleVentas extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
 
-        javax.swing.GroupLayout pnlContentLayout = new javax.swing.GroupLayout(pnlContent);
-        pnlContent.setLayout(pnlContentLayout);
-        pnlContentLayout.setHorizontalGroup(
-            pnlContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 626, Short.MAX_VALUE)
-        );
-        pnlContentLayout.setVerticalGroup(
-            pnlContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 374, Short.MAX_VALUE)
-        );
+        pnlContent.setLayout(new java.awt.BorderLayout());
+
+        pnlDetalleVentas=new PnlDetalleVentas();
+        detalleVentasController= new PnlDetalleVentasController(pnlDetalleVentas);
+        pnlContent.add(pnlDetalleVentas,BorderLayout.CENTER);
 
         getContentPane().add(pnlContent, java.awt.BorderLayout.CENTER);
 

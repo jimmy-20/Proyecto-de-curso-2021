@@ -1,7 +1,6 @@
 
 package Panels.Ventas;
 
-import Panels.Ventas.*;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 
@@ -48,6 +47,7 @@ public class PnlDetalleVentas extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblViewDetalleVentas = new javax.swing.JTable();
 
+        setPreferredSize(new java.awt.Dimension(500, 500));
         setLayout(new java.awt.BorderLayout());
 
         jPanel4.setPreferredSize(new java.awt.Dimension(551, 218));

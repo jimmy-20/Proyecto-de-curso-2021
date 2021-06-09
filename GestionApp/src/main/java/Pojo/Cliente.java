@@ -8,7 +8,7 @@ package Pojo;
 
 /**
  * 
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author HenocOrtiz
  */
 public class Cliente {
     private String nombreCliente;
