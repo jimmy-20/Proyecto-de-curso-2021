@@ -8,6 +8,7 @@ package Views;
 import Views.InternalFrames.JifCompras;
 import Views.InternalFrames.JifDetalleCompras;
 import Views.InternalFrames.JifDetalleVentas;
+import Views.InternalFrames.JifReportes;
 import Views.InternalFrames.JifSistemaVentas;
 import Views.InternalFrames.JifVentas;
 import java.awt.Graphics;
@@ -32,6 +33,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private JifDetalleVentas detalleVentas;
     
     private JifSistemaVentas sistemaVentas;
+    
+    private JifReportes jifReportes;
 
     public MenuPrincipal() {
         initComponents();
@@ -54,6 +57,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnDetalleCompras = new javax.swing.JButton();
         btnSistemaVenta = new javax.swing.JButton();
         btnDetalleVentas = new javax.swing.JButton();
+        btnReporte = new javax.swing.JButton();
         ImageIcon icon = new ImageIcon(getClass().getResource("/images/Wallpaper4.png"));
         Image image = icon.getImage();
         dktContent = new javax.swing.JDesktopPane(){
@@ -123,7 +127,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.weightx = 0.1;
@@ -143,6 +147,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(0, 2, 0, 2);
         jPanel1.add(btnDetalleVentas, gridBagConstraints);
+
+        btnReporte.setText("Reporte");
+        btnReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 0;
+        jPanel1.add(btnReporte, gridBagConstraints);
 
         jPanel2.add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
@@ -239,6 +254,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         detalleVentas.setVisible(true);
     }//GEN-LAST:event_btnDetalleVentasActionPerformed
 
+    private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
+        List<JInternalFrame> frames =  Arrays.asList(dktContent.getAllFrames()) ;
+        Optional<JInternalFrame> optional = frames.stream().filter(j -> j instanceof JifReportes).findAny();
+        if (optional.isPresent())
+        {
+            return;
+        }
+        
+        jifReportes = new JifReportes();
+        dktContent.add(jifReportes);
+        jifReportes.setVisible(true);
+    }//GEN-LAST:event_btnReporteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -285,6 +313,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnCompras;
     private javax.swing.JButton btnDetalleCompras;
     private javax.swing.JButton btnDetalleVentas;
+    private javax.swing.JButton btnReporte;
     private javax.swing.JButton btnSistemaVenta;
     private javax.swing.JButton btnVentas;
     private javax.swing.JDesktopPane dktContent;
