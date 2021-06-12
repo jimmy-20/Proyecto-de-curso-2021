@@ -10,8 +10,11 @@ import Model.TableModel;
 import Panels.Compra.PnlDetalleCompra;
 import Pojo.DetalleCompra;
 import Pojo.Proveedor;
+import Views.DialogoActualizar;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeSupport;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,7 +27,7 @@ import javax.swing.table.TableRowSorter;
  * 
  */
 public class PnlDetalleCompraController {
-    
+    private DialogoActualizar dialogActualizar;
     private List <DetalleCompra> listCompras;
     private List <Proveedor> listProveedor;
     private FilesCompras fCompras;
@@ -64,6 +67,21 @@ public class PnlDetalleCompraController {
                 }
 
             });
+        pnlDcompra.getTblViewDetalleCompra().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+               if (e.getClickCount()==1){
+                   return;
+               }
+               if(e.getClickCount()==2){
+                   dialogActualizar= new DialogoActualizar(null,true);
+                   dialogActualizar.setVisible(true);
+                   
+               }
+            }
+            
+            
+        });
     }
     private void txtFinderKeyTyped(KeyEvent e) {
         RowFilter<TableModel, Object> rf = null;
