@@ -7,7 +7,7 @@ package Pojo;
 
 /**
  *
- * @author Javier Ramirez
+ * @author Jeison Suarez
  */
 public class DetalleCompra { 
     private String factura;  // 10*2 = 20 + 14 
@@ -134,7 +134,7 @@ public class DetalleCompra {
         obj[0] = factura;
         obj[1] =fecha;
         obj[2] =tipoCompra;
-        obj[3] = tipomoneda;
+        obj[3] = tipoMoneda;
         obj[4] = proveedor;
         obj[5] = descripcion;
         obj[6] = cantidad;

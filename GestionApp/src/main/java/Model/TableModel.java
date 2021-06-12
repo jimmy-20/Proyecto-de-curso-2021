@@ -72,7 +72,24 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
      **/
     public Object toElement(int row, int column){
          String nameClass =  list.get(0).getClass().getSimpleName();
+         Object obj;
+        
+        if(nameClass.equalsIgnoreCase("DetalleCompra")){
+            
+            List<DetalleCompra> factura = (List<DetalleCompra>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj;
+        }else if (nameClass.equalsIgnoreCase("DetalleCompraFactura")){
+           List<DetalleCompraFactura> factura = (List<DetalleCompraFactura>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj;  
+        }else {
+            System.out.println("error");
+            System.out.println(nameClass);
+        }
+        return null;
 
+   }
     
    
     public Object toArray(int row, int column){

@@ -67,7 +67,7 @@ public class PnlDetalleCompraController {
     }
     private void txtFinderKeyTyped(KeyEvent e) {
         RowFilter<TableModel, Object> rf = null;
-        rf = RowFilter.regexFilter(pnlDcompra.getTxtFinder().getText(), 0, 1, 2, 3, 4, 5, 6, 7, 8,9);
+        rf = RowFilter.regexFilter(pnlDcompra.getTxtFinder().getText(), 0, 1, 2, 3, 4, 5);
         tblRowSorter.setRowFilter(rf);
     }
     
