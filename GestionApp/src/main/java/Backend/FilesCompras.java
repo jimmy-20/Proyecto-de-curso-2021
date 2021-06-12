@@ -83,7 +83,28 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleC
 
     @Override
     public Collection<DetalleCompra> findAllDetalle() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       Collection<DetalleCompra> detalleList = new ArrayList<>();
+        DetalleCompra detalle= null;
+         try {
+            getRandomConection().getRafH().seek(0);
+            int n = getRandomConection().getRafH().readInt();
+            
+            if ( (n<=0) ){
+                return detalleList;
+            }
+            
+            for (int i=0 ; i<n ; i++){
+                long posD = i*SIZE_DETALLE;
+                
+                getRandomConection().getRafDetalle().seek(posD);
+                detalle = gson.fromJson(getRandomConection().getRafDetalle().readUTF(), DetalleCompra.class);
+                
+                detalleList.add(detalle);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(FilesCompras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return detalleList;
     }
 
     /**

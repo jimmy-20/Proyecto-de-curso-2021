@@ -5,6 +5,7 @@
  */
 package Model;
 
+import Pojo.DetalleCompra;
 import Pojo.DetalleCompraFactura;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -41,7 +42,7 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
 
     @Override
     public Object getValueAt(int i, int i1) {
-        return toArray(i,i1);
+        return toElement(i,i1);
     }
 
     @Override
@@ -62,30 +63,53 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
     public void add(T t){
         this.list.add(t);
     }
-    
-    /**
+  
+     /**
      * Devuelve el objeto con la fila y columna seleccionada
      * @param row fila seleccionada
      * @param column columna seleccionada
      * @return Devuelve objeto 
      **/
-    public Object toArray(int row, int column){
-        String nameClass =  list.get(0).getClass().getSimpleName();
+    public Object toElement(int row, int column){
+         String nameClass =  list.get(0).getClass().getSimpleName();
+         Object obj;
         
-        Object obj;
-        
-        if(nameClass.equalsIgnoreCase("DetalleCompraFactura")){
-            List<DetalleCompraFactura> factura = (List<DetalleCompraFactura>) list;
+        if(nameClass.equalsIgnoreCase("DetalleCompra")){
+            
+            List<DetalleCompra> factura = (List<DetalleCompra>) list;
             obj = factura.get(row).toArray()[column];
             return obj;
-        }else{
+        }else if (nameClass.equalsIgnoreCase("DetalleCompraFactura")){
+           List<DetalleCompraFactura> factura = (List<DetalleCompraFactura>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj;  
+        }else {
             System.out.println("error");
+            System.out.println(nameClass);
         }
-        System.out.println(nameClass);
-        
         return null;
+
+   }
+    
+   
+    public Object toArray(int row, int column){
+        String nameClass =  list.get(0).getClass().getSimpleName();
+        Object obj;
+        
+        if(nameClass.equalsIgnoreCase("DetalleCompra")){
+            
+            List<DetalleCompra> factura = (List<DetalleCompra>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj;
+        }else if (nameClass.equalsIgnoreCase("DetalleCompraFactura")){
+           List<DetalleCompraFactura> factura = (List<DetalleCompraFactura>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj;  
+        }else {
+            System.out.println("error");
+            System.out.println(nameClass);
+        }
+       return null;
     }
-    
-    
-    
+   
 }

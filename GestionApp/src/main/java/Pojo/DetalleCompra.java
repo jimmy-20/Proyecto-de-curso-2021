@@ -7,7 +7,7 @@ package Pojo;
 
 /**
  *
- * @author Javier Ramirez
+ * @author Jeison Suarez
  */
 public class DetalleCompra { 
     private String factura;  // 10*2 = 20 + 14 
@@ -126,6 +126,24 @@ public class DetalleCompra {
 
     public void setTotal(float total) {
         this.total = total;
+    }
+
+    public Object[] toArray() {
+        Object[] obj = new Object[11];
+        
+        obj[0] = factura;
+        obj[1] =fecha;
+        obj[2] =tipoCompra;
+        obj[3] = tipoMoneda;
+        obj[4] = proveedor;
+        obj[5] = descripcion;
+        obj[6] = cantidad;
+        obj[7] =costo;
+        obj[8] =subTotal;
+        obj[9] = iva;
+        obj[10] = total;
+        return obj;
+        
     }
     
     

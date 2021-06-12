@@ -5,8 +5,8 @@
  */
 package Panels.Compra;
 
-import javax.swing.JComboBox;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -19,9 +19,7 @@ public class PnlDetalleCompra extends javax.swing.JPanel {
         initComponents();
     }
 
-    public JComboBox<String> getCmbFiltro() {
-        return cmbFiltro;
-    }
+    
 
     public JTable getTblViewDetalleCompra() {
         return tblViewDetalleCompra;
@@ -29,6 +27,10 @@ public class PnlDetalleCompra extends javax.swing.JPanel {
 
     public JTable getTblViewProveedores() {
         return tblViewProveedores;
+    }
+
+    public JTextField getTxtFinder() {
+        return txtFinder;
     }
 
     
@@ -40,19 +42,42 @@ public class PnlDetalleCompra extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblViewProveedores = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        cmbFiltro = new javax.swing.JComboBox<>();
+        txtFinder = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblViewProveedores = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblViewDetalleCompra = new javax.swing.JTable();
 
+        setMinimumSize(new java.awt.Dimension(754, 384));
+        setPreferredSize(new java.awt.Dimension(754, 384));
         setLayout(new java.awt.BorderLayout());
 
+        jPanel3.setMinimumSize(new java.awt.Dimension(754, 384));
+        jPanel3.setPreferredSize(new java.awt.Dimension(754, 384));
+        jPanel3.setLayout(new java.awt.BorderLayout());
+
+        jPanel5.setLayout(new java.awt.GridBagLayout());
+
+        jLabel1.setText("FIltrar por: ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 4, 0, 0);
+        jPanel5.add(jLabel1, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(4, 20, 4, 4);
+        jPanel5.add(txtFinder, gridBagConstraints);
+
+        jPanel3.add(jPanel5, java.awt.BorderLayout.PAGE_START);
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalle de Proveedores"));
         jPanel4.setPreferredSize(new java.awt.Dimension(551, 218));
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
@@ -70,20 +95,11 @@ public class PnlDetalleCompra extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(15, 15, 15, 15);
         jPanel4.add(jScrollPane2, gridBagConstraints);
 
-        add(jPanel4, java.awt.BorderLayout.PAGE_END);
+        jPanel3.add(jPanel4, java.awt.BorderLayout.PAGE_END);
 
-        jPanel3.setLayout(new java.awt.BorderLayout());
-
-        jLabel1.setText("FIltrar por: ");
-        jPanel5.add(jLabel1);
-
-        jPanel5.add(cmbFiltro);
-
-        jPanel3.add(jPanel5, java.awt.BorderLayout.PAGE_END);
-
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalle de Compra"));
         jPanel6.setLayout(new java.awt.GridBagLayout());
 
         tblViewDetalleCompra.setModel(new javax.swing.table.DefaultTableModel(
@@ -101,7 +117,6 @@ public class PnlDetalleCompra extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(15, 15, 15, 15);
         jPanel6.add(jScrollPane1, gridBagConstraints);
 
         jPanel3.add(jPanel6, java.awt.BorderLayout.CENTER);
@@ -111,7 +126,6 @@ public class PnlDetalleCompra extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmbFiltro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -121,5 +135,6 @@ public class PnlDetalleCompra extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblViewDetalleCompra;
     private javax.swing.JTable tblViewProveedores;
+    private javax.swing.JTextField txtFinder;
     // End of variables declaration//GEN-END:variables
 }
