@@ -42,13 +42,9 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
 
     @Override
     public Object getValueAt(int i, int i1) {
-        return toArray(i,i1);
+        return toElement(i,i1);
     }
-    
-   
-    
-    
-
+  
     @Override
     public String getColumnName(int i) {
         return header[i];
@@ -64,30 +60,25 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
     public void add(T t){
         this.list.add(t);
     }
-    public Object toArray(int row, int column){
+    public Object toElement(int row, int column){
          String nameClass =  list.get(0).getClass().getSimpleName();
         
         Object obj;
         
         if(nameClass.equalsIgnoreCase("DetalleCompra")){
+            
             List<DetalleCompra> factura = (List<DetalleCompra>) list;
             obj = factura.get(row).toArray()[column];
             return obj;
-        }else{
-            System.out.println("error");
-        }
-        System.out.println(nameClass);
-        
-        if(nameClass.equalsIgnoreCase("DetalleCompraFactura")){
-            List<DetalleCompraFactura> factura = (List<DetalleCompraFactura>) list;
+        }else if (nameClass.equalsIgnoreCase("DetalleCompraFactura")){
+           List<DetalleCompraFactura> factura = (List<DetalleCompraFactura>) list;
             obj = factura.get(row).toArray()[column];
-            return obj;
-        }else{
+            return obj;  
+        }else {
             System.out.println("error");
+            System.out.println(nameClass);
         }
-        System.out.println(nameClass);
-        
-        return null;
+       return null;
     }
     
 

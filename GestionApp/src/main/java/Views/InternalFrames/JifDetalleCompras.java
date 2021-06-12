@@ -33,8 +33,10 @@ public class JifDetalleCompras extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        setResizable(true);
         setTitle("Proveedores");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Proveedores.png"))); // NOI18N
+        setMinimumSize(new java.awt.Dimension(754, 384));
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
