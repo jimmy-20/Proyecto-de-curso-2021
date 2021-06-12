@@ -32,18 +32,35 @@ public class RandomConnection {
         }
     }
 
+    /**
+     * Obtiene de regreso el archivo "Header" de compras
+     * @return Archivo "Header"
+     **/
     public RandomAccessFile getRafH() {
         return rafH;
     }
 
+    /**
+     * Obtiene el archivo del Detalle de compras
+     * @return Archivo "Detalle de Compras"
+     **/
     public RandomAccessFile getRafDetalle() {
         return rafDDetalle;
     }
     
+    /**
+     * Obtiene el archivo del Detalle de Factura de compras
+     * @return Archivo "Detalle de Factura"
+     **/
     public RandomAccessFile getRafFactura()
     {
         return rafDFactura;
     }
+    
+    /**
+     * Cierra los flujos de bytes de todos los archivos con los que se gestiona
+     * @exception IOException - En caso se produzca un error en los flujos de Bytes
+     **/
     public void close() throws IOException{
         if(rafH != null){
             rafH.close();

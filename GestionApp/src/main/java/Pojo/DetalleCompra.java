@@ -13,7 +13,7 @@ public class DetalleCompra {
     private String factura;  // 10*2 = 20 + 14 
     private String fecha; // 10*2 = 20 + 5
     private String tipoCompra; // Credito Contado 7*2 = 14 + 20
-    private String tipomoneda; // 7 *2 = 14 + 20
+    private String tipoMoneda; // 7 *2 = 14 + 20
     private String proveedor; // 20*2 = 40 + 18
     private String descripcion; // 30*2 = 60 + 22
     private int cantidad; // 4 + 16
@@ -30,7 +30,7 @@ public class DetalleCompra {
         this.factura = nfactura;
         this.fecha = fecha;
         this.tipoCompra = tipoCompra;
-        this.tipomoneda = tipomoneda;
+        this.tipoMoneda = tipomoneda;
         this.proveedor = proveedor;
         this.descripcion = descripcion;
         this.cantidad = cantidad;
@@ -40,11 +40,11 @@ public class DetalleCompra {
         this.total = total;
     }
 
-    public String getNfactura() {
+    public String getfactura() {
         return factura;
     }
 
-    public void setNfactura(String nfactura) {
+    public void setfactura(String nfactura) {
         this.factura = nfactura;
     }
 
@@ -65,11 +65,11 @@ public class DetalleCompra {
     }
 
     public String getTipomoneda() {
-        return tipomoneda;
+        return tipoMoneda;
     }
 
     public void setTipomoneda(String tipomoneda) {
-        this.tipomoneda = tipomoneda;
+        this.tipoMoneda = tipomoneda;
     }
 
     public String getProveedor() {

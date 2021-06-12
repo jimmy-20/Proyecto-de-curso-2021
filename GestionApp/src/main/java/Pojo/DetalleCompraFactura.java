@@ -13,7 +13,7 @@ public class DetalleCompraFactura {
     private String factura; //20 + 14
     private String fecha; //20 + 10
     private String tipoCompra;// 14 + 20
-    private String moneda; // 14 + 12
+    private String tipoMoneda; // 14 + 12
     private String proveedor; // 40 + 18 
     private float subTotal; //4 + 16
     private float iva; //4 + 6
@@ -24,7 +24,7 @@ public class DetalleCompraFactura {
         this.factura = factura;
         this.fecha = fecha;
         this.tipoCompra = tipoCompra;
-        this.moneda = moneda;
+        this.tipoMoneda = moneda;
         this.proveedor = proveedor;
         this.subTotal = subTotal;
         this.iva = iva;
@@ -55,12 +55,12 @@ public class DetalleCompraFactura {
         this.tipoCompra = tipoCompra;
     }
 
-    public String getMoneda() {
-        return moneda;
+    public String getTipoMoneda() {
+        return tipoMoneda;
     }
 
-    public void setMoneda(String moneda) {
-        this.moneda = moneda;
+    public void setTipoMoneda(String tipoMoneda) {
+        this.tipoMoneda = tipoMoneda;
     }
 
     public String getProveedor() {
@@ -101,7 +101,7 @@ public class DetalleCompraFactura {
         obj[0] = factura;
         obj[1] = fecha;
         obj[2] = tipoCompra;
-        obj[3] = moneda;
+        obj[3] = tipoMoneda;
         obj[4] = proveedor;
         obj[5] = subTotal;
         obj[6] = iva;

@@ -143,9 +143,7 @@ public class PnlCompraController {
                 if (pnlCompra.getTxtCostoU().getText().equalsIgnoreCase("") || pnlCompra.getTxtCostoU().getText().equalsIgnoreCase("0")){
                     pnlCompra.getTxtCostoU().setText("0");
                 }
-            }
-            
-            
+            } 
         });
 
         pnlCompra.getBtnAgregar().addActionListener(((e) ->
@@ -255,7 +253,7 @@ public class PnlCompraController {
     }
     
     public static void print(DetalleCompra dc){
-        System.out.format("%7s %10s %15s %15s %20s %20s %8d %15.2f %9.2f %7.2f %7.2f",dc.getNfactura(),
+        System.out.format("%7s %10s %15s %15s %20s %20s %8d %15.2f %9.2f %7.2f %7.2f",dc.getfactura(),
                 dc.getFecha(),dc.getTipoCompra(),dc.getTipomoneda(),dc.getProveedor(),dc.getDescripcion(),
                 dc.getCantidad(),dc.getCosto(),dc.getSubTotal(),dc.getIva(),dc.getTotal());
     }
