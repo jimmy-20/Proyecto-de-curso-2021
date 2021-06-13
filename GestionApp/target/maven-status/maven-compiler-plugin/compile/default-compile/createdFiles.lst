@@ -37,6 +37,7 @@ Pojo\Cliente.class
 Views\MenuPrincipal$6.class
 Views\MenuPrincipal.class
 Backend\Controllers\PnlCompraController$1.class
+Backend\Controllers\PnlDetalleVentasController$1.class
 Backend\Controllers\PnlDetalleCompraController$1.class
 Backend\Controllers\PnlDetalleVentasController.class
 Views\MenuPrincipal$2.class
