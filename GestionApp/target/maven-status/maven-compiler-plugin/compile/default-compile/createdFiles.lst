@@ -14,7 +14,6 @@ Views\MenuPrincipal$4.class
 Backend\Connection\RandomConnection.class
 Views\InternalFrames\JifDetalleVentas.class
 Backend\Connection\FileConnection.class
-Views\Actualizar$3.class
 Pojo\Proveedor.class
 Views\MenuPrincipal$7.class
 Views\InternalFrames\JifSistemaVentas.class
@@ -25,16 +24,10 @@ Panels\Compra\PnlCompra$1.class
 Views\DialogoActualizar$2.class
 Panels\Compra\PnlCompraDesign$1.class
 Views\InternalFrames\JifReportes.class
-<<<<<<< HEAD
-=======
-Views\Actualizar$2.class
->>>>>>> BranchHenoc
-Backend\Proveedores.class
 Panels\Reportes\PnlReporte$1.class
 Panels\Compra\PnlCompra.class
 Views\DialogoActualizar$3$1.class
 Backend\Controllers\PnlCompraController$2.class
-Views\Actualizar.class
 Views\MenuPrincipal$3.class
 Backend\Controllers\PnlDetalleCompraController$2.class
 Panels\Compra\PnlCompraDesign.class
@@ -46,10 +39,7 @@ Views\MenuPrincipal.class
 Views\DialogoActualizar.class
 Views\DialogoActualizar$1.class
 Backend\Controllers\PnlCompraController$1.class
-<<<<<<< HEAD
-=======
 Backend\Controllers\PnlDetalleVentasController$1.class
->>>>>>> BranchHenoc
 Backend\Controllers\PnlDetalleCompraController$1.class
 Backend\Controllers\PnlDetalleVentasController.class
 Views\MenuPrincipal$2.class
@@ -57,12 +47,10 @@ Panels\Ventas\PnlDetalleVentas.class
 Panels\Ventas\PnlVentas.class
 Pojo\DetalleVentaFactura.class
 Backend\Controllers\PnlVentasController.class
-Views\Actualizar$1.class
 Views\MenuPrincipal$5.class
 Views\Login.class
 Pojo\DetalleVenta.class
 Backend\Idao\IdaoActions.class
 Backend\Clientes.class
-Views\Actualizar$3$1.class
 Pojo\DetalleCompra.class
 Views\MainCompiler.class
