@@ -47,7 +47,7 @@ public class PnlReporteController {
     }
 
     private void btnActionPerformed(ActionEvent e) {
-        String fileName = getClass().getResource("/reports/DtCompraReport.jasper").getPath();
+        String fileName = getClass().getResource("/reports/Compra2Report.jasper").getPath();
         PojoDataSource dataSource = new PojoDataSource(filesCompras.findAllFactura().stream().collect(Collectors.toList()));
         System.out.println(fileName);
         try
