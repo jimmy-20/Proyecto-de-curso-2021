@@ -32,9 +32,9 @@ private List <Cliente> listClientes;
 
         modelDetalle=new TableModel(listVentas,headerVentas);
         modelCliente= new TableModel(listClientes,headerCliente);
-        
-        pnlDetalleVentas.getTblViewDetalleVentas().setModel(modelDetalle);
         pnlDetalleVentas.getTblViewClientes().setModel(modelCliente);
+        pnlDetalleVentas.getTblViewDetalleVentas().setModel(modelDetalle);
+
     }
 
 }
