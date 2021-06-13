@@ -1,8 +1,13 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Panels.Ventas;
 
-import javax.swing.JComboBox;
+import Panels.Ventas.*;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 
 public class PnlDetalleVentas extends javax.swing.JPanel {
@@ -10,11 +15,6 @@ public class PnlDetalleVentas extends javax.swing.JPanel {
     
     public PnlDetalleVentas() {
         initComponents();
-        
-    }
-
-    public JComboBox<String> getCmbFiltro() {
-        return cmbFiltro;
     }
 
     public JTable getTblViewClientes() {
@@ -25,7 +25,13 @@ public class PnlDetalleVentas extends javax.swing.JPanel {
         return tblViewDetalleVentas;
     }
 
+    public JTextField getTxtFinder() {
+        return txtFinder;
+    }
+
     
+
+ 
 
     
     
@@ -36,20 +42,42 @@ public class PnlDetalleVentas extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblViewClientes = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        cmbFiltro = new javax.swing.JComboBox<>();
+        txtFinder = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblViewClientes = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblViewDetalleVentas = new javax.swing.JTable();
 
-        setPreferredSize(new java.awt.Dimension(500, 500));
+        setMinimumSize(new java.awt.Dimension(754, 384));
+        setPreferredSize(new java.awt.Dimension(754, 384));
         setLayout(new java.awt.BorderLayout());
 
+        jPanel3.setMinimumSize(new java.awt.Dimension(754, 384));
+        jPanel3.setPreferredSize(new java.awt.Dimension(754, 384));
+        jPanel3.setLayout(new java.awt.BorderLayout());
+
+        jPanel5.setLayout(new java.awt.GridBagLayout());
+
+        jLabel1.setText("Buscar:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 4, 0, 0);
+        jPanel5.add(jLabel1, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(4, 20, 4, 4);
+        jPanel5.add(txtFinder, gridBagConstraints);
+
+        jPanel3.add(jPanel5, java.awt.BorderLayout.PAGE_START);
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalle de Clientes\n"));
         jPanel4.setPreferredSize(new java.awt.Dimension(551, 218));
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
@@ -67,20 +95,11 @@ public class PnlDetalleVentas extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(15, 15, 15, 15);
         jPanel4.add(jScrollPane2, gridBagConstraints);
 
-        add(jPanel4, java.awt.BorderLayout.PAGE_END);
+        jPanel3.add(jPanel4, java.awt.BorderLayout.PAGE_END);
 
-        jPanel3.setLayout(new java.awt.BorderLayout());
-
-        jLabel1.setText("FIltrar por: ");
-        jPanel5.add(jLabel1);
-
-        jPanel5.add(cmbFiltro);
-
-        jPanel3.add(jPanel5, java.awt.BorderLayout.PAGE_END);
-
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalle de Ventas\n"));
         jPanel6.setLayout(new java.awt.GridBagLayout());
 
         tblViewDetalleVentas.setModel(new javax.swing.table.DefaultTableModel(
@@ -98,7 +117,6 @@ public class PnlDetalleVentas extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(15, 15, 15, 15);
         jPanel6.add(jScrollPane1, gridBagConstraints);
 
         jPanel3.add(jPanel6, java.awt.BorderLayout.CENTER);
@@ -108,7 +126,6 @@ public class PnlDetalleVentas extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmbFiltro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -118,5 +135,6 @@ public class PnlDetalleVentas extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblViewClientes;
     private javax.swing.JTable tblViewDetalleVentas;
+    private javax.swing.JTextField txtFinder;
     // End of variables declaration//GEN-END:variables
 }

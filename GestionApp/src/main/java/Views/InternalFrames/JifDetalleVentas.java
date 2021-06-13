@@ -40,6 +40,8 @@ public class JifDetalleVentas extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Detalle de Ventas");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ventas.png"))); // NOI18N
 
         pnlContent.setLayout(new java.awt.BorderLayout());
 
