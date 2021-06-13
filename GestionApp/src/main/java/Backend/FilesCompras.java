@@ -83,8 +83,41 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleC
     }
 
     @Override
-    public boolean edit(DetalleCompraFactura t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean edit(DetalleCompra dt, int row) {
+        long posD = row*SIZE_DETALLE;
+        long posF = row*SIZE_FACTURA;
+        DetalleCompraFactura compraFactura;
+        
+        if (dt == null){
+            return false;
+        }
+        
+        try
+        {
+            getRandomConection().getRafDetalle().seek(posD);
+            getRandomConection().getRafDetalle().writeUTF(gson.toJson(dt));
+            
+            getRandomConection().getRafFactura().seek(posF);
+            
+            compraFactura = gson.fromJson(getRandomConection().getRafFactura().readUTF(), DetalleCompraFactura.class);
+            
+            compraFactura.setFactura(dt.getfactura());
+            compraFactura.setFecha(dt.getFecha());
+            compraFactura.setTipoCompra(dt.getTipoCompra());
+            compraFactura.setTipoMoneda(dt.getTipomoneda());
+            compraFactura.setProveedor(dt.getProveedor());
+            compraFactura.setSubTotal(dt.getSubTotal());
+            compraFactura.setIva(dt.getIva());
+            compraFactura.setTotal(dt.getTotal());
+            
+            getRandomConection().getRafFactura().seek(posF);
+            getRandomConection().getRafFactura().writeUTF(gson.toJson(compraFactura));
+        } catch (IOException ex)
+        {
+            Logger.getLogger(FilesCompras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return true;
     }
 
     @Override
@@ -107,6 +140,7 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleC
                 
                 detalleList.add(detalle);
             }
+             close();
         } catch (IOException ex) {
             Logger.getLogger(FilesCompras.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -139,10 +173,47 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleC
                 
                 facturaList.add(compra);
             }
+            close();
         } catch (IOException ex) {
             Logger.getLogger(FilesCompras.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         return  facturaList;
+    }
+    
+    @Override
+    /**
+     * Regresa los datos del archivo de Proveedores, funcional para imprimir en la tabla de Proveedores
+     * @return Devuelve en una Collection los proveedores comprado a credito
+     **/
+    public Collection<Proveedor> findAllProveedores() {
+        Collection <Proveedor> proveedores = new ArrayList<>();
+        Proveedor p = null;
+            
+        try
+        { 
+            getRandomConection().getRafH().seek(0);
+            int n = getRandomConection().getRafH().readInt();
+            
+            if ( (n<=0) ){
+                return proveedores;
+            }
+            
+            for (int i=0 ; i<n ; i++){
+                long posP = i*SIZE_PROVEEDORES;
+                
+                getRandomConection().getRafFactura().seek(posP);
+                p = gson.fromJson(getRandomConection().getRafProveedores().readUTF(), Proveedor.class);
+                
+                proveedores.add(p);
+            }
+            close();
+        } catch (IOException ex)
+        {
+            Logger.getLogger(FilesCompras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return proveedores;
+
     }
     
     private void validationProveedor(Proveedor p, long posProveedor) throws IOException{
@@ -184,4 +255,6 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleC
         
         return getRandomConection().getRafH().readInt();
     }
+
+    
 }

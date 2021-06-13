@@ -5,6 +5,12 @@
  */
 package Views;
 
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Jeison Suarez
@@ -18,6 +24,72 @@ public class DialogoActualizar extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
+
+    public JButton getBtnAgregar() {
+        return btnAgregar;
+    }
+
+    public JButton getBtnLimpiar() {
+        return btnLimpiar;
+    }
+
+    public JCheckBox getCkbExcento() {
+        return ckbExcento;
+    }
+
+    public JRadioButton getRdbContado() {
+        return rdbContado;
+    }
+
+    public JRadioButton getRdbCordoba() {
+        return rdbCordoba;
+    }
+
+    public JRadioButton getRdbCredito() {
+        return rdbCredito;
+    }
+
+    public JRadioButton getRdbDolar() {
+        return rdbDolar;
+    }
+
+    public JSpinner getSpnCantidad() {
+        return spnCantidad;
+    }
+
+    public JTextField getTxtCostoU() {
+        return txtCostoU;
+    }
+
+    public JTextField getTxtDescripcion() {
+        return txtDescripcion;
+    }
+
+    public JTextField getTxtFactura() {
+        return txtFactura;
+    }
+
+    public JTextField getTxtFecha() {
+        return txtFecha;
+    }
+
+    public JTextField getTxtIva() {
+        return txtIva;
+    }
+
+    public JTextField getTxtProveedor() {
+        return txtProveedor;
+    }
+
+    public JTextField getTxtSubTotal() {
+        return txtSubTotal;
+    }
+
+    public JTextField getTxtTotal() {
+        return txtTotal;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

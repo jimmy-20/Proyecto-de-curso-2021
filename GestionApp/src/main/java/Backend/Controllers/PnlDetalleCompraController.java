@@ -78,9 +78,7 @@ public class PnlDetalleCompraController {
                    dialogActualizar.setVisible(true);
                    
                }
-            }
-            
-            
+            }  
         });
     }
     private void txtFinderKeyTyped(KeyEvent e) {

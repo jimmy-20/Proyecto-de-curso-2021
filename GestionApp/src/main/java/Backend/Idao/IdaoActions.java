@@ -16,7 +16,8 @@ import java.util.Collection;
  */
 public interface IdaoActions<T,G,H> {
     void add(T t,G g,H h);
-    boolean edit(T t);
+    boolean edit(G g, int row);
     Collection <T> findAllFactura();
     Collection <G> findAllDetalle();
+    Collection <H> findAllProveedores();
 }

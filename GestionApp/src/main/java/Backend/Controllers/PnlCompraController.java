@@ -21,6 +21,7 @@ import java.beans.PropertyChangeSupport;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.event.ChangeEvent;
@@ -63,9 +64,11 @@ public class PnlCompraController {
 
         pnlCompra.getBtnGroupTipoCompra().add(pnlCompra.getRdbContado());
         pnlCompra.getBtnGroupTipoCompra().add(pnlCompra.getRdbCredito());
+        pnlCompra.getRdbContado().setSelected(true);
 
         pnlCompra.getBtnGroupMoneda().add(pnlCompra.getRdbCordoba());
         pnlCompra.getBtnGroupMoneda().add(pnlCompra.getRdbDolar());
+        pnlCompra.getRdbCordoba().setSelected(true);
 
         pnlCompra.getSpnCantidad().addChangeListener((ChangeEvent ce) -> //Si se cambia el valor de cantidad, calcular en tiempo real, sus costos
         {
@@ -184,7 +187,7 @@ public class PnlCompraController {
         pnlCompra.getTxtTotal().setText(String.valueOf(total));
     }
 
-    private void btnAgregarActionPerformed(ActionEvent e) {
+    public void btnAgregarActionPerformed(ActionEvent e) {
         String factura = pnlCompra.getTxtFactura().getText();
         String fecha = pnlCompra.getTxtFecha().getText();
         String tipoCompra = null;
@@ -214,6 +217,12 @@ public class PnlCompraController {
         
         String proveedor = pnlCompra.getTxtProveedor().getText();
         String descripcion = pnlCompra.getTxtDescripcion().getText();
+        
+        if (factura.isEmpty() || proveedor.isEmpty() || descripcion.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Rellene todos los espacios en blanco");
+            return;
+        }
+        
         int cantidad = (int) pnlCompra.getSpnCantidad().getValue();
         float costoU = Float.parseFloat(pnlCompra.getTxtCostoU().getText());
         float subTotal = Float.parseFloat(pnlCompra.getTxtSubTotal().getText());
@@ -235,6 +244,7 @@ public class PnlCompraController {
         
         JOptionPane.showMessageDialog(null, "Factura de compra añadida correctamente");
     }
+    
 
     private void btnLimpiarActionPerformed(ActionEvent e) {
         pnlCompra.getTxtFactura().setText("");
