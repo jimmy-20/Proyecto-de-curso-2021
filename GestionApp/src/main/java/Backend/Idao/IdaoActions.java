@@ -12,9 +12,10 @@ import java.util.Collection;
  * @author FAMILIASOZAORTIZ
  * @param <T> Detalle de factura
  * @param <G> Detalle de Compra o Venta
+ * @param <H>
  */
-public interface IdaoActions<T,G> {
-    void add(T t,G g);
+public interface IdaoActions<T,G,H> {
+    void add(T t,G g,H h);
     boolean edit(T t);
     Collection <T> findAllFactura();
     Collection <G> findAllDetalle();

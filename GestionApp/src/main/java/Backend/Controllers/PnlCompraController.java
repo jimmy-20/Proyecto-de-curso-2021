@@ -10,6 +10,7 @@ import Model.TableModel;
 import Panels.Compra.PnlCompraDesign;
 import Pojo.DetalleCompraFactura;
 import Pojo.DetalleCompra;
+import Pojo.Proveedor;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -222,9 +223,14 @@ public class PnlCompraController {
         DetalleCompra detalleCompra = new DetalleCompra(factura, fecha, tipoCompra, moneda, proveedor, descripcion, cantidad, costoU, subTotal, iva, total);
         DetalleCompraFactura detalleFactura = new DetalleCompraFactura(factura, fecha, tipoCompra, moneda, proveedor, subTotal, iva, total);
         
+        Proveedor prov = null;
+        if (tipoCompra.equalsIgnoreCase("Crédito")){
+            prov = new Proveedor(proveedor, subTotal, iva, total);
+        }
+        
         System.out.println("Objeto creado exitosamente");
         printConsole(detalleCompra); //Con fines de prueba, al finalizar el proyecto lo quitare
-        fCompras.add(detalleFactura, detalleCompra); // Se crea los archivos para facturas y detalle de compra
+        fCompras.add(detalleFactura, detalleCompra,prov); // Se crea los archivos para facturas y detalle de compra
         propertyChangeSupport.firePropertyChange("factura", this.factura, detalleFactura); //Se crea un evento de actualizacion
         
         JOptionPane.showMessageDialog(null, "Factura de compra añadida correctamente");
