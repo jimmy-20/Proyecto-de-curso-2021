@@ -91,7 +91,7 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
 
    }
     
-   
+   @Deprecated
     public Object toArray(int row, int column){
         String nameClass =  list.get(0).getClass().getSimpleName();
         Object obj;

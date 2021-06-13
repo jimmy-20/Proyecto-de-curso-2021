@@ -9,6 +9,7 @@ import Backend.Connection.FileConnection;
 import Backend.Idao.IdaoActions;
 import Pojo.DetalleCompraFactura;
 import Pojo.DetalleCompra;
+import Pojo.Proveedor;
 import com.google.gson.Gson;
 import java.io.File;
 import java.io.IOException;
@@ -22,16 +23,17 @@ import java.util.logging.Logger;
  *
  * @author FAMILIASOZAORTIZ
  */
-public class FilesCompras extends FileConnection implements IdaoActions<DetalleCompraFactura,DetalleCompra>{
+public class FilesCompras extends FileConnection implements IdaoActions<DetalleCompraFactura,DetalleCompra,Proveedor>{
     private final int SIZE_DETALLE = 357;
     private final int SIZE_FACTURA = 226;
+    private final int SIZE_PROVEEDORES = 76;
     private Gson gson;
     
     /**
      *Constructor que instancia y crea los flujos hacia los archivos de compra
      **/
     public FilesCompras() {
-        super(new File("headerCompra.dat"),new File("Detalle de compra.dat"),new File("Detalle de factura.dat"));
+        super(new File("headerCompra.dat"),new File("Detalle de compra.dat"),new File("Detalle de factura.dat"), new File("Proveedores.dat"));
         gson = new Gson();
     }
 
@@ -40,12 +42,13 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleC
      * archivos
      * @param t Detalle de factura a agregar
      * @param dt Detalle de compra a agregar
+     * @param p Proveedores a agregar+
      * @exception IOException Si ocurre un fallo en los flujos de bytes
      **/
     @Override
-    public void add(DetalleCompraFactura t,DetalleCompra dt) { // Detalle de factura, Detalle de compra
+    public void add(DetalleCompraFactura t,DetalleCompra dt, Proveedor p) { // Detalle de factura, Detalle de compra
         try {
-            if (t == null){
+            if ( (t == null) || (dt == null) ){
                 return;
             }
             getRandomConection().getRafH().seek(0);
@@ -55,14 +58,17 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleC
             
             long posD = k*SIZE_DETALLE;
             long posF = k*SIZE_FACTURA;
+            long posP = k*SIZE_PROVEEDORES;
             
             //Se colocan los punteros en sus respectivos archivos
             getRandomConection().getRafDetalle().seek(posD);
             getRandomConection().getRafFactura().seek(posF);
             
+            
+            
             getRandomConection().getRafDetalle().writeUTF(gson.toJson(dt)); //Se crea el archivo del detalle de compra
             getRandomConection().getRafFactura().writeUTF(gson.toJson(t)); //Se crea e archivo del detalle de factura
-
+            validationProveedor(p,posP); //En caso el proveedor exista, actualizar datos, en caso contrario, se agrega el nuevo proveedor
             
             getRandomConection().getRafH().seek(0);
             getRandomConection().getRafH().writeInt(++n);
@@ -137,5 +143,49 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleC
             Logger.getLogger(FilesCompras.class.getName()).log(Level.SEVERE, null, ex);
         }
         return  facturaList;
+    }
+
+    @Override
+    public Collection<Proveedor> findAllProveedors() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    private void validationProveedor(Proveedor p, long posProveedor) throws IOException{
+        Proveedor proveedor = null;
+        if (getRegistros() <= 0 || p == null){
+            return;
+        }
+        
+        if (getRandomConection().getRafProveedores().length() == 0){
+            getRandomConection().getRafProveedores().seek(0);
+            getRandomConection().getRafProveedores().writeUTF(gson.toJson(p));
+            return;
+        }
+        
+        for (int i = 0 ; i<getRegistros() ; i++){
+            long posP = i*SIZE_PROVEEDORES;
+            
+            getRandomConection().getRafProveedores().seek(posP);
+            proveedor = gson.fromJson(getRandomConection().getRafProveedores().readUTF(), Proveedor.class);
+            
+            if(proveedor.getNombre().equalsIgnoreCase(p.getNombre())){
+                proveedor.setSubTotal(p.getSubTotal() + proveedor.getSubTotal());
+                proveedor.setIva(p.getIva() + proveedor.getIva());
+                proveedor.setTotal(p.getTotal() + proveedor.getTotal());
+                
+                getRandomConection().getRafProveedores().seek(posP);
+                getRandomConection().getRafProveedores().writeUTF(gson.toJson(proveedor));
+                return;
+            }
+        }
+        
+        getRandomConection().getRafProveedores().writeUTF(gson.toJson(p));
+        
+    }
+    
+    private int getRegistros() throws IOException{
+        getRandomConection().getRafH().seek(0);
+        
+        return getRandomConection().getRafH().readInt();
     }
 }

@@ -10,10 +10,11 @@ package Pojo;
  * @author Ramiro Suarez
  */
 public class Proveedor {
-    private String nombre;
-    private float subTotal;
-    private float iva;
-    private float total;
+    private String nombre; // 12 + 20
+    private float subTotal; //16 + 4
+    private float iva; // 6 + 4
+    private float total; // 10 + 4
+    //  44 + 32 = 76
 
     public Proveedor(String nombre, float subTotal, float iva, float total) {
         this.nombre = nombre;

@@ -18,11 +18,13 @@ public class RandomConnection {
     private RandomAccessFile rafH;
     private RandomAccessFile rafDDetalle;    
     private RandomAccessFile rafDFactura;
+    private RandomAccessFile rafProveedores;
     
-    public RandomConnection(File header, File detalle,File factura) throws FileNotFoundException, IOException{
+    public RandomConnection(File header, File detalle,File factura, File proveedores) throws FileNotFoundException, IOException{
         this.rafH = new RandomAccessFile(header, "rw");
         this.rafDDetalle = new RandomAccessFile(detalle, "rw");
         this.rafDFactura = new RandomAccessFile(factura, "rw");
+        this.rafProveedores = new RandomAccessFile(proveedores, "rw");
         
         if (rafH.length() == 0){
             rafH.seek(0);
@@ -58,6 +60,14 @@ public class RandomConnection {
     }
     
     /**
+     * @Obtiene el archivo de los proveedores a los que les debe
+     * @return Archivo "Proveedores"
+     **/
+    public RandomAccessFile getRafProveedores(){
+        return rafProveedores;
+    }
+    
+    /**
      * Cierra los flujos de bytes de todos los archivos con los que se gestiona
      * @exception IOException - En caso se produzca un error en los flujos de Bytes
      **/
@@ -72,6 +82,10 @@ public class RandomConnection {
         
         if (rafDFactura != null){
             rafDFactura.close();
+        }
+        
+        if (rafProveedores != null){
+            rafProveedores.close();
         }
     }
 }
