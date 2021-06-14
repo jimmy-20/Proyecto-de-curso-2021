@@ -56,7 +56,7 @@ public class PnlDetalleCompraController {
         fCompras = new FilesCompras();
 
         listCompras = fCompras.findAllDetalle().stream().collect(Collectors.toList());
-        listProveedor= fCompras.findAllProveedores().stream().collect(Collectors.toList());
+        listProveedor= fCompras.findAllCredito().stream().collect(Collectors.toList());
        
         initComponent();
     }

@@ -16,19 +16,19 @@ public abstract class FileConnection {
     private File fileHeader;
     private File fileDetalle;
     private File fileFactura;
-    private File fileProveedor;
+    private File fileCredito;
     private RandomConnection raf;
 
-    public FileConnection(File fileHeader, File fileDetalle, File fileFactura, File fileProveedor) {
+    public FileConnection(File fileHeader, File fileDetalle, File fileFactura, File fileCredito) {
         this.fileHeader = fileHeader;
         this.fileDetalle = fileDetalle;
         this.fileFactura = fileFactura;
-        this.fileProveedor = fileProveedor;
+        this.fileCredito = fileCredito;
     }
     
     protected RandomConnection getRandomConection() throws IOException{
         if (raf == null){
-            raf = new RandomConnection(fileHeader, fileDetalle, fileFactura, fileProveedor);
+            raf = new RandomConnection(fileHeader, fileDetalle, fileFactura, fileCredito);
         }
         
         return raf;

@@ -7,6 +7,7 @@ package Backend;
 
 import Backend.Connection.FileConnection;
 import Backend.Idao.IdaoActions;
+import Pojo.Cliente;
 import Pojo.DetalleCompraFactura;
 import Pojo.DetalleVenta;
 import Pojo.DetalleVentaFactura;
@@ -23,18 +24,18 @@ import java.util.logging.Logger;
  *
  * @author FAMILIASOZAORTIZ
  */
-public class FilesVentas extends FileConnection implements IdaoActions<DetalleVenta, DetalleVentaFactura>{
+public class FilesVentas extends FileConnection implements IdaoActions<DetalleVentaFactura, DetalleVenta,Cliente>{
     private final int detalle_size = 192;
     private final int reporte_size = 357; 
     private Gson gson;
     
     public FilesVentas() {
-        super(new File("headerventas.dat"), new File("DetalleVenta.dat"), new File("DetalleFacturaVenta.dat"));
+        super(new File("headerVentas.dat"), new File("Detalle de Venta.dat"), new File("Detalle de Factura de Venta.dat"), new File("Clientes.dat"));
         gson = new Gson();
     } 
     
     @Override
-    public void add(DetalleVenta t, DetalleVentaFactura g) {
+    public void add(DetalleVentaFactura g, DetalleVenta t,Cliente c) {
         try {
             if (t == null){
                 return;
@@ -68,8 +69,21 @@ public class FilesVentas extends FileConnection implements IdaoActions<DetalleVe
 
 
     @Override
-    public Collection<DetalleVentaFactura> findAllDetalle() {
-         Collection<DetalleVentaFactura> ListFac = new ArrayList<>();
+    public Collection<DetalleVenta> findAllDetalle() {
+        Collection <DetalleVenta> detalleVentas = new ArrayList<>();
+        
+        //Implementar !!!
+        return detalleVentas;
+    }
+
+    @Override
+    public boolean edit(DetalleVenta t, int row) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Collection<DetalleVentaFactura> findAllFactura() {
+        Collection<DetalleVentaFactura> ListFac = new ArrayList<>();
         DetalleVentaFactura venta = null;
         
         try {
@@ -95,12 +109,7 @@ public class FilesVentas extends FileConnection implements IdaoActions<DetalleVe
     }
 
     @Override
-    public boolean edit(DetalleVenta t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Collection<DetalleVenta> findAllFactura() {
+    public Collection<Cliente> findAllCredito() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

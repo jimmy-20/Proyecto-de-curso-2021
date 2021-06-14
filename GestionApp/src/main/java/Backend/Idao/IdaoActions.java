@@ -19,5 +19,5 @@ public interface IdaoActions<T,G,H> {
     boolean edit(G g, int row);
     Collection <T> findAllFactura();
     Collection <G> findAllDetalle();
-    Collection <H> findAllProveedores();
+    Collection <H> findAllCredito();
 }
