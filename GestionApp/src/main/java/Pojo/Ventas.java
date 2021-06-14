@@ -10,13 +10,13 @@ package Pojo;
  * @author FAM. FONSECA SANDINO
  */
 public class Ventas {
-    private String nFactura;
-    private String fecha;
-    private String nomCliente;
-    private float subtotal;
-    private float iva;
-    private float total;
-    private String item;
+    private String nFactura;   // 20 +14
+    private String fecha;       // 20 + 10
+    private String nomCliente;   // 40 + 18
+    private float subtotal; //  4+16
+    private float iva;      // 4 + 6
+    private float total;    // 4+10
+    private String item;    // 14+12    = total 192
     
     public Ventas() {
     }

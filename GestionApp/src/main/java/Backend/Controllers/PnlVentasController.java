@@ -6,7 +6,9 @@
 package Backend.Controllers;
 
 import Model.TableModel;
+import Panels.Ventas.PnlSistemaVentas;
 import Panels.Ventas.PnlVentas;
+import Pojo.DetalleVentaFactura;
 import Pojo.Ventas;
 import java.util.List;
 
@@ -16,11 +18,14 @@ import java.util.List;
  */
 public class PnlVentasController {
     private PnlVentas pnlVentas;
-    private String[] headerVentas = 
-    {"N°Factura","Fecha de Venta","Nombre del Cliente","Sub-Total","IVA","Total","Item" };
+    private PnlSistemaVentas sistemaVentas;
+    private String[] headerVentas = {"N°Factura","Fecha de Venta","Nombre del Cliente","Sub-Total","IVA","Total","Item" };
     private Ventas ventas;
     private TableModel<Ventas> modelventas;
     private List<Ventas> listventas;
+    private String[] headerFactura = {"N°Factura","Fecha de Venta","Tipo de venta","Moneda","Cliente","Sub-Total","IVA","Total" };
+    private TableModel<DetalleVentaFactura> tableModel;
+    private List<DetalleVentaFactura> dvfs;
 
     public PnlVentasController(PnlVentas pnlVentas) {
         this.pnlVentas = pnlVentas;
@@ -31,6 +36,9 @@ public class PnlVentasController {
     {
         modelventas = new TableModel<>(listventas,headerVentas);
         pnlVentas.getTblViewVentas().setModel(modelventas);
+       
+        tableModel = new TableModel<>(dvfs,headerFactura);
+        pnlVentas.getTblReporteVentas().setModel(tableModel);
     }
 
 }

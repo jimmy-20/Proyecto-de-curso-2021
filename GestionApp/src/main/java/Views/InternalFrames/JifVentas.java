@@ -5,7 +5,9 @@
  */
 package Views.InternalFrames;
 
+import Backend.Controllers.PnlSistemaVentasController;
 import Backend.Controllers.PnlVentasController;
+import Panels.Ventas.PnlSistemaVentas;
 import Panels.Ventas.PnlVentas;
 import java.awt.BorderLayout;
 
@@ -15,6 +17,7 @@ import java.awt.BorderLayout;
  */
 public class JifVentas extends javax.swing.JInternalFrame {
     private PnlVentas ventas;
+    private PnlSistemaVentasController sistemaVentas;
     private PnlVentasController Controller;
     /**
      * Creates new form JifVentas
@@ -40,6 +43,8 @@ public class JifVentas extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Ventas");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ventas1.png"))); // NOI18N
+        setPreferredSize(new java.awt.Dimension(500, 450));
+        setRequestFocusEnabled(false);
 
         pnlContent.setPreferredSize(new java.awt.Dimension(700, 700));
         pnlContent.setLayout(new java.awt.BorderLayout());

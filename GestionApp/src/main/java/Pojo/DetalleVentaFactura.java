@@ -20,6 +20,7 @@ public class DetalleVentaFactura {
     private float iva; 
     private float total; //
     
+<<<<<<< HEAD
     //TOTAL = x  + y = ? bytes
 
     public DetalleVentaFactura(String factura, String fecha, String nombreCliente, int cantidad, float precioUnitario, float subTotal, float iva, float total) {
@@ -29,16 +30,53 @@ public class DetalleVentaFactura {
         this.cantidad = cantidad;
         this.precioUnitario = precioUnitario;
         this.subTotal = subTotal;
+=======
+     private String nFactura;
+    private String fecha;
+    private String tipoVenta;
+    private String tipomoneda;
+    private String nomCliente;
+    private String descripcion;
+    private int cantidad;
+    private float costoUn;
+    private float subtotal;
+    private float iva;
+    private float total;
+    //357 bits
+
+    public DetalleVentaFactura() {
+    }
+
+    public DetalleVentaFactura(String nFactura, String fecha, String tipoVenta, String tipomoneda, String nomCliente, String descripcion, int cantidad, float costoUn, float subtotal, float iva, float total) {
+        this.nFactura = nFactura;
+        this.fecha = fecha;
+        this.tipoVenta = tipoVenta;
+        this.tipomoneda = tipomoneda;
+        this.nomCliente = nomCliente;
+        this.descripcion = descripcion;
+        this.cantidad = cantidad;
+        this.costoUn = costoUn;
+        this.subtotal = subtotal;
+>>>>>>> BranchMassiel
         this.iva = iva;
         this.total = total;
     }
 
+<<<<<<< HEAD
     public String getFactura() {
         return factura;
     }
 
     public void setFactura(String factura) {
         this.factura = factura;
+=======
+    public String getnFactura() {
+        return nFactura;
+    }
+
+    public void setnFactura(String nFactura) {
+        this.nFactura = nFactura;
+>>>>>>> BranchMassiel
     }
 
     public String getFecha() {
@@ -49,6 +87,7 @@ public class DetalleVentaFactura {
         this.fecha = fecha;
     }
 
+<<<<<<< HEAD
     public String getNombreCliente() {
         return nombreCliente;
     }
@@ -58,6 +97,40 @@ public class DetalleVentaFactura {
     }
 
     
+=======
+    public String getTipoVenta() {
+        return tipoVenta;
+    }
+
+    public void setTipoVenta(String tipoVenta) {
+        this.tipoVenta = tipoVenta;
+    }
+
+    public String getTipomoneda() {
+        return tipomoneda;
+    }
+
+    public void setTipomoneda(String tipomoneda) {
+        this.tipomoneda = tipomoneda;
+    }
+
+    public String getNomCliente() {
+        return nomCliente;
+    }
+
+    public void setNomCliente(String nomCliente) {
+        this.nomCliente = nomCliente;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+>>>>>>> BranchMassiel
     public int getCantidad() {
         return cantidad;
     }
@@ -66,6 +139,7 @@ public class DetalleVentaFactura {
         this.cantidad = cantidad;
     }
 
+<<<<<<< HEAD
     public float getPrecioUnitario() {
         return precioUnitario;
     }
@@ -80,6 +154,22 @@ public class DetalleVentaFactura {
 
     public void setSubTotal(float subTotal) {
         this.subTotal = subTotal;
+=======
+    public float getCostoUn() {
+        return costoUn;
+    }
+
+    public void setCostoUn(float costoUn) {
+        this.costoUn = costoUn;
+    }
+
+    public float getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(float subtotal) {
+        this.subtotal = subtotal;
+>>>>>>> BranchMassiel
     }
 
     public float getIva() {
@@ -98,6 +188,7 @@ public class DetalleVentaFactura {
         this.total = total;
     }
     
+<<<<<<< HEAD
     public Object []  toArray(){
         Object[] obj=new Object[8];
         
@@ -112,4 +203,7 @@ public class DetalleVentaFactura {
         
         return obj;
     }
+=======
+    
+>>>>>>> BranchMassiel
 }

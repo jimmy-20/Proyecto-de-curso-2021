@@ -5,12 +5,18 @@
  */
 package Views.InternalFrames;
 
+import Backend.Controllers.PnlSistemaVentasController;
+import Panels.Ventas.PnlSistemaVentas;
+import java.awt.BorderLayout;
+
 /**
  *
  * @author FAMILIASOZAORTIZ
  */
 public class JifSistemaVentas extends javax.swing.JInternalFrame {
 
+    private PnlSistemaVentas sistemaVentas;
+    private PnlSistemaVentasController controller;
     /**
      * Creates new form JifSistemaVentas
      */
@@ -27,26 +33,35 @@ public class JifSistemaVentas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlContent = new javax.swing.JPanel();
+
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Sistema de ventas");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ProgramaVentas.png"))); // NOI18N
+        setMinimumSize(new java.awt.Dimension(124, 33));
+        setNormalBounds(new java.awt.Rectangle(0, 0, 124, 0));
+        setPreferredSize(new java.awt.Dimension(500, 450));
+        setRequestFocusEnabled(false);
+        setVisible(true);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
-        );
+        pnlContent.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        pnlContent.setPreferredSize(new java.awt.Dimension(700, 700));
+        pnlContent.setLayout(new java.awt.BorderLayout());
+
+        sistemaVentas= new PnlSistemaVentas();
+        controller = new PnlSistemaVentasController(sistemaVentas);
+        pnlContent.add(sistemaVentas,BorderLayout.CENTER);
+
+        getContentPane().add(pnlContent, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel pnlContent;
     // End of variables declaration//GEN-END:variables
 }
