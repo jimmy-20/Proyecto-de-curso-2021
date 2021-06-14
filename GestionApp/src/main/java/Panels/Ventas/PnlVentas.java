@@ -20,6 +20,14 @@ public class PnlVentas extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JTable getTblReporteVentas() {
+        return tblReporteVentas;
+    }
+
+    public void setTblReporteVentas(JTable tblReporteVentas) {
+        this.tblReporteVentas = tblReporteVentas;
+    }
+
     public JTable getTblViewVentas() {
         return tblViewVentas;
     }
@@ -28,13 +36,7 @@ public class PnlVentas extends javax.swing.JPanel {
         this.tblViewVentas = tblViewVentas;
     }
 
-    public JTable getTblReporteVenta() {
-        return tblReporteVenta;
-    }
-
-    public void setTblReporteVenta(JTable tblReporteVenta) {
-        this.tblReporteVenta = tblReporteVenta;
-    }
+  
     
     
 
@@ -49,38 +51,20 @@ public class PnlVentas extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblReporteVenta = new javax.swing.JTable();
+        tblViewVentas = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblViewVentas = new javax.swing.JTable();
+        tblReporteVentas = new javax.swing.JTable();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         setMinimumSize(new java.awt.Dimension(500, 500));
         setPreferredSize(new java.awt.Dimension(450, 500));
         setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reporte de Factura", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
-        jPanel1.setMaximumSize(new java.awt.Dimension(300, 300));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Inventario de ventas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        jPanel1.setMaximumSize(new java.awt.Dimension(350, 350));
         jPanel1.setPreferredSize(new java.awt.Dimension(150, 150));
         jPanel1.setLayout(new java.awt.BorderLayout());
-
-        tblReporteVenta.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane2.setViewportView(tblReporteVenta);
-
-        jPanel1.add(jScrollPane2, java.awt.BorderLayout.CENTER);
-
-        add(jPanel1, java.awt.BorderLayout.PAGE_END);
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Inventario de Ventas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
-        jPanel2.setMaximumSize(new java.awt.Dimension(300, 300));
-        jPanel2.setLayout(new java.awt.BorderLayout());
 
         tblViewVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -90,7 +74,25 @@ public class PnlVentas extends javax.swing.JPanel {
 
             }
         ));
-        jScrollPane1.setViewportView(tblViewVentas);
+        jScrollPane2.setViewportView(tblViewVentas);
+
+        jPanel1.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+
+        add(jPanel1, java.awt.BorderLayout.PAGE_END);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reporte de factura", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        jPanel2.setMaximumSize(new java.awt.Dimension(200, 200));
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        tblReporteVentas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tblReporteVentas);
 
         jPanel2.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -103,7 +105,7 @@ public class PnlVentas extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tblReporteVenta;
+    private javax.swing.JTable tblReporteVentas;
     private javax.swing.JTable tblViewVentas;
     // End of variables declaration//GEN-END:variables
 }

@@ -33,7 +33,7 @@ public class JifSistemaVentas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        pnlContent = new javax.swing.JPanel();
 
         setClosable(true);
         setIconifiable(true);
@@ -41,29 +41,27 @@ public class JifSistemaVentas extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Sistema de ventas");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ProgramaVentas.png"))); // NOI18N
+        setMinimumSize(new java.awt.Dimension(124, 33));
+        setNormalBounds(new java.awt.Rectangle(0, 0, 124, 0));
+        setPreferredSize(new java.awt.Dimension(500, 450));
+        setRequestFocusEnabled(false);
+        setVisible(true);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 544, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 367, Short.MAX_VALUE)
-        );
+        pnlContent.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        pnlContent.setPreferredSize(new java.awt.Dimension(700, 700));
+        pnlContent.setLayout(new java.awt.BorderLayout());
 
         sistemaVentas= new PnlSistemaVentas();
-        //controller = new PnlSistemaVentasController(sistemaVentas);
-        jPanel1.add(sistemaVentas,BorderLayout.CENTER);
+        controller = new PnlSistemaVentasController(sistemaVentas);
+        pnlContent.add(sistemaVentas,BorderLayout.CENTER);
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(pnlContent, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel pnlContent;
     // End of variables declaration//GEN-END:variables
 }

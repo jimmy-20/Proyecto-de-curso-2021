@@ -22,6 +22,7 @@ public class DetalleVentaFactura {
     private float subtotal;
     private float iva;
     private float total;
+    //357 bits
 
     public DetalleVentaFactura() {
     }

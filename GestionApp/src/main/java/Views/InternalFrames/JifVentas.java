@@ -5,7 +5,9 @@
  */
 package Views.InternalFrames;
 
+import Backend.Controllers.PnlSistemaVentasController;
 import Backend.Controllers.PnlVentasController;
+import Panels.Ventas.PnlSistemaVentas;
 import Panels.Ventas.PnlVentas;
 import java.awt.BorderLayout;
 
@@ -15,6 +17,7 @@ import java.awt.BorderLayout;
  */
 public class JifVentas extends javax.swing.JInternalFrame {
     private PnlVentas ventas;
+    private PnlSistemaVentasController sistemaVentas;
     private PnlVentasController Controller;
     /**
      * Creates new form JifVentas
