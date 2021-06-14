@@ -20,6 +20,7 @@ public class DetalleVenta {
     private float iva;
     private float total;
     //TOTAL = x  + y = ? bytes
+
     public DetalleVenta(String factura, String fecha, String nombreCliente, String descripcion, int cantidad, float precioUnitario, float subTotal, float iva, float total) {
         this.factura = factura;
         this.fecha = fecha;
@@ -31,6 +32,8 @@ public class DetalleVenta {
         this.iva = iva;
         this.total = total;
     }
+    
+    
     
     
     public String getFactura() {

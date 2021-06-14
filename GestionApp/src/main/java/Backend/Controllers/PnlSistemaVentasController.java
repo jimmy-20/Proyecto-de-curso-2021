@@ -9,6 +9,7 @@ import Backend.FilesVentas;
 import Model.TableModel;
 import Panels.Ventas.PnlSistemaVentas;
 import Panels.Ventas.PnlVentas;
+import Pojo.Cliente;
 import Pojo.DetalleVenta;
 import Pojo.DetalleVentaFactura;
 import java.awt.event.ActionEvent;
@@ -43,7 +44,7 @@ public class PnlSistemaVentasController {
         this.sistemaVentas = sistemaVentas;
         filesVentas = new FilesVentas();
         propertyChangeSupport = new PropertyChangeSupport(this);
-        dvfs = filesVentas.findAllDetalle().stream().collect(Collectors.toList());
+        dvfs = filesVentas.findAllFactura().stream().collect(Collectors.toList());
         
         initcomponent();
     }
@@ -224,16 +225,21 @@ public class PnlSistemaVentasController {
          String cliente = sistemaVentas.getTxtCliente().getText();
         String descripcion = sistemaVentas.getTxtDescripcion().getText();
         int cantidad = (int) sistemaVentas.getSpnCantidad().getValue();
-        float costoU = Float.parseFloat(sistemaVentas.getTxtCostoU().getText());
+        float precioU = Float.parseFloat(sistemaVentas.getTxtCostoU().getText());
         float subTotal = Float.parseFloat(sistemaVentas.getTxtSubT().getText());
         float iva = Float.parseFloat(sistemaVentas.getTxtIVA().getText());
         float total = Float.parseFloat(sistemaVentas.getTxtTotal().getText());
         
-        DetalleVentaFactura dvf = new DetalleVentaFactura(factura, fecha, tipoventa, moneda, cliente, descripcion, cantidad, costoU, subTotal, iva, total);
-        DetalleVenta dv = new DetalleVenta();
+        DetalleVenta dv = new DetalleVenta(factura, fecha, cliente, descripcion, cantidad,precioU, subTotal, iva, total);
+        DetalleVentaFactura dvF = new DetalleVentaFactura(factura, fecha, tipoventa, moneda, cliente, subTotal, iva, total);
         
-        filesVentas.add(dv,dvf); 
-        propertyChangeSupport.firePropertyChange("factura", this.factura, dvf); //Se crea un evento de actualizacion
+        Cliente c = null;
+        if (tipoventa.equalsIgnoreCase("Crédito")){
+            c = new Cliente(cliente, subTotal, iva, total);
+        }
+        
+        filesVentas.add(dvF,dv,c); 
+        propertyChangeSupport.firePropertyChange("factura", this.factura, dvF); //Se crea un evento de actualizacion
         
         JOptionPane.showMessageDialog(null, "Factura de venta añadida correctamente");
         

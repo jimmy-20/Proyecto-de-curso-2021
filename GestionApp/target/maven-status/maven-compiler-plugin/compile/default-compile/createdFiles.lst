@@ -9,6 +9,7 @@ Backend\Controllers\PnlDetalleCompraController.class
 Backend\Controllers\PnlReporteController.class
 Views\Login$1.class
 Views\InternalFrames\JifDetalleCompras.class
+Backend\Controllers\PnlSistemaVentasController$1.class
 Views\DialogoActualizar$3.class
 Views\MenuPrincipal$4.class
 Backend\Connection\RandomConnection.class
@@ -28,6 +29,7 @@ Panels\Reportes\PnlReporte$1.class
 Panels\Compra\PnlCompra.class
 Views\DialogoActualizar$3$1.class
 Backend\Controllers\PnlCompraController$2.class
+Panels\Ventas\PnlSistemaVentas.class
 Views\MenuPrincipal$3.class
 Backend\Controllers\PnlDetalleCompraController$2.class
 Panels\Compra\PnlCompraDesign.class
@@ -47,10 +49,11 @@ Panels\Ventas\PnlDetalleVentas.class
 Panels\Ventas\PnlVentas.class
 Pojo\DetalleVentaFactura.class
 Backend\Controllers\PnlVentasController.class
+Backend\Controllers\PnlSistemaVentasController$2.class
 Views\MenuPrincipal$5.class
+Backend\Controllers\PnlSistemaVentasController.class
 Views\Login.class
 Pojo\DetalleVenta.class
 Backend\Idao\IdaoActions.class
-Backend\Clientes.class
 Pojo\DetalleCompra.class
 Views\MainCompiler.class

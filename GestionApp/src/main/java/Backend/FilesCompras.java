@@ -186,7 +186,7 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleC
      * Regresa los datos del archivo de Proveedores, funcional para imprimir en la tabla de Proveedores
      * @return Devuelve en una Collection los proveedores comprado a credito
      **/
-    public Collection<Proveedor> findAllProveedores() {
+    public Collection<Proveedor> findAllCredito() {
         Collection <Proveedor> proveedores = new ArrayList<>();
         Proveedor p = null;
             
@@ -199,11 +199,15 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleC
                 return proveedores;
             }
             
+            if (getRandomConection().getRafCredito().length() == 0){
+                return proveedores;
+            }
+            
             for (int i=0 ; i<n ; i++){
                 long posP = i*SIZE_PROVEEDORES;
                 
                 getRandomConection().getRafFactura().seek(posP);
-                p = gson.fromJson(getRandomConection().getRafProveedores().readUTF(), Proveedor.class);
+                p = gson.fromJson(getRandomConection().getRafCredito().readUTF(), Proveedor.class);
                 
                 proveedores.add(p);
             }
@@ -218,34 +222,34 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleC
     
     private void validationProveedor(Proveedor p, long posProveedor) throws IOException{
         Proveedor proveedor = null;
-        if (getRegistros() <= 0 || p == null){
+        if (getRegistros() < 0 || p == null){
             return;
         }
         
-        if (getRandomConection().getRafProveedores().length() == 0){
-            getRandomConection().getRafProveedores().seek(0);
-            getRandomConection().getRafProveedores().writeUTF(gson.toJson(p));
+        if (getRandomConection().getRafCredito().length() == 0){
+            getRandomConection().getRafCredito().seek(0);
+            getRandomConection().getRafCredito().writeUTF(gson.toJson(p));
             return;
         }
         
         for (int i = 0 ; i<getRegistros() ; i++){
             long posP = i*SIZE_PROVEEDORES;
             
-            getRandomConection().getRafProveedores().seek(posP);
-            proveedor = gson.fromJson(getRandomConection().getRafProveedores().readUTF(), Proveedor.class);
+            getRandomConection().getRafCredito().seek(posP);
+            proveedor = gson.fromJson(getRandomConection().getRafCredito().readUTF(), Proveedor.class);
             
             if(proveedor.getNombre().equalsIgnoreCase(p.getNombre())){
                 proveedor.setSubTotal(p.getSubTotal() + proveedor.getSubTotal());
                 proveedor.setIva(p.getIva() + proveedor.getIva());
                 proveedor.setTotal(p.getTotal() + proveedor.getTotal());
                 
-                getRandomConection().getRafProveedores().seek(posP);
-                getRandomConection().getRafProveedores().writeUTF(gson.toJson(proveedor));
+                getRandomConection().getRafCredito().seek(posP);
+                getRandomConection().getRafCredito().writeUTF(gson.toJson(proveedor));
                 return;
             }
         }
         
-        getRandomConection().getRafProveedores().writeUTF(gson.toJson(p));
+        getRandomConection().getRafCredito().writeUTF(gson.toJson(p));
         
     }
     
