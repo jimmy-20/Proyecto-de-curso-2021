@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -47,7 +48,13 @@ public class PnlReporteController {
     }
 
     private void btnActionPerformed(ActionEvent e) {
-        String fileName = getClass().getResource("/reports/PruebaReport.jasper").getPath();
+        String fileName = getClass().getResource("/reports/Compra2Report.jasper").getPath();
+        
+        if (filesCompras.findAllFactura().stream().collect(Collectors.toList()).isEmpty()){
+            JOptionPane.showMessageDialog(null, "No se encuentra ningun registro para imprimir");
+            return;
+        }
+        //Nota: Si manda la Exception "FileNotFoundException" se debe a que el nombre de usuario contiene espacios
         PojoDataSource dataSource = new PojoDataSource(filesCompras.findAllFactura().stream().collect(Collectors.toList()));
         System.out.println(fileName);
         try
