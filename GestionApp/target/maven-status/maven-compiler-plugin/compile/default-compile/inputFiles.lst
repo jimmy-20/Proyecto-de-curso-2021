@@ -1,37 +1,37 @@
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Backend\Controllers\PnlSistemaVentasController.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Backend\FilesVentas.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Backend\Connection\RandomConnection.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Backend\Controllers\PnlVentasController.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Backend\Controllers\PnlCompraController.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Backend\Idao\IdaoActions.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Model\PojoDataSource.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Pojo\Proveedor.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Views\InternalFrames\JifDetalleVentas.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Pojo\DetalleVentaFactura.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Views\DialogoActualizar.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Views\InternalFrames\JifVentas.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Panels\Ventas\PnlVentas.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Model\TableModel.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Pojo\DetalleVenta.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Views\InternalFrames\JifSistemaVentas.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Panels\Compra\PnlCompraDesign.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Views\InternalFrames\JifDetalleCompras.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Pojo\DetalleCompra.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Panels\Compra\PnlCompra.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Views\InternalFrames\JifCompras.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Panels\Compra\PnlDetalleCompra.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Pojo\DetalleCompraFactura.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Views\InternalFrames\JifReportes.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Backend\Controllers\PnlDetalleVentasController.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Panels\Ventas\PnlDetalleVentas.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Backend\Controllers\PnlReporteController.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Backend\FilesCompras.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Views\MenuPrincipal.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Pojo\Ventas.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Views\Login.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Backend\Connection\FileConnection.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Pojo\Cliente.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Panels\Ventas\PnlSistemaVentas.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Views\MainCompiler.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Panels\Reportes\PnlReporte.java
-C:\Users\Ramiro Suarez\Documents\NetBeansProjects\Proyecto-de-curso-2021 Jaso\GestionApp\src\main\java\Backend\Controllers\PnlDetalleCompraController.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Views\InternalFrames\JifVentas.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Backend\FilesCompras.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Views\InternalFrames\JifDetalleVentas.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Backend\Controllers\PnlReporteController.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Backend\Controllers\PnlCompraController.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Panels\Ventas\PnlDetalleVentas.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Views\InternalFrames\JifCompras.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Backend\Controllers\PnlSistemaVentasController.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Pojo\Cliente.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Backend\Idao\IdaoActions.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Panels\Compra\PnlDetalleCompra.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Panels\Compra\PnlCompra.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Pojo\DetalleCompraFactura.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Backend\Controllers\PnlDetalleCompraController.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Panels\Ventas\PnlVentas.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Views\InternalFrames\JifReportes.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Views\InternalFrames\JifSistemaVentas.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Views\DialogoActualizar.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Model\TableModel.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Panels\Compra\PnlCompraDesign.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Pojo\Ventas.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Pojo\DetalleVentaFactura.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Panels\Reportes\PnlReporte.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Backend\Controllers\PnlDetalleVentasController.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Pojo\DetalleCompra.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Backend\Connection\FileConnection.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Backend\Connection\RandomConnection.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Views\InternalFrames\JifDetalleCompras.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Backend\Controllers\PnlVentasController.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Model\PojoDataSource.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Views\MenuPrincipal.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Backend\FilesVentas.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Panels\Ventas\PnlSistemaVentas.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Views\Login.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Views\MainCompiler.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Pojo\DetalleVenta.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Jaso\GestionApp\src\main\java\Pojo\Proveedor.java
