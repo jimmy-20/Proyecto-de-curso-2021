@@ -44,6 +44,9 @@ public class PnlDetalleCompraController {
     
     private PropertyChangeSupport propertyChangeSupport;
     private TableRowSorter<TableModel> tblRowSorter;
+    private DetalleCompra compra;
+    
+   
     
 
   
@@ -53,7 +56,8 @@ public class PnlDetalleCompraController {
         fCompras = new FilesCompras();
 
         listCompras = fCompras.findAllDetalle().stream().collect(Collectors.toList());
-        
+        listProveedor= fCompras.findAllProveedores().stream().collect(Collectors.toList());
+       
         initComponent();
     }
 
@@ -80,6 +84,7 @@ public class PnlDetalleCompraController {
                }
             }  
         });
+        
     }
     private void txtFinderKeyTyped(KeyEvent e) {
         RowFilter<TableModel, Object> rf = null;
