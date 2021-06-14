@@ -7,7 +7,7 @@ package Pojo;
 
 /**
  *
- * @author Ramiro Suarez
+ * @author Jeison Suarez
  */
 public class Proveedor {
     private String nombre;
@@ -52,6 +52,16 @@ public class Proveedor {
 
     public void setTotal(float total) {
         this.total = total;
+    }
+    public Object []  toArray(){
+        Object[] obj=new Object[4];
+        
+        obj[0]=nombre;
+        obj[1]=subTotal;
+        obj[2]=iva;
+        obj[3]=total;
+        
+        return obj;
     }
     
     
