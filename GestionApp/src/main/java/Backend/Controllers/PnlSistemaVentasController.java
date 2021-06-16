@@ -12,6 +12,7 @@ import Panels.Ventas.PnlVentas;
 import Pojo.Cliente;
 import Pojo.DetalleVenta;
 import Pojo.DetalleVentaFactura;
+import Pojo.SistemaVentas;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -19,6 +20,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,9 +37,10 @@ public class PnlSistemaVentasController {
     private PnlSistemaVentas sistemaVentas;
     private DetalleVentaFactura factura;
     private FilesVentas filesVentas;
-    private String[] headerFactura = {"N°Factura","Fecha de Venta","Tipo de venta","Moneda","Cliente","Sub-Total","IVA","Total" };
-    private TableModel<DetalleVentaFactura> tableModel;
+    private String[] headerFactura = {"Descripción","Cantidad","Costo Unitario","Total" };
+    private TableModel<SistemaVentas> tableModel;
     private List<DetalleVentaFactura> dvfs;
+    private List<SistemaVentas> svs;
     private PropertyChangeSupport propertyChangeSupport;
     
     
@@ -55,7 +59,9 @@ public class PnlSistemaVentasController {
    
     private void initcomponent() {
         
-        tableModel = new TableModel<>(dvfs,headerFactura);
+        tableModel = new TableModel<>(svs,headerFactura);
+        sistemaVentas.getTblVentasR().setModel(tableModel);
+        sistemaVentas.getTxtFecha().setText(String.valueOf(fechaActual()));
         
         addPropertyChangeListener(tableModel);
         
@@ -104,8 +110,7 @@ public class PnlSistemaVentasController {
                 if (!Character.isDigit(c)){
                     ke.consume();
                 }
-            }
-            
+            }         
         });
 
         sistemaVentas.getCbExcento().addChangeListener((ChangeEvent ce) ->
@@ -230,8 +235,10 @@ public class PnlSistemaVentasController {
         float iva = Float.parseFloat(sistemaVentas.getTxtIVA().getText());
         float total = Float.parseFloat(sistemaVentas.getTxtTotal().getText());
         
+        SistemaVentas sv = new SistemaVentas(descripcion, cantidad, total, total);
         DetalleVenta dv = new DetalleVenta(factura, fecha, cliente, descripcion, cantidad,precioU, subTotal, iva, total);
         DetalleVentaFactura dvF = new DetalleVentaFactura(factura, fecha, tipoventa, moneda, cliente, subTotal, iva, total);
+        
         
         Cliente c = null;
         if (tipoventa.equalsIgnoreCase("Crédito")){
@@ -244,4 +251,13 @@ public class PnlSistemaVentasController {
         JOptionPane.showMessageDialog(null, "Factura de venta añadida correctamente");
         
      }
+     
+     public static String fechaActual(){
+    
+    Date fecha = new Date();
+    SimpleDateFormat formatoFecha=new SimpleDateFormat("dd/MM/YYYY");
+    
+    return formatoFecha.format(fecha);
+    
+        }
 }
