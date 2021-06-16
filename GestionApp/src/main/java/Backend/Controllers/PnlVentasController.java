@@ -19,7 +19,7 @@ import java.util.List;
 public class PnlVentasController {
     private PnlVentas pnlVentas;
     private PnlSistemaVentas sistemaVentas;
-    private String[] headerVentas = {"N°Factura","Fecha de Venta","Nombre del Cliente","Sub-Total","IVA","Total","Item" };
+    private String[] headerVentas = {"N°Factura","Fecha de Venta","Descripción","Sub-Total","IVA","Total","Item" };
     private Ventas ventas;
     private TableModel<Ventas> modelventas;
     private List<Ventas> listventas;

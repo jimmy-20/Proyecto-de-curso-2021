@@ -12,24 +12,26 @@ package Pojo;
 public class Ventas {
     private String nFactura;   // 20 +14
     private String fecha;       // 20 + 10
-    private String nomCliente;   // 40 + 18
+    private String descripcion;   //  60 + 22
     private float subtotal; //  4+16
     private float iva;      // 4 + 6
     private float total;    // 4+10
-    private String item;    // 14+12    = total 192
+    private String item;    // 14+12    = total 216
     
     public Ventas() {
     }
 
-    public Ventas(String nFactura, String fecha, String nomCliente, float subtotal, float iva, float total, String item) {
+    public Ventas(String nFactura, String fecha, String descripcion, float subtotal, float iva, float total, String item) {
         this.nFactura = nFactura;
         this.fecha = fecha;
-        this.nomCliente = nomCliente;
+        this.descripcion = descripcion;
         this.subtotal = subtotal;
         this.iva = iva;
         this.total = total;
         this.item = item;
     }
+
+   
 
     public String getnFactura() {
         return nFactura;
@@ -47,12 +49,12 @@ public class Ventas {
         this.fecha = fecha;
     }
 
-    public String getNomCliente() {
-        return nomCliente;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setNomCliente(String nomCliente) {
-        this.nomCliente = nomCliente;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getItem() {

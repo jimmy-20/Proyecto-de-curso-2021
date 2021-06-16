@@ -25,7 +25,7 @@ import java.util.logging.Logger;
  * @author FAMILIASOZAORTIZ
  */
 public class FilesVentas extends FileConnection implements IdaoActions<DetalleVentaFactura, DetalleVenta,Cliente>{
-    private final int detalle_size = 192;
+    private final int detalle_size = 216;
     private final int reporte_size = 357; 
     private Gson gson;
     
