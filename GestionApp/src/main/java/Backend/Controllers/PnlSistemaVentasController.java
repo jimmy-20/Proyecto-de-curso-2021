@@ -260,4 +260,9 @@ public class PnlSistemaVentasController {
     return formatoFecha.format(fecha);
     
         }
+     
+     public static void NumeroFactura()
+     {
+         
+     }
 }
