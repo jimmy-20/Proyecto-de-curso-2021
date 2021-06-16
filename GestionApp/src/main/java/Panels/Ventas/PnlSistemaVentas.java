@@ -9,6 +9,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -26,6 +27,15 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
         initComponents();
     } 
 
+    public JTable getTblVentasR() {
+        return tblVentasR;
+    }
+
+    public void setTblVentasR(JTable tblVentasR) {
+        this.tblVentasR = tblVentasR;
+    }
+
+    
     public JButton getBtnAgregar() {
         return btnAgregar;
     }
@@ -158,8 +168,8 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
         rdbDolar = new javax.swing.JRadioButton();
         btnAgregar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblVentas = new javax.swing.JScrollPane();
+        tblVentasR = new javax.swing.JTable();
 
         jLabel9.setText("jLabel9");
 
@@ -170,7 +180,7 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos de la venta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jPanel2.setMinimumSize(new java.awt.Dimension(0, 0));
-        jPanel2.setPreferredSize(new java.awt.Dimension(307, 333));
+        jPanel2.setPreferredSize(new java.awt.Dimension(400, 333));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -215,6 +225,8 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
         gridBagConstraints.weightx = 0.3;
         gridBagConstraints.insets = new java.awt.Insets(3, 4, 3, 4);
         jPanel2.add(txtNfactura, gridBagConstraints);
+
+        txtFecha.setEditable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -415,10 +427,10 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
         add(jPanel2, java.awt.BorderLayout.CENTER);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resumen de ventas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
-        jPanel1.setPreferredSize(new java.awt.Dimension(200, 200));
+        jPanel1.setPreferredSize(new java.awt.Dimension(250, 300));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblVentasR.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -426,9 +438,9 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
 
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        tblVentas.setViewportView(tblVentasR);
 
-        jPanel1.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+        jPanel1.add(tblVentas, java.awt.BorderLayout.CENTER);
 
         add(jPanel1, java.awt.BorderLayout.EAST);
     }// </editor-fold>//GEN-END:initComponents
@@ -455,13 +467,13 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JRadioButton rbdCredito;
     private javax.swing.JRadioButton rdbContado;
     private javax.swing.JRadioButton rdbCordobas;
     private javax.swing.JRadioButton rdbDolar;
     private javax.swing.JSpinner spnCantidad;
+    private javax.swing.JScrollPane tblVentas;
+    private javax.swing.JTable tblVentasR;
     private javax.swing.JTextField txtCliente;
     private javax.swing.JTextField txtCostoU;
     private javax.swing.JTextField txtDescripcion;

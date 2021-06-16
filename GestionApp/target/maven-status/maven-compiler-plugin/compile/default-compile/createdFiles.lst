@@ -7,6 +7,7 @@ Backend\FilesVentas.class
 Panels\Reportes\PnlReporte.class
 Backend\Controllers\PnlDetalleCompraController.class
 Backend\Controllers\PnlReporteController.class
+Pojo\SistemaVentas.class
 Views\Login$1.class
 Views\InternalFrames\JifDetalleCompras.class
 Backend\Controllers\PnlSistemaVentasController$1.class

@@ -8,7 +8,6 @@ package Backend;
 import Backend.Connection.FileConnection;
 import Backend.Idao.IdaoActions;
 import Pojo.Cliente;
-import Pojo.DetalleCompraFactura;
 import Pojo.DetalleVenta;
 import Pojo.DetalleVentaFactura;
 import Pojo.Ventas;
@@ -24,7 +23,7 @@ import java.util.logging.Logger;
  *
  * @author FAMILIASOZAORTIZ
  */
-public class FilesVentas extends FileConnection implements IdaoActions<DetalleVentaFactura, DetalleVenta,Cliente>{
+public class FilesVentas extends FileConnection implements IdaoActions<DetalleVentaFactura, DetalleVenta,Cliente >{
     private final int detalle_size = 214;
     private final int reporte_size = 203; 
     private Gson gson;

@@ -43,7 +43,7 @@ public class JifSistemaVentas extends javax.swing.JInternalFrame {
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ProgramaVentas.png"))); // NOI18N
         setMinimumSize(new java.awt.Dimension(124, 33));
         setNormalBounds(new java.awt.Rectangle(0, 0, 124, 0));
-        setPreferredSize(new java.awt.Dimension(500, 450));
+        setPreferredSize(new java.awt.Dimension(700, 450));
         setRequestFocusEnabled(false);
         setVisible(true);
 
