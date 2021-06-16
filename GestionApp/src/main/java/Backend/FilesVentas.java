@@ -30,7 +30,8 @@ public class FilesVentas extends FileConnection implements IdaoActions<DetalleVe
     private Gson gson;
     
     public FilesVentas() {
-        super(new File("headerVentas.dat"), new File("Detalle de Venta.dat"), new File("Detalle de Factura de Venta.dat"), new File("Clientes.dat"));
+        super(new File("headerVentas.dat"), new File("Detalle de Venta.dat"),
+                new File("Detalle de Factura de Venta.dat"), new File("Clientes.dat"), new File("Inventario de Ventas.dat"));
         gson = new Gson();
     } 
     

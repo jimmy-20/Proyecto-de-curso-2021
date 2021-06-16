@@ -19,12 +19,14 @@ public class RandomConnection {
     private RandomAccessFile rafDDetalle;    
     private RandomAccessFile rafDFactura;
     private RandomAccessFile rafCredito;
+    private RandomAccessFile rafInventario;
     
-    public RandomConnection(File header, File detalle,File factura, File credito) throws FileNotFoundException, IOException{
+    public RandomConnection(File header, File detalle,File factura, File credito, File inventario) throws FileNotFoundException, IOException{
         this.rafH = new RandomAccessFile(header, "rw");
         this.rafDDetalle = new RandomAccessFile(detalle, "rw");
         this.rafDFactura = new RandomAccessFile(factura, "rw");
         this.rafCredito = new RandomAccessFile(credito, "rw");
+        this.rafInventario = new RandomAccessFile(inventario, "rw");
         
         if (rafH.length() == 0){
             rafH.seek(0);
@@ -68,6 +70,14 @@ public class RandomConnection {
     }
     
     /**
+     * Obtiene el archivo en donde se encuentra las compras que fueron trasladada a la bodega
+     * @return Archivo "Inventario"
+     **/
+    public RandomAccessFile getRafInventario(){
+        return rafInventario;
+    }
+    
+    /**
      * Cierra los flujos de bytes de todos los archivos con los que se gestiona
      * @exception IOException - En caso se produzca un error en los flujos de Bytes
      **/
@@ -82,6 +92,10 @@ public class RandomConnection {
         
         if (rafDFactura != null){
             rafDFactura.close();
+        }
+        
+        if (rafInventario != null){
+            rafInventario.close();
         }
     }
 }
