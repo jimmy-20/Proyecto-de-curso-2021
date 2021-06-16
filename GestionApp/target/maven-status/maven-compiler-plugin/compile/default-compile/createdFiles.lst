@@ -30,6 +30,7 @@ Panels\Compra\PnlCompra.class
 Views\DialogoActualizar$3$1.class
 Backend\Controllers\PnlCompraController$2.class
 Panels\Ventas\PnlSistemaVentas.class
+Views\Login$2.class
 Views\MenuPrincipal$3.class
 Backend\Controllers\PnlDetalleCompraController$2.class
 Panels\Compra\PnlCompraDesign.class
@@ -46,6 +47,7 @@ Backend\Controllers\PnlDetalleCompraController$1.class
 Backend\Controllers\PnlDetalleVentasController.class
 Views\MenuPrincipal$2.class
 Panels\Ventas\PnlDetalleVentas.class
+Views\Login$3.class
 Panels\Ventas\PnlVentas.class
 Pojo\DetalleVentaFactura.class
 Backend\Controllers\PnlVentasController.class
