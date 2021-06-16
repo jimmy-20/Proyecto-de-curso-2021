@@ -13,12 +13,14 @@ Backend\Controllers\PnlSistemaVentasController$1.class
 Views\DialogoActualizar$3.class
 Views\MenuPrincipal$4.class
 Backend\Connection\RandomConnection.class
+Panels\Inventario\PnlInventario.class
 Views\InternalFrames\JifDetalleVentas.class
 Backend\Connection\FileConnection.class
 Pojo\Proveedor.class
 Views\MenuPrincipal$7.class
 Views\InternalFrames\JifSistemaVentas.class
 Model\PojoDataSource.class
+Pojo\Inventario.class
 Views\InternalFrames\JifCompras.class
 Views\InternalFrames\JifVentas.class
 Panels\Compra\PnlCompra$1.class
@@ -30,6 +32,7 @@ Panels\Compra\PnlCompra.class
 Views\DialogoActualizar$3$1.class
 Backend\Controllers\PnlCompraController$2.class
 Panels\Ventas\PnlSistemaVentas.class
+Views\Login$2.class
 Views\MenuPrincipal$3.class
 Backend\Controllers\PnlDetalleCompraController$2.class
 Panels\Compra\PnlCompraDesign.class
@@ -46,6 +49,7 @@ Backend\Controllers\PnlDetalleCompraController$1.class
 Backend\Controllers\PnlDetalleVentasController.class
 Views\MenuPrincipal$2.class
 Panels\Ventas\PnlDetalleVentas.class
+Views\Login$3.class
 Panels\Ventas\PnlVentas.class
 Pojo\DetalleVentaFactura.class
 Backend\Controllers\PnlVentasController.class

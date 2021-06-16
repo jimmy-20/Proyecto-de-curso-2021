@@ -128,23 +128,27 @@ public class Login extends javax.swing.JFrame {
             //JOptionPane.showMessageDialog(this,"Bienvenido");
             menuPrincipal=new MenuPrincipal();
             menuPrincipal.setVisible(true);
+          //  this.setVisible(false);
+            this.dispose();
             
         }else{
-            JOptionPane.showMessageDialog(this,"Usuario o Contraseña incorrecta");
+            JOptionPane.showMessageDialog(this,"El usuario  o la contraseña ingresada no son correctas");
+            txtUsuario.setText("");
+            pswContraseña.setText("");
         }
         
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void rbtnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnMostrarActionPerformed
-
-    }//GEN-LAST:event_rbtnMostrarActionPerformed
-
-    private void pswContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswContraseñaActionPerformed
         if (rbtnMostrar.isSelected()) {
             pswContraseña.setEchoChar((char)0);
         }else{
             pswContraseña.setEchoChar('*');
         }
+    }//GEN-LAST:event_rbtnMostrarActionPerformed
+
+    private void pswContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pswContraseñaActionPerformed
+       
     }//GEN-LAST:event_pswContraseñaActionPerformed
     
      /**
