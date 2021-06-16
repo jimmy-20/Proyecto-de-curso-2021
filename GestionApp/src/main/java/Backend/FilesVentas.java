@@ -67,6 +67,12 @@ public class FilesVentas extends FileConnection implements IdaoActions<DetalleVe
             Logger.getLogger(FilesCompras.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void addVentas(DetalleVentaFactura df, DetalleVenta[] dv, Cliente c){
+        if (dv == null){
+            return;
+        }
+    }
 
 
     @Override
