@@ -55,6 +55,7 @@ public class PnlCompraController {
     
     public void addPropertyChangeListener(PropertyChangeListener pcl){
         propertyChangeSupport.addPropertyChangeListener(pcl);
+        
     }
 
     private void initComponents() {

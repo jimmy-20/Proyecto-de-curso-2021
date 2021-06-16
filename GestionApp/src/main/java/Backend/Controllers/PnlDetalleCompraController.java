@@ -78,9 +78,31 @@ public class PnlDetalleCompraController {
                    return;
                }
                if(e.getClickCount()==2){
-                   dialogActualizar= new DialogoActualizar(null,true);
-                   dialogActualizar.setVisible(true);
+                   dialogActualizar = new DialogoActualizar(null,true);                   
+                   int row = pnlDcompra.getTblViewDetalleCompra().getSelectedRow();
                    
+                   String factura = String.valueOf(pnlDcompra.getTblViewDetalleCompra().getValueAt(row, 0));
+                   String fecha = (String) pnlDcompra.getTblViewDetalleCompra().getValueAt(row, 1);
+                   String tipoCompra = (String) pnlDcompra.getTblViewDetalleCompra().getValueAt(row, 2);
+                   String moneda = (String) pnlDcompra.getTblViewDetalleCompra().getValueAt(row, 3);
+                   String proveedor = (String) pnlDcompra.getTblViewDetalleCompra().getValueAt(row, 4);
+                   String descripcion = (String) pnlDcompra.getTblViewDetalleCompra().getValueAt(row, 5);
+                   String cantidad =  pnlDcompra.getTblViewDetalleCompra().getValueAt(row, 6).toString();
+                   String costoUnitario=  pnlDcompra.getTblViewDetalleCompra().getValueAt(row, 7).toString();
+                   String subTotal =  pnlDcompra.getTblViewDetalleCompra().getValueAt(row, 7).toString();
+                   String iva = pnlDcompra.getTblViewDetalleCompra().getValueAt(row, 8).toString();
+                   String total =  pnlDcompra.getTblViewDetalleCompra().getValueAt(row, 9).toString();
+                   
+                   dialogActualizar.getTxtFecha().setText(fecha);
+                   dialogActualizar.getTxtFactura().setText(factura);
+                   dialogActualizar.getTxtProveedor().setText(proveedor);
+                   dialogActualizar.getTxtDescripcion().setText(descripcion);
+                   dialogActualizar.getTxtCostoU().setText(costoUnitario);
+                   dialogActualizar.getTxtSubTotal().setText(subTotal);
+                   dialogActualizar.getTxtIva().setText(iva);
+                   dialogActualizar.getTxtTotal().setText(total);
+                   
+                   dialogActualizar.setVisible(true);
                }
             }  
         });

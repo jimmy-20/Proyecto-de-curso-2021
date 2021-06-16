@@ -41,6 +41,7 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleC
         super(new File("headerCompra.dat"),new File("Detalle de compra.dat"),new File("Detalle de factura.dat"),
                 new File("Proveedores.dat"), new File("Inventario.dat"));
         gson = new Gson();
+        
     }
 
     /**

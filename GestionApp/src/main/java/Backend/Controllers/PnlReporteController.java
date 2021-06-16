@@ -48,7 +48,7 @@ public class PnlReporteController {
     }
 
     private void btnActionPerformed(ActionEvent e) {  
-        String fileName = getClass().getResource("/reports/Prueba.jasper").getPath();
+        String fileName = getClass().getResource("/reports/Compra2Report.jasper").getPath();
         System.out.println(fileName);
 
         if (filesCompras.findAllFactura().stream().collect(Collectors.toList()).isEmpty()){
