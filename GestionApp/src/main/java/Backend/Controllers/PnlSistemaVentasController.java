@@ -145,7 +145,7 @@ public class PnlSistemaVentasController {
             }   
         });
         
-         sistemaVentas.getBtnVentas().addActionListener(((e) ->
+         sistemaVentas.getBtnFacturar().addActionListener(((e) ->
         {
            btnAgregarActionPerformed(e);
         }));

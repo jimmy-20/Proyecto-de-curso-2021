@@ -10,15 +10,15 @@ package Pojo;
  * @author FAMILIASOZAORTIZ
  */
 public class DetalleVentaFactura {
-    private String factura;
-    private String fecha;
-    private String tipoVenta;
-    private String tipomoneda;
-    private String cliente;
-    private float subtotal;
-    private float iva;
-    private float total;
-    //357 bits
+    private String factura; // 34
+    private String fecha; // 25
+    private String tipoVenta; // 32
+    private String tipomoneda; // 34
+    private String cliente; // 34
+    private float subtotal; // 20
+    private float iva; // 10
+    private float total; // 14
+    //203 bits
 
     public DetalleVentaFactura() {
     }
@@ -33,8 +33,6 @@ public class DetalleVentaFactura {
         this.iva = iva;
         this.total = total;
     }
-
-    
 
     public String getFactura() {
         return factura;
