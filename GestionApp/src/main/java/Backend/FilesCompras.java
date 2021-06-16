@@ -9,11 +9,13 @@ import Backend.Connection.FileConnection;
 import Backend.Idao.IdaoActions;
 import Pojo.DetalleCompraFactura;
 import Pojo.DetalleCompra;
+import Pojo.Inventario;
 import Pojo.Proveedor;
 import com.google.gson.Gson;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
@@ -27,6 +29,8 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleC
     private final int SIZE_DETALLE = 357;
     private final int SIZE_FACTURA = 226;
     private final int SIZE_PROVEEDORES = 76;
+    private final int SIZE_INVENTARIO = 196;
+    private Calendar c;
 
     private Gson gson;
     
@@ -34,7 +38,8 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleC
      *Constructor que instancia y crea los flujos hacia los archivos de compra
      **/
     public FilesCompras() {
-        super(new File("headerCompra.dat"),new File("Detalle de compra.dat"),new File("Detalle de factura.dat"),new File("Proveedores.dat"));
+        super(new File("headerCompra.dat"),new File("Detalle de compra.dat"),new File("Detalle de factura.dat"),
+                new File("Proveedores.dat"), new File("Inventario.dat"));
         gson = new Gson();
     }
 
@@ -251,6 +256,87 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleC
         
         getRandomConection().getRafCredito().writeUTF(gson.toJson(p));
         
+    }
+    
+    public void addBodega(DetalleCompra[] detalleCompras){
+        try {
+            int n = 0,k = 0,p = 0;
+            List<Inventario> adquisicion = new ArrayList<>();
+            
+            getRandomConection().getRafInventario().seek(0);
+
+            c = Calendar.getInstance();
+            if (getRandomConection().getRafInventario().length() == 0){
+                getRandomConection().getRafInventario().writeInt(++n); // Cantidad de adquisiciones
+                getRandomConection().getRafInventario().writeInt(++k); // N° de Adquisición
+                getRandomConection().getRafInventario().writeInt(detalleCompras.length); //N° de compras en la bodega
+            }else{
+                n = getRandomConection().getRafInventario().readInt();
+                k = getRandomConection().getRafInventario().readInt();
+                p = getRandomConection().getRafInventario().readInt();
+            }
+            
+            String fecha = "";
+            fecha = String.valueOf(c.get(Calendar.DATE));
+            fecha += "/"+String.valueOf(c.get(Calendar.MONTH));
+            fecha += "/"+String.valueOf(c.get(Calendar.YEAR));
+            
+            String factura = String.valueOf(k);
+            
+            for (DetalleCompra compra : detalleCompras){
+                Inventario v = new Inventario(fecha, factura, compra.getDescripcion(),
+                        compra.getCantidad(), compra.getCosto(), compra.getCantidad() * compra.getCosto());
+                adquisicion.add(v);
+            }
+            
+            long posI = 12 +SIZE_INVENTARIO * p;
+            
+            for (Inventario v : adquisicion){
+                getRandomConection().getRafInventario().writeUTF(gson.toJson(v));
+            }
+            
+            getRandomConection().getRafInventario().seek(0);
+            getRandomConection().getRafInventario().writeInt(++n);
+            getRandomConection().getRafInventario().writeInt(++k);
+            getRandomConection().getRafInventario().writeInt(p + detalleCompras.length);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(FilesCompras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public Collection<Inventario> getBodega(){
+        Collection<Inventario> inventario = new ArrayList<>();
+        Inventario v = null;
+
+        try {
+
+            if (getRandomConection().getRafInventario().readInt() == 0 || getRandomConection().getRafInventario().length() == 0){
+                return inventario;
+            }
+            
+            getRandomConection().getRafInventario().seek(8);
+            int p = getRandomConection().getRafInventario().readInt(); //N° de compras en la bodega
+            
+            for (int i = 0 ; i<p ; i++){
+                long posI = 12 + SIZE_INVENTARIO * i;
+                
+                getRandomConection().getRafInventario().seek(posI);
+                
+                v = gson.fromJson(getRandomConection().getRafInventario().readUTF(), Inventario.class );
+                
+                if (v.getFecha().equalsIgnoreCase("")){
+                    continue;
+                }
+                
+                inventario.add(v);
+            }     
+        } catch (IOException ex) {
+            Logger.getLogger(FilesCompras.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return inventario;
+
     }
     
     //Este método devuelve la cantidad de registros que se encuentra en el archivo

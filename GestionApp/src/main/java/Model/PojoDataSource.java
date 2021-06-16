@@ -7,6 +7,8 @@ package Model;
 
 import Pojo.DetalleCompra;
 import Pojo.DetalleCompraFactura;
+import Pojo.DetalleVenta;
+import Pojo.DetalleVentaFactura;
 import java.util.List;
 import java.util.stream.Collectors;
 import net.sf.jasperreports.engine.JRDataSource;
@@ -16,6 +18,7 @@ import net.sf.jasperreports.engine.JRField;
 /**
  *
  * @author FAMILIASOZAORTIZ
+ * @param <T> Parametro generico que recibira un Pojo
  */
 public class PojoDataSource<T> implements JRDataSource{
     private List<T> lista;
@@ -111,6 +114,84 @@ public class PojoDataSource<T> implements JRDataSource{
                 }
                 
                 break;
+                
+            case "DetalleVentaFactura":
+                List<DetalleVentaFactura> detalleVentaFactura = (List<DetalleVentaFactura>) lista;
+                
+                switch(jrf.getName()){
+                    case "factura":
+                        obj = detalleVentaFactura.get(indice).getFactura();
+                        break;
+                    case "fecha":
+                        obj = detalleVentaFactura.get(indice).getFecha();
+                        break;
+                    case "tipoVenta":
+                        obj = detalleVentaFactura.get(indice).getTipoVenta();
+                        break;
+                    case "tipomoneda":
+                        obj = detalleVentaFactura.get(indice).getTipomoneda();
+                        break;
+                    case "cliente":
+                        obj = detalleVentaFactura.get(indice).getCliente();
+                        break;
+                    case "subtotal":
+                        obj = detalleVentaFactura.get(indice).getSubtotal();
+                        break;
+                    case "iva":
+                        obj = detalleVentaFactura.get(indice).getIva();
+                        break;
+                    case "total":
+                        obj = detalleVentaFactura.get(indice).getTotal();
+                        break;
+                    default :
+                        return null;
+                }
+                
+                break;
+                
+            case "DetalleVenta":
+                List<DetalleVenta> detalleVenta = (List<DetalleVenta>) lista;
+                
+                switch(jrf.getName()){
+                    case "factura":
+                        obj = detalleVenta.get(indice).getFactura();
+                        break;
+                    case "fecha":
+                        obj = detalleVenta.get(indice).getFecha();
+                        break;
+//                    case "tipoVenta":
+//                        obj = detalleVenta.get(indice).getTipoVenta();
+//                        break;
+//                    case "tipomoneda":
+//                        obj = detalleVenta.get(indice).getTipomoneda();
+//                        break;
+                    case "nombreCliente":
+                        obj = detalleVenta.get(indice).getNombreCliente();
+                        break;
+                    case "descripcion":
+                        obj = detalleVenta.get(indice).getDescripcion();
+                        break;
+                    case "cantidad":
+                        obj = detalleVenta.get(indice).getCantidad();
+                        break;
+                    case "precioUnitario":
+                        obj = detalleVenta.get(indice).getPrecioUnitario();
+                        break;
+                    case "subTotal":
+                        obj = detalleVenta.get(indice).getSubTotal();
+                        break;
+                    case "iva":
+                        obj = detalleVenta.get(indice).getIva();
+                        break;
+                    case "total":
+                        obj = detalleVenta.get(indice).getTotal();
+                        break;
+                    default :
+                        return null;
+                }
+                
+                break;
+                
                 
             default :
                 return obj;
