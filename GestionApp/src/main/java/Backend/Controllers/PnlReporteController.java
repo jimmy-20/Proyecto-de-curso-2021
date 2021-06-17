@@ -47,13 +47,15 @@ public class PnlReporteController {
         }));
     }
 
-    private void btnActionPerformed(ActionEvent e) {
-        String fileName = getClass().getResource("/reports/Compra2Report.jasper").getPath();
-        
+    private void btnActionPerformed(ActionEvent e) {  
+        String fileName = getClass().getResource("/reports/Prueba.jasper").getPath();
+        System.out.println(fileName);
+
         if (filesCompras.findAllFactura().stream().collect(Collectors.toList()).isEmpty()){
             JOptionPane.showMessageDialog(null, "No se encuentra ningun registro para imprimir");
             return;
         }
+
         //Nota: Si manda la Exception "FileNotFoundException" se debe a que el nombre de usuario contiene espacios
         PojoDataSource dataSource = new PojoDataSource(filesCompras.findAllFactura().stream().collect(Collectors.toList()));
         System.out.println(fileName);

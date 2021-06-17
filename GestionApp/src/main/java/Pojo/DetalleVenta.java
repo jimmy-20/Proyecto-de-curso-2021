@@ -15,7 +15,7 @@ public class DetalleVenta {
     private String nombreCliente;
     private String descripcion;
     private int cantidad;
-     private float precioUnitario;
+    private float precioUnitario;
     private float subTotal;
     private float iva;
     private float total;

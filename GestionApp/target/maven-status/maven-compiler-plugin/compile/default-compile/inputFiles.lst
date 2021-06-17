@@ -1,4 +1,3 @@
-C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\GestionApp\src\main\java\Views\Login.java
 C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\GestionApp\src\main\java\Pojo\Ventas.java
 C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\GestionApp\src\main\java\Backend\Controllers\PnlDetalleVentasController.java
 C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\GestionApp\src\main\java\Pojo\DetalleCompraFactura.java
@@ -12,6 +11,7 @@ C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\Ge
 C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\GestionApp\src\main\java\Model\TableModel.java
 C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\GestionApp\src\main\java\Pojo\DetalleCompra.java
 C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\GestionApp\src\main\java\Views\MenuPrincipal.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\GestionApp\src\main\java\Pojo\Inventario.java
 C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\GestionApp\src\main\java\Views\InternalFrames\JifDetalleCompras.java
 C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\GestionApp\src\main\java\Views\InternalFrames\JifDetalleVentas.java
 C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\GestionApp\src\main\java\Views\InternalFrames\JifSistemaVentas.java
@@ -19,6 +19,7 @@ C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\Ge
 C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\GestionApp\src\main\java\Panels\Ventas\PnlVentas.java
 C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\GestionApp\src\main\java\Panels\Ventas\PnlSistemaVentas.java
 C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\GestionApp\src\main\java\Panels\Compra\PnlDetalleCompra.java
+C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\GestionApp\src\main\java\Panels\Inventario\PnlInventario.java
 C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\GestionApp\src\main\java\Backend\Idao\IdaoActions.java
 C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\GestionApp\src\main\java\Backend\Connection\FileConnection.java
 C:\Users\Jimmy-Soza\Documents\NetBeansProjects\Proyecto-de-curso-2021-Massiel\GestionApp\src\main\java\Panels\Ventas\PnlDetalleVentas.java

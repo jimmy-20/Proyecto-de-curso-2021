@@ -8,6 +8,8 @@ package Views;
 import Backend.FilesCompras;
 import Pojo.DetalleCompra;
 import Pojo.DetalleCompraFactura;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,19 +21,28 @@ import java.util.stream.Collectors;
  */
 public class MainCompiler {
     public static void main(String[] args) {
-        FilesCompras fc = new FilesCompras();
-        List<DetalleCompraFactura> facturas = fc.findAllFactura().stream().collect(Collectors.toList());
-        List<DetalleCompra> compras = fc.findAllDetalle().stream().collect(Collectors.toList());
+//        FilesCompras fc = new FilesCompras();
+//        List<DetalleCompraFactura> facturas = fc.findAllFactura().stream().collect(Collectors.toList());
+//        List<DetalleCompra> compras = fc.findAllDetalle().stream().collect(Collectors.toList());
+//        
+//        headerDetalleFactura();
+//        facturas.stream().forEach(x -> print(x));
+//        
+//        headerDetalleCompra();
+//        compras.stream().forEach(y -> print(y));
         
-        headerDetalleFactura();
-        facturas.stream().forEach(x -> print(x));
+        Calendar c = Calendar.getInstance();
+        System.out.println(c.get(Calendar.DATE));
+        System.out.println(c.get(Calendar.MONTH));
+        System.out.println(c.get(Calendar.YEAR));
         
-        headerDetalleCompra();
-        compras.stream().forEach(y -> print(y));
+        String fecha = "";
         
+        fecha = String.valueOf(c.get(Calendar.DATE));
+        fecha += "/"+String.valueOf(c.get(Calendar.MONTH));
+        fecha += "/"+String.valueOf(c.get(Calendar.YEAR));
         
-        
-        
+        System.out.println("La fecha impresa es "+fecha);
     }
     
     public static void headerDetalleCompra(){
