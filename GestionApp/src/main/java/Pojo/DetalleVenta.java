@@ -128,7 +128,7 @@ public class DetalleVenta {
 
 
     public Object []  toArray(){
-        Object[] obj=new Object[9];
+        Object[] obj=new Object[11];
         
         obj[0] = factura;
         obj[1] =fecha;

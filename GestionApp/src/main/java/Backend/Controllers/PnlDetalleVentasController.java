@@ -2,13 +2,16 @@
 
 package Backend.Controllers;
 
+import Backend.FilesVentas;
 import Model.TableModel;
 import Panels.Ventas.PnlDetalleVentas;
 import Pojo.Cliente;
 import Pojo.DetalleVenta;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeSupport;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 
@@ -17,7 +20,8 @@ public class PnlDetalleVentasController {
 private TableModel <DetalleVenta> modelDetalle;
 private TableModel <Cliente>modelCliente;
 private PnlDetalleVentas pnlDetalleVentas;
-private final String[] headerVentas={"N° Factura", "Fecha", "Nombre Cliente",
+private FilesVentas filesVentas;
+private final String[] headerVentas={"N° Factura", "Fecha","Tipo de Compra","Moneda", "Cliente",
         "Descripción", "Cantidad", "Precio Unitario",
         "Sub-Total", "IVA", "Total"};
 private final String[] headerCliente = { "Cliente",
@@ -26,9 +30,14 @@ private final String[] headerCliente = { "Cliente",
 private TableRowSorter<TableModel> rowSorter;
 private List <DetalleVenta> listVentas;
 private List <Cliente> listClientes;
+private PropertyChangeSupport propertyChangeSupport;
 
     public PnlDetalleVentasController(PnlDetalleVentas pnlVentas) {
         this.pnlDetalleVentas = pnlVentas;
+        filesVentas=new FilesVentas();
+        
+        listVentas=filesVentas.findAllDetalle().stream().collect(Collectors.toList());
+        listClientes=filesVentas.findAllCredito().stream().collect(Collectors.toList());
         initComponent();
     }
 
