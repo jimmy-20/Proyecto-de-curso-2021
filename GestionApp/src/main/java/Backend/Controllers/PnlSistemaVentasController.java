@@ -253,7 +253,7 @@ public class PnlSistemaVentasController {
         float iva = Float.parseFloat(sistemaVentas.getTxtIVA().getText());
         float total = Float.parseFloat(sistemaVentas.getTxtTotal().getText());
         
-        DetalleVenta dv = new DetalleVenta(factura, fecha, cliente, descripcion, cantidad,precioU, subTotal, iva, total);
+        DetalleVenta dv = new DetalleVenta(factura, fecha,tipoventa,moneda, cliente, descripcion, cantidad,precioU, subTotal, iva, total);
         DetalleVentaFactura dvF = new DetalleVentaFactura(factura, fecha, tipoventa, moneda, cliente, subTotal, iva, total);
         SistemaVentas sisv = new SistemaVentas(descripcion, cantidad, precioU, total);
         

@@ -11,10 +11,11 @@ package Pojo;
  * @author HenocOrtiz
  */
 public class Cliente {
-    private String nombreCliente;
-    private float subTotal;
-    private float iva;
-    private float total;
+    private String nombreCliente;   //20+13
+    private float subTotal;// 4 + 16
+    private float iva;//  4 + 6
+    private float total; // 4+ 10
+    //TOTAL= 77
 
     public Cliente(String nombreCliente, float subTotal, float iva, float total) {
         this.nombreCliente = nombreCliente;
