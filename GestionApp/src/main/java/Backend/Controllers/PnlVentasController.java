@@ -5,12 +5,16 @@
  */
 package Backend.Controllers;
 
+import Backend.FilesVentas;
 import Model.TableModel;
 import Panels.Ventas.PnlSistemaVentas;
 import Panels.Ventas.PnlVentas;
 import Pojo.DetalleVentaFactura;
 import Pojo.Ventas;
+import java.beans.PropertyChangeSupport;
 import java.util.List;
+import java.util.stream.Collectors;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -18,7 +22,7 @@ import java.util.List;
  */
 public class PnlVentasController {
     private PnlVentas pnlVentas;
-    private PnlSistemaVentas sistemaVentas;
+    private FilesVentas filesVentas;
     private String[] headerVentas = {"N°Factura","Fecha de Venta","Descripción","Sub-Total","IVA","Total","Item" };
     private Ventas ventas;
     private TableModel<Ventas> modelventas;
@@ -26,9 +30,15 @@ public class PnlVentasController {
     private String[] headerFactura = {"N°Factura","Fecha de Venta","Tipo de venta","Moneda","Cliente","Sub-Total","IVA","Total" };
     private TableModel<DetalleVentaFactura> tableModel;
     private List<DetalleVentaFactura> dvfs;
+    private PropertyChangeSupport propertyChangeSupport;
+    private TableRowSorter<TableModel> rowSorter;
 
     public PnlVentasController(PnlVentas pnlVentas) {
         this.pnlVentas = pnlVentas;
+         filesVentas = new FilesVentas();
+        
+        listventas = filesVentas.findAllVentas().stream().collect(Collectors.toList()); 
+        dvfs = filesVentas.findAllFactura().stream().collect(Collectors.toList());
         initComponents();
     }
     
@@ -39,6 +49,8 @@ public class PnlVentasController {
        
         tableModel = new TableModel<>(dvfs,headerFactura);
         pnlVentas.getTblReporteVentas().setModel(tableModel);
+        
+ 
     }
 
 }

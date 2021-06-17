@@ -36,10 +36,7 @@ public class DetalleVenta {
         this.subTotal = subTotal;
         this.iva = iva;
         this.total = total;
-    }
-
-    
-    
+    }    
     public String getTipoVenta() {
         return tipoVenta;
     }
@@ -55,8 +52,6 @@ public class DetalleVenta {
     public void setTipomoneda(String tipomoneda) {
         this.tipomoneda = tipomoneda;
     }
-
-    
 
     public String getFactura() {
         return factura;

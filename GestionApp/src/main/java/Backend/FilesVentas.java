@@ -13,6 +13,7 @@ import Pojo.DetalleCompraFactura;
 import Pojo.DetalleVenta;
 import Pojo.DetalleVentaFactura;
 import Pojo.Proveedor;
+import Pojo.SistemaVentas;
 import Pojo.Ventas;
 import com.google.gson.Gson;
 import java.io.File;
@@ -33,6 +34,11 @@ public class FilesVentas extends FileConnection implements IdaoActions<DetalleVe
     private final int reporte_size = 357;
     private final int SIZE_CLIENTE=77;
     private final int SIZE_FACTURA=227;
+    private final int detalle_size = 220;
+    private final int inventario_size = 220;
+    private final int cliente_size = 110;
+    private final int resumen_size = 140;
+  
     private Gson gson;
 
     public FilesVentas() {
@@ -54,6 +60,7 @@ public class FilesVentas extends FileConnection implements IdaoActions<DetalleVe
 
             long posD = k * SIZE_DETALLE;
             long posF = k * reporte_size;
+            long posC = k * cliente_size;
 
             //Se colocan los punteros en sus respectivos archivos
             getRandomConection().getRafDetalle().seek(posD);
@@ -69,7 +76,7 @@ public class FilesVentas extends FileConnection implements IdaoActions<DetalleVe
             close();
 
         } catch (IOException ex) {
-            Logger.getLogger(FilesCompras.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FilesVentas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -103,7 +110,6 @@ public class FilesVentas extends FileConnection implements IdaoActions<DetalleVe
         } catch (IOException ex) {
             Logger.getLogger(FilesVentas.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         return detalleVentas;
     }
 
@@ -176,6 +182,7 @@ public class FilesVentas extends FileConnection implements IdaoActions<DetalleVe
        Cliente c= null;
        try
         { 
+
             getRandomConection().getRafH().seek(0);
             int n = getRandomConection().getRafH().readInt();
             
@@ -201,5 +208,68 @@ public class FilesVentas extends FileConnection implements IdaoActions<DetalleVe
             Logger.getLogger(FilesVentas.class.getName()).log(Level.SEVERE, null, ex);
         }
         return clientes;
+    public Collection<Ventas> findAllVentas() {
+           Collection<Ventas> list = new ArrayList<>();
+            Ventas vn = null;
+        
+        
+        try {
+            getRandomConection().getRafH().seek(0);
+            int n = getRandomConection().getRafH().readInt();
+            
+            if ( (n<=0) ){
+                return list;
+            }
+            
+            for (int i=0 ; i<n ; i++){
+                long posD = i*inventario_size;
+                
+                getRandomConection().getRafFactura().seek(posD);
+                vn = gson.fromJson(getRandomConection().getRafInventario().readUTF(), Ventas.class);
+                
+                list.add(vn);
+            }
+            close();
+        } catch (IOException ex) {
+            Logger.getLogger(FilesVentas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return  list;
     }
+    
+     public Collection<SistemaVentas> findAllResumen() {
+           Collection<SistemaVentas> list = new ArrayList<>();
+           SistemaVentas rs = null;
+        
+        
+        try {
+            getRandomConection().getRafH().seek(0);
+            int n = getRandomConection().getRafH().readInt();
+            
+            if ( (n<=0) ){
+                return list;
+            }
+            
+            for (int i=0 ; i<n ; i++){
+                long posD = i*resumen_size;
+                
+                getRandomConection().getRafFactura().seek(posD);
+                rs = gson.fromJson(getRandomConection().getRafFactura().readUTF(), SistemaVentas.class);
+               
+                list.add(rs);
+            }
+            close();
+        } catch (IOException ex) {
+            Logger.getLogger(FilesVentas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return  list;
+    }
+
+    public void add(DetalleVentaFactura dvF, DetalleVenta dv, Cliente c, Ventas v, SistemaVentas sv) {
+       
+    }
+
+    
+
 }
