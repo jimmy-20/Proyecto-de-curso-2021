@@ -30,7 +30,7 @@ public class PnlInvetarioController {
     private PnlInventario pnlInventario;
     private String[] headerInventario = {"Fecha", "N° Factura",
         "Descripción", "Cantidad", "Costo Unitario",
-        "Sub-Total", "Total"
+        "Total"
 
     };
     private TableRowSorter<TableModel> tblRowSorter;
