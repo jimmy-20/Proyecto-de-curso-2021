@@ -21,59 +21,56 @@ import javax.swing.table.TableRowSorter;
  * @author Jeison Suarez
  */
 public class PnlInvetarioController {
-    private List <Inventario> listInventario;
-    
+
+    private List<Inventario> listInventario;
+
     private FilesCompras fCompras;
     private TableModel<Inventario> modelDetalle;
-    
-    private PnlInventario pnlInventario ;
-    private String[] headerInventario = { "Fecha","N° Factura",
+
+    private PnlInventario pnlInventario;
+    private String[] headerInventario = {"Fecha", "N° Factura",
         "Descripción", "Cantidad", "Costo Unitario",
-        "Total"
+        "Sub-Total", "Total"
+
     };
-     private TableRowSorter<TableModel> tblRowSorter;
-     private Inventario inventario;
-     
-      public PnlInvetarioController(PnlInventario pnlInvetario) {
-        this.pnlInventario=pnlInventario;
-        
+    private TableRowSorter<TableModel> tblRowSorter;
+    private Inventario inventario;
+
+    public PnlInvetarioController(PnlInventario pnlInventario) {
+        this.pnlInventario = pnlInventario;
+
         fCompras = new FilesCompras();
 
         listInventario = fCompras.getBodega().stream().collect(Collectors.toList());
-        
-        
-       
+
         initComponent();
     }
-      
+
     private void initComponent() {
         loadTable();
-        pnlInventario.getTxtFinder().addKeyListener(new KeyAdapter() { 
+        pnlInventario.getTxtFinder().addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 txtFinderKeyTyped(e);
             }
-            
-            
+
         });
-        
+
     }
-    
-     private void txtFinderKeyTyped(KeyEvent e) {
+
+    private void txtFinderKeyTyped(KeyEvent e) {
         RowFilter<TableModel, Object> rf = null;
         rf = RowFilter.regexFilter(pnlInventario.getTxtFinder().getText(), 0, 1, 2, 3, 4, 5);
         tblRowSorter.setRowFilter(rf);
     }
-      
-      
-      private void loadTable (){
-          
-        modelDetalle= new TableModel(listInventario,headerInventario);
+
+    private void loadTable() {
+        modelDetalle = new TableModel(listInventario, headerInventario);
+
         pnlInventario.getTblInventario().setModel(modelDetalle);
         tblRowSorter = new TableRowSorter<>(modelDetalle);
         pnlInventario.getTblInventario().setRowSorter(tblRowSorter);
-       
+
     }
 
-    
 }
