@@ -88,7 +88,7 @@ public class PnlReporteController {
                     List<DetalleCompra> compras = filesCompras.findAllDetalle().stream().collect(Collectors.toList());
                     TableModel<DetalleCompra> modelCompra = new TableModel<>(compras,headerCDetalle);
                     pnlReporte.getTblReporte().setModel(modelCompra);
-                    report = "";
+                    report = "DCompraReport.jasper";
                 }
                 
                 if (e.getItem().toString().equalsIgnoreCase(modelCombo[2])){
