@@ -353,7 +353,6 @@ public class PnlDetalleCompraController {
         pnlInventario= new PnlInventario();
         dialogInventario= new DialogoInventario(null, true);
         
-        PnlInvetarioController pnlInvetarioController= new PnlInvetarioController(pnlInventario);
         dialogInventario.setVisible(true);
     }
 

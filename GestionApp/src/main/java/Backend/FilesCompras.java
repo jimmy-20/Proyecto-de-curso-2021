@@ -311,7 +311,7 @@ public class FilesCompras extends FileConnection implements IdaoActions<DetalleC
 
         try {
 
-            if (getRandomConection().getRafInventario().readInt() == 0 || getRandomConection().getRafInventario().length() == 0){
+            if (getRandomConection().getRafInventario().length() == 0){
                 return inventario;
             }
             

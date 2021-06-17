@@ -15,16 +15,14 @@ import java.awt.BorderLayout;
  */
 public class DialogoInventario extends javax.swing.JDialog {
 
-    /**
-     * Creates new form DialogoInventario
-     */
+    PnlInvetarioController pnlInvetarioController ;
+    private PnlInventario pnlInventario;
+    
     public DialogoInventario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
     
-    PnlInventario pnlInventario;
-    PnlInvetarioController pnlIController;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,7 +39,7 @@ public class DialogoInventario extends javax.swing.JDialog {
 
         jPanel1.setLayout(new java.awt.BorderLayout());
         pnlInventario= new PnlInventario();
-        pnlIController = new PnlInvetarioController(pnlInventario);
+        pnlInvetarioController = new PnlInvetarioController(pnlInventario);
         jPanel1.add(pnlInventario,BorderLayout.CENTER);
         jPanel1.add(pnlInventario, java.awt.BorderLayout.CENTER);
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);

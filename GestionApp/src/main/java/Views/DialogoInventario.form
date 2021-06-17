@@ -25,7 +25,7 @@
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jPanel1">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_LayoutCodePre" type="java.lang.String" value="pnlInventario= new PnlInventario();&#xa;pnlIController = new PnlInvetarioController(pnlInventario);&#xa; jPanel1.add(pnlInventario,BorderLayout.CENTER);&#xa; jPanel1.add(pnlInventario, java.awt.BorderLayout.CENTER);"/>
+        <AuxValue name="JavaCodeGenerator_LayoutCodePre" type="java.lang.String" value="pnlInventario= new PnlInventario();&#xa;pnlInvetarioController = new PnlInvetarioController(pnlInventario); &#xa;jPanel1.add(pnlInventario,BorderLayout.CENTER);&#xa; jPanel1.add(pnlInventario, java.awt.BorderLayout.CENTER);"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
