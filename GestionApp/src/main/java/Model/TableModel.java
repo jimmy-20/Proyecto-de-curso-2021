@@ -8,7 +8,9 @@ package Model;
 import Pojo.Cliente;
 import Pojo.DetalleCompra;
 import Pojo.DetalleCompraFactura;
+import Pojo.DetalleVenta;
 import Pojo.DetalleVentaFactura;
+import Pojo.Inventario;
 import Pojo.Proveedor;
 import Pojo.SistemaVentas;
 import Pojo.Ventas;
@@ -91,12 +93,12 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
             List<Proveedor> factura = (List<Proveedor>) list;
             obj = factura.get(row).toArray()[column];
             return obj;
-        } else if(nameClass.equalsIgnoreCase("Venta")){
-            List<Ventas> factura = (List<Ventas>) list;
-            obj = factura.get(row).toArray()[column];
-            return obj;
-        }else if (nameClass.equalsIgnoreCase("DetalleVentaFactura")){
+        } else if (nameClass.equalsIgnoreCase("DetalleVentaFactura")){
            List<DetalleVentaFactura> factura = (List<DetalleVentaFactura>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj;  
+        }else if (nameClass.equalsIgnoreCase("DetalleVenta")){
+           List<DetalleVenta> factura = (List<DetalleVenta>) list;
             obj = factura.get(row).toArray()[column];
             return obj;  
         }else if (nameClass.equalsIgnoreCase("Cliente")) {
@@ -104,10 +106,18 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
             obj = factura.get(row).toArray()[column];
             return obj;
         }else if (nameClass.equalsIgnoreCase("Inventario")) {
-            List<Cliente> factura = (List<Cliente>) list;
+            List<Inventario> factura = (List<Inventario>) list;
             obj = factura.get(row).toArray()[column];
-            return obj;   
-            
+            return obj;      
+        }else if (nameClass.equalsIgnoreCase("SistemaVentas"))
+        {
+           List<SistemaVentas> factura = (List<SistemaVentas>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj; 
+        }else if(nameClass.equalsIgnoreCase("Ventas")){
+            List<Ventas> factura = (List<Ventas>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj;
         }else{
             System.out.println("error");
             System.out.println(nameClass);
@@ -130,8 +140,7 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
            List<DetalleCompraFactura> factura = (List<DetalleCompraFactura>) list;
             obj = factura.get(row).toArray()[column];
             return obj;  
-        }else if(nameClass.equalsIgnoreCase("Ventas")){
-            
+        }else if(nameClass.equalsIgnoreCase("Ventas")){  
             List<Ventas> factura = (List<Ventas>) list;
             obj = factura.get(row).toArray()[column];
             return obj;
@@ -145,7 +154,15 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
            List<DetalleVentaFactura> factura = (List<DetalleVentaFactura>) list;
             obj = factura.get(row).toArray()[column];
             return obj; 
-        }else {
+        }else if (nameClass.equalsIgnoreCase("DetalleVenta")){
+           List<DetalleVenta> factura = (List<DetalleVenta>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj;  }
+        else if (nameClass.equalsIgnoreCase("Cliente")) {
+            List<Cliente> factura = (List<Cliente>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj;}
+        else {
             System.out.println("error");
             System.out.println(nameClass);
         }

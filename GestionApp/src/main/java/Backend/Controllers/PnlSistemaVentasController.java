@@ -13,6 +13,7 @@ import Pojo.Cliente;
 import Pojo.DetalleVenta;
 import Pojo.DetalleVentaFactura;
 import Pojo.SistemaVentas;
+import Pojo.Ventas;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -49,6 +50,7 @@ public class PnlSistemaVentasController {
         filesVentas = new FilesVentas();
         propertyChangeSupport = new PropertyChangeSupport(this);
         dvfs = filesVentas.findAllFactura().stream().collect(Collectors.toList());
+        svs = filesVentas.findAllResumen().stream().collect(Collectors.toList());
         
         initcomponent();
     }
@@ -58,13 +60,11 @@ public class PnlSistemaVentasController {
     }
    
     private void initcomponent() {
-        int con = +1;
         tableModel = new TableModel<>(svs,headerFactura);
         sistemaVentas.getTblVentasR().setModel(tableModel);
         addPropertyChangeListener(tableModel); 
          
         sistemaVentas.getTxtFecha().setText(String.valueOf(fechaActual()));
-        sistemaVentas.getTxtNfactura().setText(String.valueOf(NumeroFactura(con)));
   
         sistemaVentas.getBtnGroupTipo().add(sistemaVentas.getRdbContado());
         sistemaVentas.getBtnGroupTipo().add(sistemaVentas.getRbdCredito());
@@ -204,11 +204,9 @@ public class PnlSistemaVentasController {
         sistemaVentas.getTxtCostoU().setText("0");
         sistemaVentas.getTxtSubT().setText("");
         sistemaVentas.getTxtIVA().setText("");
-       sistemaVentas.getTxtTotal().setText("");
+        sistemaVentas.getTxtTotal().setText("");
        
         sistemaVentas.getTxtFecha().setText(String.valueOf(fechaActual()));
-       int cont = +1;
-        sistemaVentas.getTxtNfactura().setText(NumeroFactura(cont++));
     }
      
      private void btnFacturarActionPerformed(ActionEvent e)
@@ -253,16 +251,18 @@ public class PnlSistemaVentasController {
         float iva = Float.parseFloat(sistemaVentas.getTxtIVA().getText());
         float total = Float.parseFloat(sistemaVentas.getTxtTotal().getText());
         
-        DetalleVenta dv = new DetalleVenta(factura, fecha, cliente, descripcion, cantidad,precioU, subTotal, iva, total);
-        DetalleVentaFactura dvF = new DetalleVentaFactura(factura, fecha, tipoventa, moneda, cliente, subTotal, iva, total);
-        SistemaVentas sisv = new SistemaVentas(descripcion, cantidad, precioU, total);
+       DetalleVentaFactura dvF = new DetalleVentaFactura(factura, fecha, tipoventa, moneda, cliente, subTotal, iva, total);
+       SistemaVentas sv = new SistemaVentas(descripcion, cantidad,precioU , total);
+       DetalleVenta dv = new DetalleVenta(factura, fecha, cliente, descripcion, cantidad, precioU, subTotal, iva, total);
+       Ventas v = new Ventas(factura, fecha, descripcion, subTotal, iva, total, cliente);
+       
         
         Cliente c = null;
         if (tipoventa.equalsIgnoreCase("Crédito")){
             c = new Cliente(cliente, subTotal, iva, total);
         }
         
-        filesVentas.add(dvF,dv,c); 
+        filesVentas.add(dvF,dv,c,v,sv); 
         propertyChangeSupport.firePropertyChange("Resumen", this.Resumen, dvF); //Se crea un evento de actualizacion
         
         JOptionPane.showMessageDialog(null, "Factura de venta añadida correctamente");

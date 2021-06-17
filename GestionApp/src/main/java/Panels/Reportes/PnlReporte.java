@@ -70,17 +70,8 @@ public class PnlReporte extends javax.swing.JPanel {
 
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        tblReporte.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        tblReporte.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tblReporte.setAutoscrolls(false);
         jScrollPane1.setViewportView(tblReporte);
 
         gridBagConstraints = new java.awt.GridBagConstraints();

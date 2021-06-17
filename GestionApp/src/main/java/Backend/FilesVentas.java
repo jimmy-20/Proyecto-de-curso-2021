@@ -12,6 +12,8 @@ import Pojo.DetalleCompra;
 import Pojo.DetalleCompraFactura;
 import Pojo.DetalleVenta;
 import Pojo.DetalleVentaFactura;
+import Pojo.Proveedor;
+import Pojo.SistemaVentas;
 import Pojo.Ventas;
 import com.google.gson.Gson;
 import java.io.File;
@@ -28,8 +30,11 @@ import java.util.logging.Logger;
 
 public class FilesVentas extends FileConnection implements IdaoActions<DetalleVentaFactura, DetalleVenta, Cliente> {
 
-    private final int detalle_size = 192;
-    private final int reporte_size = 357;
+    private final int detalle_size = 220;
+    private final int inventario_size = 220;
+    private final int reporte_size = 240;
+    private final int cliente_size = 110;
+    private final int resumen_size = 140;
     private Gson gson;
 
     public FilesVentas() {
@@ -51,6 +56,7 @@ public class FilesVentas extends FileConnection implements IdaoActions<DetalleVe
 
             long posD = k * detalle_size;
             long posF = k * reporte_size;
+            long posC = k * cliente_size;
 
             //Se colocan los punteros en sus respectivos archivos
             getRandomConection().getRafDetalle().seek(posD);
@@ -66,7 +72,7 @@ public class FilesVentas extends FileConnection implements IdaoActions<DetalleVe
             close();
 
         } catch (IOException ex) {
-            Logger.getLogger(FilesCompras.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FilesVentas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -79,35 +85,33 @@ public class FilesVentas extends FileConnection implements IdaoActions<DetalleVe
     @Override
     public Collection<DetalleVenta> findAllDetalle() {
         Collection<DetalleVenta> detalleVentas = new ArrayList<>();
-        DetalleCompra detalle = null;
-        //Implementar !!!
-//        try {
-//            getRandomConection().getRafCredito().seek(0);
-//            int n=getRandomConection().getRafH().readInt();
-//            
-//            if(n<=0){
-//                return  detalleVentas;
-//            }
-//            
-//            for (int i=0;i<n;i++){
-//                long posD=i*detalle_size;
-//                
-//                getRandomConection().getRafDetalle().seek(posD);
-//                detalle=gson.fromJson(getRandomConection().getRafDetalle().readUTF(), DetalleVenta.class);
-//                
-//                detalleVentas.add(detalle);
-//            }
-//        } catch (IOException ex) {
-//            Logger.getLogger(FilesCompras.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-
+        DetalleVenta detalle= null;
+         try {
+            getRandomConection().getRafH().seek(0);
+            int n = getRandomConection().getRafH().readInt();
+            
+            if ( (n<=0) ){
+                return detalleVentas;
+            }
+            
+            for (int i=0 ; i<n ; i++){
+                long posD = i*detalle_size;
+                
+                getRandomConection().getRafDetalle().seek(posD);
+                detalle = gson.fromJson(getRandomConection().getRafDetalle().readUTF(), DetalleVenta.class);
+                
+                detalleVentas.add(detalle);
+            }
+             close();
+        } catch (IOException ex) {
+            Logger.getLogger(FilesVentas.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return detalleVentas;
     }
 
     @Override
     public boolean edit(DetalleVenta t, int row) {
-        return true;
-       //throw new ñ("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;    
     }
 
     @Override
@@ -139,6 +143,99 @@ public class FilesVentas extends FileConnection implements IdaoActions<DetalleVe
 
     @Override
     public Collection<Cliente> findAllCredito() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+           Collection<Cliente> listcliente = new ArrayList<>();
+        Cliente cli = null;
+        
+        
+        try {
+            getRandomConection().getRafH().seek(0);
+            int n = getRandomConection().getRafH().readInt();
+            
+            if ( (n<=0) ){
+                return listcliente;
+            }
+             if (getRandomConection().getRafCredito().length() == 0){
+                return listcliente;
+            }
+            
+            for (int i=0 ; i<n ; i++){
+                long posD = i*cliente_size;
+                
+                getRandomConection().getRafFactura().seek(posD);
+                cli = gson.fromJson(getRandomConection().getRafCredito().readUTF(), Cliente.class);
+                
+                listcliente.add(cli);
+            }
+            close();
+        } catch (IOException ex) {
+            Logger.getLogger(FilesVentas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return  listcliente;
     }
+    
+    public Collection<Ventas> findAllVentas() {
+           Collection<Ventas> list = new ArrayList<>();
+            Ventas vn = null;
+        
+        
+        try {
+            getRandomConection().getRafH().seek(0);
+            int n = getRandomConection().getRafH().readInt();
+            
+            if ( (n<=0) ){
+                return list;
+            }
+            
+            for (int i=0 ; i<n ; i++){
+                long posD = i*inventario_size;
+                
+                getRandomConection().getRafFactura().seek(posD);
+                vn = gson.fromJson(getRandomConection().getRafInventario().readUTF(), Ventas.class);
+                
+                list.add(vn);
+            }
+            close();
+        } catch (IOException ex) {
+            Logger.getLogger(FilesVentas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return  list;
+    }
+    
+     public Collection<SistemaVentas> findAllResumen() {
+           Collection<SistemaVentas> list = new ArrayList<>();
+           SistemaVentas rs = null;
+        
+        
+        try {
+            getRandomConection().getRafH().seek(0);
+            int n = getRandomConection().getRafH().readInt();
+            
+            if ( (n<=0) ){
+                return list;
+            }
+            
+            for (int i=0 ; i<n ; i++){
+                long posD = i*resumen_size;
+                
+                getRandomConection().getRafFactura().seek(posD);
+                rs = gson.fromJson(getRandomConection().getRafFactura().readUTF(), SistemaVentas.class);
+               
+                list.add(rs);
+            }
+            close();
+        } catch (IOException ex) {
+            Logger.getLogger(FilesVentas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return  list;
+    }
+
+    public void add(DetalleVentaFactura dvF, DetalleVenta dv, Cliente c, Ventas v, SistemaVentas sv) {
+       
+    }
+
+    
+
 }
