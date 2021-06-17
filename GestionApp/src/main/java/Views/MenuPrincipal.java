@@ -77,7 +77,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(771, 50));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        btnCompras.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCompras.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Compra.png"))); // NOI18N
         btnCompras.setText("Compras");
         btnCompras.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +90,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 2, 0, 2);
         jPanel1.add(btnCompras, gridBagConstraints);
 
-        btnVentas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnVentas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ventas1.png"))); // NOI18N
         btnVentas.setText("Ventas");
         btnVentas.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +104,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 2, 0, 2);
         jPanel1.add(btnVentas, gridBagConstraints);
 
-        btnDetalleCompras.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnDetalleCompras.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnDetalleCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Proveedores.png"))); // NOI18N
         btnDetalleCompras.setText("Detalle de Compras");
         btnDetalleCompras.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +118,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 2, 0, 2);
         jPanel1.add(btnDetalleCompras, gridBagConstraints);
 
-        btnSistemaVenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnSistemaVenta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSistemaVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ProgramaVentas.png"))); // NOI18N
         btnSistemaVenta.setText("Sistema de Venta");
         btnSistemaVenta.addActionListener(new java.awt.event.ActionListener() {
@@ -134,6 +134,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 2, 0, 2);
         jPanel1.add(btnSistemaVenta, gridBagConstraints);
 
+        btnDetalleVentas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnDetalleVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Ventas.png"))); // NOI18N
         btnDetalleVentas.setText("Detalle de Ventas");
         btnDetalleVentas.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +149,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 2, 0, 2);
         jPanel1.add(btnDetalleVentas, gridBagConstraints);
 
+        btnReporte.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/informe (2).png"))); // NOI18N
         btnReporte.setText("Reporte");
+        btnReporte.setPreferredSize(new java.awt.Dimension(175, 45));
         btnReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReporteActionPerformed(evt);
@@ -165,7 +169,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         dktContent.setLayout(dktContentLayout);
         dktContentLayout.setHorizontalGroup(
             dktContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 842, Short.MAX_VALUE)
+            .addGap(0, 887, Short.MAX_VALUE)
         );
         dktContentLayout.setVerticalGroup(
             dktContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

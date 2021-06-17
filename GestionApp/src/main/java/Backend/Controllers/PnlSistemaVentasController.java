@@ -62,6 +62,7 @@ public class PnlSistemaVentasController {
         tableModel = new TableModel<>(svs,headerFactura);
         sistemaVentas.getTblVentasR().setModel(tableModel);
         sistemaVentas.getTxtFecha().setText(String.valueOf(fechaActual()));
+        sistemaVentas.getTxtNfactura().setText(NumeroFactura());
         
         addPropertyChangeListener(tableModel);
         
@@ -152,12 +153,16 @@ public class PnlSistemaVentasController {
         
          sistemaVentas.getBtnFacturar().addActionListener(((e) ->
         {
-           btnAgregarActionPerformed(e);
+            btnFacturarActionPerformed(e);
         }));
 
         sistemaVentas.getBtnLimpiar().addActionListener(((e) ->
         {
             btnLimpiarActionPerformed(e);
+        }));
+         sistemaVentas.getBtnAgregar().addActionListener(((e) ->
+        {
+            btnAgregarActionPerformed(e);
         }));
         
     }
@@ -197,9 +202,12 @@ public class PnlSistemaVentasController {
         sistemaVentas.getTxtSubT().setText("");
         sistemaVentas.getTxtIVA().setText("");
        sistemaVentas.getTxtTotal().setText("");
+       
+       sistemaVentas.getTxtFecha().setText(String.valueOf(fechaActual()));
+       
     }
      
-     private void btnAgregarActionPerformed(ActionEvent e)
+     private void btnFacturarActionPerformed(ActionEvent e)
      {
          String factura = sistemaVentas.getTxtNfactura().getText();
         String fecha = sistemaVentas.getTxtFecha().getText();
@@ -261,7 +269,15 @@ public class PnlSistemaVentasController {
     
         }
      
-     public static void NumeroFactura()
+     public static String NumeroFactura()
+     {
+         int cont = +1;
+      String salida= String.format("%05d", cont++);
+      
+      return salida;
+     }
+     
+     private void btnAgregarActionPerformed(ActionEvent e)
      {
          
      }

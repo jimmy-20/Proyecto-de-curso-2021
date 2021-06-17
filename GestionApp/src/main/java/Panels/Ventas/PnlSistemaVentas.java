@@ -173,14 +173,14 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
 
         jLabel9.setText("jLabel9");
 
-        setPreferredSize(new java.awt.Dimension(600, 600));
+        setPreferredSize(new java.awt.Dimension(600, 700));
         setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(javax.swing.UIManager.getDefaults().getColor("CheckBox.light"));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos de la venta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jPanel2.setMinimumSize(new java.awt.Dimension(0, 0));
-        jPanel2.setPreferredSize(new java.awt.Dimension(400, 333));
+        jPanel2.setPreferredSize(new java.awt.Dimension(600, 333));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -288,19 +288,22 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel2.add(rdbContado, gridBagConstraints);
 
-        btnFacturar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnFacturar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnFacturar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/factura.png"))); // NOI18N
         btnFacturar.setText("Facturar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.insets = new java.awt.Insets(7, 1, 7, 1);
         jPanel2.add(btnFacturar, gridBagConstraints);
 
-        btnLimpiar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnLimpiar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnLimpiar.setIcon(new javax.swing.ImageIcon("C:\\Users\\FONSECA SANDINO\\Downloads\\limpiar.png")); // NOI18N
         btnLimpiar.setText("Limpiar");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 11;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.insets = new java.awt.Insets(7, 1, 7, 1);
@@ -418,10 +421,11 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 4, 3, 4);
         jPanel2.add(rdbDolar, gridBagConstraints);
 
-        btnAgregar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnAgregar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/boton-agregar.png"))); // NOI18N
         btnAgregar.setText("Agregar");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 11;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 8);
         jPanel2.add(btnAgregar, gridBagConstraints);
@@ -429,7 +433,7 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
         add(jPanel2, java.awt.BorderLayout.CENTER);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resumen de ventas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
-        jPanel1.setPreferredSize(new java.awt.Dimension(250, 300));
+        jPanel1.setPreferredSize(new java.awt.Dimension(300, 300));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         tblVentasR.setModel(new javax.swing.table.DefaultTableModel(
