@@ -8,6 +8,7 @@ package Model;
 import Pojo.Cliente;
 import Pojo.DetalleCompra;
 import Pojo.DetalleCompraFactura;
+import Pojo.DetalleVenta;
 import Pojo.DetalleVentaFactura;
 import Pojo.Proveedor;
 import Pojo.SistemaVentas;
@@ -99,6 +100,10 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
            List<DetalleVentaFactura> factura = (List<DetalleVentaFactura>) list;
             obj = factura.get(row).toArray()[column];
             return obj;  
+        }else if (nameClass.equalsIgnoreCase("DetalleVenta")){
+           List<DetalleVenta> factura = (List<DetalleVenta>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj;  
         }else if (nameClass.equalsIgnoreCase("Cliente")) {
             List<Cliente> factura = (List<Cliente>) list;
             obj = factura.get(row).toArray()[column];
@@ -140,7 +145,11 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
            List<DetalleVentaFactura> factura = (List<DetalleVentaFactura>) list;
             obj = factura.get(row).toArray()[column];
             return obj; 
-        }else {
+        }else if (nameClass.equalsIgnoreCase("DetalleVenta")){
+           List<DetalleVenta> factura = (List<DetalleVenta>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj;  }
+        else {
             System.out.println("error");
             System.out.println(nameClass);
         }
