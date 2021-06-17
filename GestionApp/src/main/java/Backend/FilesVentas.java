@@ -72,7 +72,7 @@ public class FilesVentas extends FileConnection implements IdaoActions<DetalleVe
             close();
 
         } catch (IOException ex) {
-            Logger.getLogger(FilesCompras.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FilesVentas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -220,7 +220,7 @@ public class FilesVentas extends FileConnection implements IdaoActions<DetalleVe
                 long posD = i*resumen_size;
                 
                 getRandomConection().getRafFactura().seek(posD);
-                rs = gson.fromJson(getRandomConection().getRafDetalle().readUTF(), SistemaVentas.class);
+                rs = gson.fromJson(getRandomConection().getRafFactura().readUTF(), SistemaVentas.class);
                
                 list.add(rs);
             }
@@ -231,6 +231,11 @@ public class FilesVentas extends FileConnection implements IdaoActions<DetalleVe
         
         return  list;
     }
-   
+
+    public void add(DetalleVentaFactura dvF, DetalleVenta dv, Cliente c, Ventas v, SistemaVentas sv) {
+       
+    }
+
+    
 
 }

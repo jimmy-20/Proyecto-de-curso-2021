@@ -262,7 +262,7 @@ public class PnlSistemaVentasController {
             c = new Cliente(cliente, subTotal, iva, total);
         }
         
-        filesVentas.add(dvF,dv,c); 
+        filesVentas.add(dvF,dv,c,v,sv); 
         propertyChangeSupport.firePropertyChange("Resumen", this.Resumen, dvF); //Se crea un evento de actualizacion
         
         JOptionPane.showMessageDialog(null, "Factura de venta añadida correctamente");
