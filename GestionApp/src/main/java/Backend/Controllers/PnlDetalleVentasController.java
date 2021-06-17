@@ -21,8 +21,7 @@ private TableModel <DetalleVenta> modelDetalle;
 private TableModel <Cliente>modelCliente;
 private PnlDetalleVentas pnlDetalleVentas;
 private FilesVentas filesVentas;
-private final String[] headerVentas={"N° Factura", "Fecha","Tipo de Compra","Moneda", "Cliente",
-        "Descripción", "Cantidad", "Precio Unitario",
+private final String[] headerVentas={"N° Factura", "Fecha","Cliente","Descripción","Cantidad", "Precio Unitario",
         "Sub-Total", "IVA", "Total"};
 private final String[] headerCliente = { "Cliente",
         "Sub-Total", "IVA", "Total"
