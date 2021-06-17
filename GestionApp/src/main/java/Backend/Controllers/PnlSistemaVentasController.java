@@ -39,6 +39,7 @@ public class PnlSistemaVentasController {
     private DetalleVentaFactura Resumen;
     private FilesVentas filesVentas;
     private String[] headerFactura = {"Descripción","Cantidad","Costo Unitario","Total" };
+    
     private TableModel<SistemaVentas> tableModel;
     private List<DetalleVentaFactura> dvfs;
     private List<SistemaVentas> svs;
@@ -262,7 +263,7 @@ public class PnlSistemaVentasController {
             c = new Cliente(cliente, subTotal, iva, total);
         }
         
-        filesVentas.add(dvF,dv,c,v,sv); 
+        filesVentas.add(dvF,dv,c); 
         propertyChangeSupport.firePropertyChange("Resumen", this.Resumen, dvF); //Se crea un evento de actualizacion
         
         JOptionPane.showMessageDialog(null, "Factura de venta añadida correctamente");
@@ -326,6 +327,17 @@ public class PnlSistemaVentasController {
         float total = Float.parseFloat(sistemaVentas.getTxtTotal().getText());
         
         SistemaVentas sv = new SistemaVentas(descripcion, cantidad, precioU, total);
+        DetalleVentaFactura dvF = new DetalleVentaFactura(factura, fecha, tipoventa, moneda, cliente, subTotal, iva, total);
+       DetalleVenta dv = new DetalleVenta(factura, fecha,tipoventa,moneda, cliente, descripcion, cantidad, precioU, subTotal, iva, total);
+       Ventas v = new Ventas(factura, fecha, descripcion, subTotal, iva, total, cliente);
+       
+         Cliente c = null;
+        if (tipoventa.equalsIgnoreCase("Crédito")){
+            c = new Cliente(cliente, subTotal, iva, total);
+        }
+        
+        filesVentas.add(dvF, dv, c, v, sv); 
+        propertyChangeSupport.firePropertyChange("Resumen", this.Resumen, dvF); 
 
      }
 }
