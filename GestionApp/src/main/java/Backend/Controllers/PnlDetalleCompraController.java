@@ -8,10 +8,12 @@ package Backend.Controllers;
 import Backend.FilesCompras;
 import Model.TableModel;
 import Panels.Compra.PnlDetalleCompra;
+import Panels.Inventario.PnlInventario;
 import Pojo.DetalleCompra;
 import Pojo.DetalleCompraFactura;
 import Pojo.Proveedor;
 import Views.DialogoActualizar;
+import Views.DialogoInventario;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -20,6 +22,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,7 +38,8 @@ import javax.swing.table.TableRowSorter;
  * 
  */
 public class PnlDetalleCompraController {
-       private DialogoActualizar dialogActualizar;
+    private DialogoActualizar dialogActualizar;
+    private DialogoInventario dialogInventario;
     private List <DetalleCompra> listCompras;
     private List <Proveedor> listProveedor;
     private FilesCompras fCompras;
@@ -50,10 +54,12 @@ public class PnlDetalleCompraController {
         "Sub-Total", "IVA", "Total"
     };
     private DetalleCompraFactura factura;
-    
     private PropertyChangeSupport propertyChangeSupport;
     private TableRowSorter<TableModel> tblRowSorter;
     private DetalleCompra compra;
+    private PnlInventario pnlInventario;
+            
+    
    
     
    
@@ -222,7 +228,14 @@ public class PnlDetalleCompraController {
         dialogActualizar.getBtnAgregar().addActionListener((e) -> {
             btnAgregarAction(e);
         });
-              
+            
+        pnlDcompra.getBtnAlmacen().addActionListener((e) -> {
+            btnAlmacenAction(e);
+        });
+        
+        pnlDcompra.getBtnEnviar().addActionListener((e) -> {
+            btnEnviarnAction(e);
+        });
 
     }
     private void txtFinderKeyTyped(KeyEvent e) {
@@ -335,6 +348,42 @@ public class PnlDetalleCompraController {
         dialogActualizar.getTxtIva().setText(String.valueOf(iva));
         dialogActualizar.getTxtTotal().setText(String.valueOf(total));
     }
+
+    private void btnAlmacenAction(ActionEvent e) {
+        pnlInventario= new PnlInventario();
+        dialogInventario= new DialogoInventario(null, true);
+        
+        PnlInvetarioController pnlInvetarioController= new PnlInvetarioController(pnlInventario);
+        dialogInventario.setVisible(true);
+    }
+
+    private void btnEnviarnAction(ActionEvent e) {
+        int row []= pnlDcompra.getTblViewDetalleCompra().getSelectedRows();
+        int column = pnlDcompra.getTblViewDetalleCompra().getColumnCount();
+        int rows = pnlDcompra.getTblViewDetalleCompra().getSelectedRowCount();
+        
+       DetalleCompra [] listnCompra = new DetalleCompra[rows];
+        for (int i : row) {
+           String factura = String.valueOf(pnlDcompra.getTblViewDetalleCompra().getValueAt(i, 0));
+               String fecha = (String) pnlDcompra.getTblViewDetalleCompra().getValueAt(i, 1);
+               String tipoCompra = (String) pnlDcompra.getTblViewDetalleCompra().getValueAt(i, 2);
+               String  moneda = (String ) pnlDcompra.getTblViewDetalleCompra().getValueAt(i, 3);
+               String proveedor = (String) pnlDcompra.getTblViewDetalleCompra().getValueAt(i, 4);
+               String descripcion = (String) pnlDcompra.getTblViewDetalleCompra().getValueAt(i, 5);
+               int  cantidad = (int ) pnlDcompra.getTblViewDetalleCompra().getValueAt(i, 6);
+               float costoUnitario=  (float) pnlDcompra.getTblViewDetalleCompra().getValueAt(i, 7);
+               float subTotal =  (float) pnlDcompra.getTblViewDetalleCompra().getValueAt(i, 7);
+               float iva = (float) pnlDcompra.getTblViewDetalleCompra().getValueAt(i, 8);
+               float total =  (float) pnlDcompra.getTblViewDetalleCompra().getValueAt(i, 9);
+               
+              DetalleCompra nCompra = new DetalleCompra(factura, fecha, tipoCompra, moneda, proveedor, descripcion, cantidad, total, subTotal, iva, total);
+               
+        }
+       // fCompras.addBodega( listnCompra);
+       
+    }
+    
+    
      
     
 
