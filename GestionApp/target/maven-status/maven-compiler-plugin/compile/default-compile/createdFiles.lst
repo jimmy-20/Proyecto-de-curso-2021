@@ -50,6 +50,7 @@ Views\MenuPrincipal$2.class
 Panels\Ventas\PnlDetalleVentas.class
 Views\Login$3.class
 Panels\Ventas\PnlVentas.class
+.netbeans_automatic_build
 Pojo\DetalleVentaFactura.class
 Backend\Controllers\PnlVentasController.class
 Backend\Controllers\PnlSistemaVentasController$2.class
