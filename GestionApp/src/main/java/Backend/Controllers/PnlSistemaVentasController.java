@@ -12,6 +12,7 @@ import Panels.Ventas.PnlVentas;
 import Pojo.Cliente;
 import Pojo.DetalleVenta;
 import Pojo.DetalleVentaFactura;
+import Pojo.SistemaVentas;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -19,6 +20,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,11 +35,12 @@ import javax.swing.event.ChangeEvent;
 public class PnlSistemaVentasController {
     private PnlVentas pnlVentas;
     private PnlSistemaVentas sistemaVentas;
-    private DetalleVentaFactura factura;
+    private DetalleVentaFactura Resumen;
     private FilesVentas filesVentas;
-    private String[] headerFactura = {"N°Factura","Fecha de Venta","Tipo de venta","Moneda","Cliente","Sub-Total","IVA","Total" };
-    private TableModel<DetalleVentaFactura> tableModel;
+    private String[] headerFactura = {"Descripción","Cantidad","Costo Unitario","Total" };
+    private TableModel<SistemaVentas> tableModel;
     private List<DetalleVentaFactura> dvfs;
+    private List<SistemaVentas> svs;
     private PropertyChangeSupport propertyChangeSupport;
     
     
@@ -54,16 +58,21 @@ public class PnlSistemaVentasController {
     }
    
     private void initcomponent() {
-        
-        tableModel = new TableModel<>(dvfs,headerFactura);
-        
-        addPropertyChangeListener(tableModel);
-        
+        int con = +1;
+        tableModel = new TableModel<>(svs,headerFactura);
+        sistemaVentas.getTblVentasR().setModel(tableModel);
+        addPropertyChangeListener(tableModel); 
+         
+        sistemaVentas.getTxtFecha().setText(String.valueOf(fechaActual()));
+        sistemaVentas.getTxtNfactura().setText(String.valueOf(NumeroFactura(con)));
+  
         sistemaVentas.getBtnGroupTipo().add(sistemaVentas.getRdbContado());
         sistemaVentas.getBtnGroupTipo().add(sistemaVentas.getRbdCredito());
+        sistemaVentas.getRdbContado().setSelected(true);
 
         sistemaVentas.getBtnGroupMoneda().add(sistemaVentas.getRdbCordobas());
         sistemaVentas.getBtnGroupMoneda().add(sistemaVentas.getRdbDolar());
+        sistemaVentas.getRdbCordobas().setSelected(true);
         
            sistemaVentas.getSpnCantidad().addChangeListener((ChangeEvent ce) -> 
         {
@@ -147,12 +156,16 @@ public class PnlSistemaVentasController {
         
          sistemaVentas.getBtnVentas().addActionListener(((e) ->
         {
-           btnAgregarActionPerformed(e);
+            btnFacturarActionPerformed(e);
         }));
 
         sistemaVentas.getBtnLimpiar().addActionListener(((e) ->
         {
             btnLimpiarActionPerformed(e);
+        }));
+          sistemaVentas.getBtnAgregar().addActionListener(((e) ->
+        {
+            btnAgregarActionPerformed(e);
         }));
         
     }
@@ -192,7 +205,85 @@ public class PnlSistemaVentasController {
         sistemaVentas.getTxtSubT().setText("");
         sistemaVentas.getTxtIVA().setText("");
        sistemaVentas.getTxtTotal().setText("");
+       
+        sistemaVentas.getTxtFecha().setText(String.valueOf(fechaActual()));
+       int cont = +1;
+        sistemaVentas.getTxtNfactura().setText(NumeroFactura(cont++));
     }
+     
+     private void btnFacturarActionPerformed(ActionEvent e)
+     {
+        String factura = sistemaVentas.getTxtNfactura().getText();
+        String fecha = sistemaVentas.getTxtFecha().getText();
+        String tipoventa = null;
+        String moneda = null;
+             Enumeration btnGroupTipo = sistemaVentas.getBtnGroupTipo().getElements();
+        
+        while (btnGroupTipo.hasMoreElements())
+        {
+            JRadioButton rdb = (JRadioButton) btnGroupTipo.nextElement();
+            
+            if (rdb.isSelected()){
+                tipoventa = rdb.getText();
+            }
+        }
+        
+        Enumeration btnGroupMoneda = sistemaVentas.getBtnGroupMoneda().getElements();
+        
+        while (btnGroupMoneda.hasMoreElements()){
+            
+            JRadioButton rdb = (JRadioButton) btnGroupMoneda.nextElement();
+            
+            if (rdb.isSelected()){
+                moneda = rdb.getText();
+            }
+        }
+        
+         String cliente = sistemaVentas.getTxtCliente().getText();
+        String descripcion = sistemaVentas.getTxtDescripcion().getText();
+        
+         if (factura.isEmpty() ||cliente.isEmpty() || descripcion.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Rellene todos los espacios en blanco");
+            return;
+        }
+        
+        int cantidad = (int) sistemaVentas.getSpnCantidad().getValue();
+        float precioU = Float.parseFloat(sistemaVentas.getTxtCostoU().getText());
+        float subTotal = Float.parseFloat(sistemaVentas.getTxtSubT().getText());
+        float iva = Float.parseFloat(sistemaVentas.getTxtIVA().getText());
+        float total = Float.parseFloat(sistemaVentas.getTxtTotal().getText());
+        
+        DetalleVenta dv = new DetalleVenta(factura, fecha, cliente, descripcion, cantidad,precioU, subTotal, iva, total);
+        DetalleVentaFactura dvF = new DetalleVentaFactura(factura, fecha, tipoventa, moneda, cliente, subTotal, iva, total);
+        SistemaVentas sisv = new SistemaVentas(descripcion, cantidad, precioU, total);
+        
+        Cliente c = null;
+        if (tipoventa.equalsIgnoreCase("Crédito")){
+            c = new Cliente(cliente, subTotal, iva, total);
+        }
+        
+        filesVentas.add(dvF,dv,c); 
+        propertyChangeSupport.firePropertyChange("Resumen", this.Resumen, dvF); //Se crea un evento de actualizacion
+        
+        JOptionPane.showMessageDialog(null, "Factura de venta añadida correctamente");
+        
+     }
+        public static String fechaActual(){
+    
+    Date fecha = new Date();
+    SimpleDateFormat formatoFecha=new SimpleDateFormat("dd/MM/YYYY");
+    
+    return formatoFecha.format(fecha);
+    
+        }
+     
+     public static String NumeroFactura(int con)
+     {
+         int cont = + 1;
+      String salida= String.format("%05d", cont++);
+      
+        return salida;
+     }
      
      private void btnAgregarActionPerformed(ActionEvent e)
      {
@@ -224,24 +315,17 @@ public class PnlSistemaVentasController {
         
          String cliente = sistemaVentas.getTxtCliente().getText();
         String descripcion = sistemaVentas.getTxtDescripcion().getText();
+        if (factura.isEmpty() ||cliente.isEmpty() || descripcion.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Rellene todos los espacios en blanco");
+            return;
+        }
         int cantidad = (int) sistemaVentas.getSpnCantidad().getValue();
         float precioU = Float.parseFloat(sistemaVentas.getTxtCostoU().getText());
         float subTotal = Float.parseFloat(sistemaVentas.getTxtSubT().getText());
         float iva = Float.parseFloat(sistemaVentas.getTxtIVA().getText());
         float total = Float.parseFloat(sistemaVentas.getTxtTotal().getText());
         
-        DetalleVenta dv = new DetalleVenta(factura, fecha, cliente, descripcion, cantidad,precioU, subTotal, iva, total);
-        DetalleVentaFactura dvF = new DetalleVentaFactura(factura, fecha, tipoventa, moneda, cliente, subTotal, iva, total);
-        
-        Cliente c = null;
-        if (tipoventa.equalsIgnoreCase("Crédito")){
-            c = new Cliente(cliente, subTotal, iva, total);
-        }
-        
-        filesVentas.add(dvF,dv,c); 
-        propertyChangeSupport.firePropertyChange("factura", this.factura, dvF); //Se crea un evento de actualizacion
-        
-        JOptionPane.showMessageDialog(null, "Factura de venta añadida correctamente");
-        
+        SistemaVentas sv = new SistemaVentas(descripcion, cantidad, precioU, total);
+
      }
 }

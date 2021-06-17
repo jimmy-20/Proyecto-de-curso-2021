@@ -12,47 +12,35 @@ package Pojo;
 public class Ventas {
     private String nFactura;   // 20 +14
     private String fecha;       // 20 + 10
-    private String nomCliente;   // 40 + 18
+    private String descripcion;   // 60 + 22
     private float subtotal; //  4+16
     private float iva;      // 4 + 6
     private float total;    // 4+10
-    private String item;    // 14+12    = total 192
+    private String item;    // 14+12    = total 216
     
     public Ventas() {
     }
 
-    public Ventas(String nFactura, String fecha, String nomCliente, float subtotal, float iva, float total, String item) {
+    public Ventas(String nFactura, String fecha, String descripcion, float subtotal, float iva, float total, String item) {
         this.nFactura = nFactura;
         this.fecha = fecha;
-        this.nomCliente = nomCliente;
+        this.descripcion = descripcion;
         this.subtotal = subtotal;
         this.iva = iva;
         this.total = total;
         this.item = item;
     }
 
-    public String getnFactura() {
-        return nFactura;
-    }
-
     public void setnFactura(String nFactura) {
         this.nFactura = nFactura;
-    }
-
-    public String getFecha() {
-        return fecha;
     }
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public String getNomCliente() {
-        return nomCliente;
-    }
-
-    public void setNomCliente(String nomCliente) {
-        this.nomCliente = nomCliente;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getItem() {
@@ -86,6 +74,21 @@ public class Ventas {
     public void setTotal(float total) {
         this.total = total;
     }
+    
+     public Object[] toArray(){
+        Object[] obj = new Object[7];
+        
+        obj[0] = nFactura;
+        obj[1] = fecha;
+        obj[2] = descripcion;
+        obj[3]=subtotal;
+        obj[4] = iva;
+        obj[5] = total;
+        obj[6]=item;
+        
+        return obj;
+    }
+    
     
     
 }
