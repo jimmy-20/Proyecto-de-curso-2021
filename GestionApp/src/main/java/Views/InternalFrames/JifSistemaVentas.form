@@ -17,9 +17,8 @@
       <Rectangle value="[0, 0, 124, 0]"/>
     </Property>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[500, 450]"/>
+      <Dimension value="[800, 450]"/>
     </Property>
-    <Property name="requestFocusEnabled" type="boolean" value="false"/>
     <Property name="visible" type="boolean" value="true"/>
   </Properties>
   <SyntheticProperties>

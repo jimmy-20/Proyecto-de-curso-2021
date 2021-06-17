@@ -5,9 +5,13 @@
  */
 package Model;
 
+import Pojo.Cliente;
 import Pojo.DetalleCompra;
 import Pojo.DetalleCompraFactura;
+import Pojo.DetalleVentaFactura;
 import Pojo.Proveedor;
+import Pojo.SistemaVentas;
+import Pojo.Ventas;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
@@ -87,6 +91,18 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
             List<Proveedor> factura = (List<Proveedor>) list;
             obj = factura.get(row).toArray()[column];
             return obj;
+        } else if(nameClass.equalsIgnoreCase("Venta")){
+            List<Ventas> factura = (List<Ventas>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj;
+        }else if (nameClass.equalsIgnoreCase("DetalleVentaFactura")){
+           List<DetalleVentaFactura> factura = (List<DetalleVentaFactura>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj;  
+        }else if (nameClass.equalsIgnoreCase("Cliente")) {
+            List<Cliente> factura = (List<Cliente>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj;
         }else{
             System.out.println("error");
             System.out.println(nameClass);
@@ -109,6 +125,21 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
            List<DetalleCompraFactura> factura = (List<DetalleCompraFactura>) list;
             obj = factura.get(row).toArray()[column];
             return obj;  
+        }else if(nameClass.equalsIgnoreCase("Ventas")){
+            
+            List<Ventas> factura = (List<Ventas>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj;
+        }else if (nameClass.equalsIgnoreCase("SistemaVentas"))
+        {
+           List<SistemaVentas> factura = (List<SistemaVentas>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj; 
+        }else if (nameClass.equalsIgnoreCase("DetalleVentaFactura"))
+        {
+           List<DetalleVentaFactura> factura = (List<DetalleVentaFactura>) list;
+            obj = factura.get(row).toArray()[column];
+            return obj; 
         }else {
             System.out.println("error");
             System.out.println(nameClass);

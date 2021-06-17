@@ -26,6 +26,31 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
         initComponents();
     } 
 
+    public JButton getBtnAgregar() {
+        return btnAgregar;
+    }
+
+    public void setBtnAgregar(JButton btnAgregar) {
+        this.btnAgregar = btnAgregar;
+    }
+
+    public JButton getBtnFacturar() {
+        return btnFacturar;
+    }
+
+    public void setBtnFacturar(JButton btnFacturar) {
+        this.btnFacturar = btnFacturar;
+    }
+
+    public JTable getTblVentasR() {
+        return tblVentasR;
+    }
+
+    public void setTblVentasR(JTable tblVentasR) {
+        this.tblVentasR = tblVentasR;
+    }
+    
+
     public ButtonGroup getBtnGroupMoneda() {
         return btnGroupMoneda;
     }
@@ -47,7 +72,7 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
     }
 
     public JButton getBtnVentas() {
-        return btnVentas;
+        return btnFacturar;
     }
 
     public JCheckBox getCbExcento() {
@@ -129,7 +154,7 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         rbdCredito = new javax.swing.JRadioButton();
         rdbContado = new javax.swing.JRadioButton();
-        btnVentas = new javax.swing.JButton();
+        btnFacturar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -144,6 +169,10 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         rdbCordobas = new javax.swing.JRadioButton();
         rdbDolar = new javax.swing.JRadioButton();
+        btnAgregar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblVentasR = new javax.swing.JTable();
 
         jLabel9.setText("jLabel9");
 
@@ -154,7 +183,7 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos de la venta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
         jPanel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jPanel2.setMinimumSize(new java.awt.Dimension(0, 0));
-        jPanel2.setPreferredSize(new java.awt.Dimension(307, 333));
+        jPanel2.setPreferredSize(new java.awt.Dimension(600, 333));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -191,6 +220,8 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(6, 2, 6, 3);
         jPanel2.add(jLabel4, gridBagConstraints);
+
+        txtNfactura.setEditable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -199,6 +230,8 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
         gridBagConstraints.weightx = 0.3;
         gridBagConstraints.insets = new java.awt.Insets(3, 4, 3, 4);
         jPanel2.add(txtNfactura, gridBagConstraints);
+
+        txtFecha.setEditable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -258,19 +291,22 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel2.add(rdbContado, gridBagConstraints);
 
-        btnVentas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnVentas.setText("Vender");
+        btnFacturar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnFacturar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/factura.png"))); // NOI18N
+        btnFacturar.setText("Facturar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.insets = new java.awt.Insets(7, 1, 7, 1);
-        jPanel2.add(btnVentas, gridBagConstraints);
+        jPanel2.add(btnFacturar, gridBagConstraints);
 
-        btnLimpiar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnLimpiar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/limpiar.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 11;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.insets = new java.awt.Insets(7, 1, 7, 1);
@@ -388,15 +424,42 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 4, 3, 4);
         jPanel2.add(rdbDolar, gridBagConstraints);
 
+        btnAgregar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/boton-agregar.png"))); // NOI18N
+        btnAgregar.setText("Agregar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 11;
+        jPanel2.add(btnAgregar, gridBagConstraints);
+
         add(jPanel2, java.awt.BorderLayout.CENTER);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ventas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        jPanel1.setPreferredSize(new java.awt.Dimension(300, 300));
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        tblVentasR.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tblVentasR);
+
+        jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        add(jPanel1, java.awt.BorderLayout.EAST);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnFacturar;
     private javax.swing.ButtonGroup btnGroupMoneda;
     private javax.swing.ButtonGroup btnGroupTipo;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JButton btnVentas;
     private javax.swing.JCheckBox cbExcento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -410,12 +473,15 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JRadioButton rbdCredito;
     private javax.swing.JRadioButton rdbContado;
     private javax.swing.JRadioButton rdbCordobas;
     private javax.swing.JRadioButton rdbDolar;
     private javax.swing.JSpinner spnCantidad;
+    private javax.swing.JTable tblVentasR;
     private javax.swing.JTextField txtCliente;
     private javax.swing.JTextField txtCostoU;
     private javax.swing.JTextField txtDescripcion;
