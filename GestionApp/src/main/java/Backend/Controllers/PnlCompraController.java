@@ -193,6 +193,14 @@ public class PnlCompraController {
         String tipoCompra = null;
         String moneda = null;
         
+        if (factura == null || factura.equalsIgnoreCase("")){
+            return;
+        }
+        
+        if (fecha == null || fecha.isEmpty()){
+            return;
+        }
+        
         Enumeration btnGroupTipoCompra = pnlCompra.getBtnGroupTipoCompra().getElements();
         
         while (btnGroupTipoCompra.hasMoreElements())
