@@ -234,6 +234,7 @@ public class FilesVentas extends FileConnection implements IdaoActions<DetalleVe
     }
 
     public void add(DetalleVentaFactura dvF, DetalleVenta dv, Cliente c, Ventas v, SistemaVentas sv) {
+        
        
     }
 
