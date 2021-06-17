@@ -5,6 +5,7 @@
  */
 package Panels.Compra;
 
+import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -33,6 +34,14 @@ public class PnlDetalleCompra extends javax.swing.JPanel {
         return txtFinder;
     }
 
+    public JButton getBtnAlmacen() {
+        return btnAlmacen;
+    }
+
+    public JButton getBtnEnviar() {
+        return btnEnviar;
+    }
+
     
     
 
@@ -46,8 +55,8 @@ public class PnlDetalleCompra extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtFinder = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnEnviar = new javax.swing.JButton();
+        btnAlmacen = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblViewProveedores = new javax.swing.JTable();
@@ -77,11 +86,11 @@ public class PnlDetalleCompra extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(4, 20, 4, 4);
         jPanel5.add(txtFinder, gridBagConstraints);
 
-        jButton1.setText("Enviar");
-        jPanel5.add(jButton1, new java.awt.GridBagConstraints());
+        btnEnviar.setText("Enviar");
+        jPanel5.add(btnEnviar, new java.awt.GridBagConstraints());
 
-        jButton2.setText("Almacén");
-        jPanel5.add(jButton2, new java.awt.GridBagConstraints());
+        btnAlmacen.setText("Almacén");
+        jPanel5.add(btnAlmacen, new java.awt.GridBagConstraints());
 
         jPanel3.add(jPanel5, java.awt.BorderLayout.PAGE_START);
 
@@ -134,8 +143,8 @@ public class PnlDetalleCompra extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnAlmacen;
+    private javax.swing.JButton btnEnviar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

@@ -75,5 +75,18 @@ public class Inventario {
         this.total = total;
     }
     
+    public Object []  toArray(){
+        Object[] obj=new Object[6];
+        
+        obj[0]=fecha;
+        obj[1]=factura;
+        obj[2]=descripcion;
+        obj[3]=cantidad;
+        obj[4]=costoU;
+        obj[5]=total;
+        
+        return obj;
+    }
+    
     
 }
