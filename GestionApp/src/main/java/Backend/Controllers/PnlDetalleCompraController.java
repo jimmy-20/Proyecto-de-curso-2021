@@ -364,7 +364,7 @@ public class PnlDetalleCompraController {
         
        DetalleCompra [] listnCompra = new DetalleCompra[rows];
         for (int i : row) {
-           String factura = String.valueOf(pnlDcompra.getTblViewDetalleCompra().getValueAt(i, 0));
+              String factura = String.valueOf(pnlDcompra.getTblViewDetalleCompra().getValueAt(i, 0));
                String fecha = (String) pnlDcompra.getTblViewDetalleCompra().getValueAt(i, 1);
                String tipoCompra = (String) pnlDcompra.getTblViewDetalleCompra().getValueAt(i, 2);
                String  moneda = (String ) pnlDcompra.getTblViewDetalleCompra().getValueAt(i, 3);
@@ -377,9 +377,11 @@ public class PnlDetalleCompraController {
                float total =  (float) pnlDcompra.getTblViewDetalleCompra().getValueAt(i, 9);
                
               DetalleCompra nCompra = new DetalleCompra(factura, fecha, tipoCompra, moneda, proveedor, descripcion, cantidad, total, subTotal, iva, total);
-               
+               for (int j = 0; j < rows; j++) {
+                   listnCompra[j]=nCompra;
+               }
         }
-       // fCompras.addBodega( listnCompra);
+        fCompras.addBodega( listnCompra);
        
     }
     
