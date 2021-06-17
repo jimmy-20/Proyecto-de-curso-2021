@@ -9,6 +9,7 @@ import Backend.FilesCompras;
 import Model.PojoDataSource;
 import Panels.Reportes.PnlReporte;
 import java.awt.event.ActionEvent;
+import java.awt.event.ItemEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -28,7 +29,8 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class PnlReporteController {
     private DefaultComboBoxModel comboBoxModel;
-    private String[] modelCombo = {"Detalle de Compra","Detalle de Factura de Compra","Detalle de Venta","Detalle de Venta de Factura"};
+    private String[] modelCombo = {"---Selecione---","Detalle de Compra","Detalle de Factura de Compra"
+            ,"Detalle de Venta","Detalle de Venta de Factura"};
     private FilesCompras filesCompras;
     private PnlReporte pnlReporte;
     
@@ -44,6 +46,33 @@ public class PnlReporteController {
         
         pnlReporte.getBtnImprimir().addActionListener(((e) -> {
             btnActionPerformed(e);
+        }));
+        
+        pnlReporte.getCmbReport().addItemListener(((e) -> {
+            if (e.getStateChange() == ItemEvent.SELECTED){
+                
+                
+                if(e.getItem().toString().equalsIgnoreCase(modelCombo[0])){
+                    JOptionPane.showMessageDialog(null, "Opción invalida");
+                    return;
+                }
+                
+                if (e.getItem().toString().equalsIgnoreCase(modelCombo[1])){
+                    
+                }
+                
+                if (e.getItem().toString().equalsIgnoreCase(modelCombo[2])){
+                    
+                }
+                
+                if (e.getItem().toString().equalsIgnoreCase(modelCombo[3])){
+                    
+                }
+                
+                if (e.getItem().toString().equalsIgnoreCase(modelCombo[4])){
+                    
+                }
+            }
         }));
     }
 
