@@ -220,8 +220,6 @@ public class PnlSistemaVentas extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(6, 2, 6, 3);
         jPanel2.add(jLabel4, gridBagConstraints);
-
-        txtNfactura.setEditable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;

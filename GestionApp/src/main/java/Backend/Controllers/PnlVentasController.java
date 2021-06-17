@@ -36,9 +36,9 @@ public class PnlVentasController {
     public PnlVentasController(PnlVentas pnlVentas) {
         this.pnlVentas = pnlVentas;
          filesVentas = new FilesVentas();
-        
-        listventas = filesVentas.findAllVentas().stream().collect(Collectors.toList()); 
         dvfs = filesVentas.findAllFactura().stream().collect(Collectors.toList());
+        listventas = filesVentas.findAllVentas().stream().collect(Collectors.toList()); 
+       
         initComponents();
     }
     
@@ -50,7 +50,10 @@ public class PnlVentasController {
         tableModel = new TableModel<>(dvfs,headerFactura);
         pnlVentas.getTblReporteVentas().setModel(tableModel);
         
+        
  
     }
+    
+    
 
 }
