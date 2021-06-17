@@ -253,7 +253,7 @@ public class PnlSistemaVentasController {
         
        DetalleVentaFactura dvF = new DetalleVentaFactura(factura, fecha, tipoventa, moneda, cliente, subTotal, iva, total);
        SistemaVentas sv = new SistemaVentas(descripcion, cantidad,precioU , total);
-       DetalleVenta dv = new DetalleVenta(factura, fecha, cliente, descripcion, cantidad, precioU, subTotal, iva, total);
+       DetalleVenta dv = new DetalleVenta(factura, fecha,tipoventa,moneda, cliente, descripcion, cantidad, precioU, subTotal, iva, total);
        Ventas v = new Ventas(factura, fecha, descripcion, subTotal, iva, total, cliente);
        
         

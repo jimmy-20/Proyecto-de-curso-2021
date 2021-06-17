@@ -31,6 +31,7 @@ public class PnlInvetarioController {
     private String[] headerInventario = {"Fecha", "N° Factura",
         "Descripción", "Cantidad", "Costo Unitario",
         "Sub-Total", "Total"
+
     };
     private TableRowSorter<TableModel> tblRowSorter;
     private Inventario inventario;
@@ -65,6 +66,7 @@ public class PnlInvetarioController {
 
     private void loadTable() {
         modelDetalle = new TableModel(listInventario, headerInventario);
+
         pnlInventario.getTblInventario().setModel(modelDetalle);
         tblRowSorter = new TableRowSorter<>(modelDetalle);
         pnlInventario.getTblInventario().setRowSorter(tblRowSorter);
