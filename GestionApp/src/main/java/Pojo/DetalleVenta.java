@@ -33,9 +33,6 @@ public class DetalleVenta {
         this.total = total;
     }
     
-    
-    
-    
     public String getFactura() {
         return factura;
     }
