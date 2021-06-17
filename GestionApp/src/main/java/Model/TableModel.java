@@ -9,6 +9,7 @@ import Pojo.Cliente;
 import Pojo.DetalleCompra;
 import Pojo.DetalleCompraFactura;
 import Pojo.DetalleVentaFactura;
+import Pojo.Inventario;
 import Pojo.Proveedor;
 import Pojo.SistemaVentas;
 import Pojo.Ventas;
@@ -104,7 +105,7 @@ public class TableModel<T> extends AbstractTableModel implements PropertyChangeL
             obj = factura.get(row).toArray()[column];
             return obj;
         }else if (nameClass.equalsIgnoreCase("Inventario")) {
-            List<Cliente> factura = (List<Cliente>) list;
+            List<Inventario> factura = (List<Inventario>) list;
             obj = factura.get(row).toArray()[column];
             return obj;   
             
